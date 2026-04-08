@@ -1,14 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 
 export default function FinalBossWrapper({ children }: { children: React.ReactNode }) {
   const glowRef = useRef<HTMLDivElement | null>(null);
+  const [particles, setParticles] = useState<
+    { id: number; top: number; left: number; delay: number }[]
+  >([]);
 
   useEffect(() => {
-    // ✅ FINAL SAFE LENIS CONFIG
+    // ✅ LENIS SCROLL
     const lenis = new Lenis({
       lerp: 0.08,
       duration: 1.2,
@@ -36,6 +39,16 @@ export default function FinalBossWrapper({ children }: { children: React.ReactNo
 
     window.addEventListener("mousemove", moveGlow);
 
+    // ✨ Generate particles AFTER mount (fix hydration)
+    const generated = Array.from({ length: 20 }).map((_, i) => ({
+      id: i,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      delay: i * 0.3,
+    }));
+
+    setParticles(generated);
+
     return () => {
       window.removeEventListener("mousemove", moveGlow);
       lenis.destroy();
@@ -44,7 +57,6 @@ export default function FinalBossWrapper({ children }: { children: React.ReactNo
 
   return (
     <div className="relative overflow-hidden">
-
       {/* 🌟 Mouse Glow */}
       <div
         ref={glowRef}
@@ -53,14 +65,14 @@ export default function FinalBossWrapper({ children }: { children: React.ReactNo
 
       {/* ✨ Floating Particles */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {particles.map((p) => (
           <div
-            key={i}
+            key={p.id}
             className="particle"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${i * 0.3}s`,
+              top: `${p.top}%`,
+              left: `${p.left}%`,
+              animationDelay: `${p.delay}s`,
             }}
           />
         ))}
