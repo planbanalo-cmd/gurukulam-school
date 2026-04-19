@@ -2,16 +2,16 @@
 
 import { motion, useScroll, useSpring } from "framer-motion";
 
-import Hero from "./components/Hero";
-import Features from "./components/Features";
-import WhatWeOffer from "./components/WhatWeOffer";
-import About from "./components/About";
-import Courses from "./components/Courses";
-import Teachers from "./components/Teacher";
-import RequestQuote from "./components/RequestQuote";
-import Blog from "./components/Blog";
-import Testimonials from "./components/Testimonials";
-import FinalBossWrapper from "./components/FinalBossWrapper";
+import Hero from "./../components/Hero";
+import Features from "./../components/Features";
+import WhatWeOffer from "./../components/WhatWeOffer";
+import About from "./../components/About";
+import Courses from "./../components/Courses";
+import Teachers from "./../components/Teacher";
+import RequestQuote from "./../components/RequestQuote";
+import Blog from "./../components/Blog";
+import Testimonials from "./../components/Testimonials";
+import FinalBossWrapper from "./../components/FinalBossWrapper";
 
 export default function Home() {
 
