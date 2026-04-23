@@ -55,9 +55,7 @@ export default function LeadershipPage() {
                     Leadership & Management
                 </motion.h1>
 
-                <p className="text-gray-600 mt-4 max-w-xl mx-auto">
-                    Meet the minds shaping the future of Gurukulam.
-                </p>
+               
             </section>
 
             {/* 🎬 CINEMATIC CHAIRMAN */}
@@ -65,6 +63,50 @@ export default function LeadershipPage() {
       ref={ref}
       className="max-w-6xl mx-auto mb-32 px-4"
     >
+            <section className="py-20 px-4 md:px-8 lg:px-16">
+  <div className="relative max-w-5xl mx-auto group">
+
+    {/* 🔥 Glow Border */}
+    
+
+
+
+     
+      
+
+      {/* ✨ Content with stagger animation */}
+      <div className="space-y-5">
+
+        <p className="text-gray-700 text-lg leading-relaxed animate-fadeUp delay-100">
+          At Gurukulam The School, our leadership and management team forms the backbone of our
+commitment to excellence in education. Guided by a clear vision and strong values, the team
+works collaboratively to create a progressive, student-focused learning environment.
+
+        </p>
+
+        <p className="text-gray-700 text-lg leading-relaxed animate-fadeUp delay-200">
+          Our leadership believes in empowering both students and educators by fostering a culture of
+innovation, discipline, and continuous improvement. With a blend of experience and
+forward-thinking strategies, the management ensures that academic standards remain high
+while also promoting holistic development.
+        </p>
+
+        <p className="text-gray-700 text-lg leading-relaxed animate-fadeUp delay-300">
+         Transparency, effective communication, and a commitment to quality are at the core of our
+management practices. Every decision is taken with the best interest of students in mind,
+ensuring a safe, inclusive, and inspiring environment for learning and growth.
+
+        </p>
+
+        <p className="text-gray-700 text-lg leading-relaxed animate-fadeUp delay-500">
+          At Gurukulam, leadership is not just about administration—it is about guiding, mentoring, and
+shaping the future of every child with dedication and integrity.
+        </p>
+
+      </div>
+  
+  </div>
+</section>
       <div className="relative">
 
         {/* 🔥 BACKGROUND GLOW PULSE */}

@@ -54,7 +54,7 @@ export default function FeeStructurePage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl md:text-5xl font-extrabold"
         >
-          GURUKULAM SCHOOL{" "}
+          GURUKULAM THE SCHOOL{" "}
           <span className="text-orange-600">FEE STRUCTURE</span>
         </motion.h1>
 

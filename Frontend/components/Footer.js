@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin } from "lucide-react";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -15,22 +15,21 @@ export default function Footer() {
               GURUKULAM SCHOOL
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              Providing quality education and nurturing excellence in students through dedicated teaching and holistic development.
+             At Gurukulam, our mission is to shape responsible individuals who are not only academically
+          proficient but also morally grounded and socially aware.
             </p>
             {/* Social Icons */}
             <div className="flex gap-4">
-              <a href="#" className="bg-orange-600 p-2 rounded-full hover:bg-orange-700 transition">
+              <a href="https://www.facebook.com/GURUKULAMTHESchool/" className="bg-orange-600 p-2 rounded-full hover:bg-orange-700 transition">
                 <FaFacebook className="w-4 h-4" />
               </a>
-              <a href="#" className="bg-orange-600 p-2 rounded-full hover:bg-orange-700 transition">
-                <FaTwitter className="w-4 h-4" />
+              <a href="https://youtube.com/@gurukulamtheschool-c8v?si=HPPlpjD5K1ysol9G" className="bg-orange-600 p-2 rounded-full hover:bg-orange-700 transition">
+                <FaYoutube className="w-4 h-4" />
               </a>
               <a href="#" className="bg-orange-600 p-2 rounded-full hover:bg-orange-700 transition">
                 <FaInstagram className="w-4 h-4" />
               </a>
-              <a href="#" className="bg-orange-600 p-2 rounded-full hover:bg-orange-700 transition">
-                <FaLinkedin className="w-4 h-4" />
-              </a>
+             
             </div>
           </div>
 

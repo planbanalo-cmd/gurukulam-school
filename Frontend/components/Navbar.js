@@ -8,28 +8,12 @@ export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [aboutOpen, setAboutOpen] = useState(false);
     const [admissionOpen, setAdmissionOpen] = useState(false);
-    const [discoverOpen, setDiscoverOpen] = useState(false);
+    const [acadamicOpen, setAcadamicOpen] = useState(false);
     const [boardingOpen, setBoardingOpen] = useState(false);
     const [eventsOpen, setEventsOpen] = useState(false);
-    const [showInfrastructure, setShowInfrastructure] = useState(false);
+   const [galleryOpen, setGalleryOpen] = useState(false);
 
-    const discoverItems = [
-        { label: 'Life At GSDR', submenu: null },
-        {
-            label: 'Infrastructure',
-            submenu: [
-                'Academic Labs',
-                'Resources Hub',
-                'Creative Spaces',
-                'Performing Arts Center',
-                'Sports & Fitness'
-            ]
-        },
-        { label: 'Sports At GSDR', submenu: null },
-        { label: 'Awards & Certifications', submenu: null },
-        { label: '360 Virtual Tour', submenu: null },
-        { label: 'Results', submenu: null }
-    ];
+    
 
     return (
         <>
@@ -114,11 +98,9 @@ export default function Navbar() {
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
                               <Link href="/History&Foundation"><li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b text-xs xl:text-sm">History & Foundation</li></Link>
                                 <Link href="/Vision&Mission"><li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b text-xs xl:text-sm">Our Vision & Mission</li></Link>
-                                <Link href="/TeachingStaff"><li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b text-xs xl:text-sm">Teaching Staff</li></Link>
-                                <Link href="/NonTeachingStaff"><li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b text-xs xl:text-sm">Non Teaching Staff</li></Link>
+                               <Link href="/Infrastructure"><li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b">Infrastructure</li></Link>
                                 <Link href="/Leadership&Management"><li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b text-xs xl:text-sm">Leadership & Management</li></Link>
-                                <Link href="/PrivacyPolicy"><li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b text-xs xl:text-sm">Privacy Policy</li></Link>
-                                <Link href="/MandatoryPublicDisclosure"><li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 text-xs xl:text-sm">Mandatory Public Disclosure</li></Link>
+                                <Link href="/Privacy&Policy"><li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b text-xs xl:text-sm">Privacy Policy</li></Link>
                             </ul>
                         </li>
 
@@ -133,64 +115,34 @@ export default function Navbar() {
                                 <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b">Aptitude Test</li>
                               <Link href="/Fees"> <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b">Fee Structure</li></Link> 
                               <Link href="/Admission&FeePolicy">  <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b">Admission & Fee Policy</li></Link>
-                                <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b">Download</li>
                                 <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b">Eligibility Criteria</li>
                                 
-                                <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600">Online Admission</li>
+                                <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600">Apply Online</li>
                             </ul>
                         </li>
 
                         {/* Discover Dropdown */}
-                        <li className="relative group text-black hover:text-orange-600 cursor-pointer px-1 xl:px-2 py-2 rounded transition duration-200 whitespace-nowrap">
+                      <li className="relative group text-black hover:text-orange-600 cursor-pointer px-1 xl:px-2 py-2 rounded transition duration-200 hover:scale-105 whitespace-nowrap">
                             <div className="flex items-center gap-1">
-                                <span className="text-xs xl:text-base">DISCOVER</span>
-                                <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4 transition-transform group-hover:rotate-180 duration-300" />
+                            <span className="text-xs xl:text-base">ACADAMICS</span>
+                                <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
                             </div>
-
-                            {/* Main Dropdown Menu */}
-                            <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 animate-in fade-in slide-in-from-top-2 duration-200 text-xs xl:text-sm">
-                                {discoverItems.map((item, index) => (
-                                    <li
-                                        key={index}
-                                        className={`relative ${item.submenu ? 'group/submenu' : ''
-                                            } px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b cursor-pointer transition duration-150 ${index === discoverItems.length - 1 ? 'border-b-0' : ''
-                                            } flex justify-between items-center text-xs xl:text-sm`}
-                                        onMouseEnter={() => item.submenu && setShowInfrastructure(true)}
-                                        onMouseLeave={() => item.submenu && setShowInfrastructure(false)}
-                                    >
-                                        <span>{item.label}</span>
-                                        {item.submenu && (
-                                            <ChevronRight className="w-3 h-3 xl:w-4 xl:h-4 transition-transform duration-300 ml-1 flex-shrink-0" />
-                                        )}
-
-                                        {/* Submenu for Infrastructure */}
-                                        {item.submenu && (
-                                            <ul
-                                                className={`absolute left-full top-0 bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 transition-all duration-300 ${showInfrastructure && item.label === 'Infrastructure'
-                                                        ? 'block opacity-100 visible'
-                                                        : 'hidden opacity-0 invisible'
-                                                    }`}
-                                                style={{
-                                                    marginLeft: '-8px'
-                                                }}
-                                                onMouseEnter={() => item.submenu && setShowInfrastructure(true)}
-                                                onMouseLeave={() => item.submenu && setShowInfrastructure(false)}
-                                            >
-                                                {item.submenu.map((subitem, subindex) => (
-                                                    <li
-                                                        key={subindex}
-                                                        className={`px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 transition duration-300 text-xs xl:text-sm ${subindex === item.submenu.length - 1
-                                                                ? 'border-b-0'
-                                                                : 'border-b'
-                                                            }`}
-                                                    >
-                                                        {subitem}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        )}
-                                    </li>
-                                ))}
+                            <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
+                                <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b">Curriculum</li>
+                               
+                                <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b">Faculty</li>
+                                 
+                            </ul>
+                        </li>
+                           <li className="relative group text-black hover:text-orange-600 cursor-pointer px-1 xl:px-2 py-2 rounded transition duration-200 hover:scale-105 whitespace-nowrap">
+                            <div className="flex items-center gap-1">
+                                <span className="text-xs xl:text-base">ACHIVEMENTS</span>
+                                <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
+                            </div>
+                            <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
+                                <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b">Awards & Certification</li>
+                                <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b">Success Stories</li>
+                               
                             </ul>
                         </li>
 
@@ -224,6 +176,16 @@ export default function Navbar() {
                                 <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600">Magazine</li>
                             </ul>
                         </li>
+                         <li className="relative group text-black hover:text-orange-600 cursor-pointer px-1 xl:px-2 py-2 rounded transition duration-200 hover:scale-105 whitespace-nowrap">
+                            <div className="flex items-center gap-1">
+                                <span className="text-xs xl:text-base">GALLERY</span>
+                                <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
+                            </div>
+                            <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
+                                <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b">Photos</li>
+                                <li className="px-3 xl:px-4 py-2 hover:bg-orange-100 hover:text-orange-600 border-b">Videos</li>
+                            </ul>
+                        </li>
 
                         <li className="text-black hover:text-orange-600 cursor-pointer px-1 xl:px-2 py-2 rounded transition duration-200 hover:scale-105 whitespace-nowrap text-xs xl:text-base">CONTACT</li>
                     </ul>
@@ -247,11 +209,10 @@ export default function Navbar() {
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
                                             <li className="py-1 text-black hover:text-orange-600"><Link href="/History&Foundation">History & Foundation</Link></li>
                                             <li className="py-1 text-black hover:text-orange-600"><Link href="/Vision&Mission">Our Vision & Mission</Link></li>
-                                            <li className="py-1 text-black hover:text-orange-600">Teaching Staff</li>
-                                            <li className="py-1 text-black hover:text-orange-600">Non Teaching Staff</li>
+                                            <li className="py-1 text-black hover:text-orange-600"><Link href="/Infrastructure">Infrastructure</Link></li>
                                             <li className="py-1 text-black hover:text-orange-600"><Link href="/Leadership&Management">Leadership & Management</Link></li>
                                             <li className="py-1 text-black hover:text-orange-600">Privacy Policy</li>
-                                            <li className="py-1 text-black hover:text-orange-600">Mandatory Public Disclosure</li>
+                                          
                                         </ul>
                                     )}
                                 </li>
@@ -271,9 +232,9 @@ export default function Navbar() {
                                             <li className="py-1 text-black hover:text-orange-600">Aptitude Test</li>
                                             <li className="py-1 text-black hover:text-orange-600"><Link href="/Fees">Fee Structure</Link></li>
                                             <li className="py-1 text-black hover:text-orange-600"><Link href="/Admission&FeePolicy">Admission & Fee Policy</Link></li>
-                                            <li className="py-1 text-black hover:text-orange-600">Download</li>
+                                          
                                             <li className="py-1 text-black hover:text-orange-600">Eligibility Criteria</li>
-                                            <li className="py-1 text-black hover:text-orange-600">Online Admission</li>
+                                            <li className="py-1 text-black hover:text-orange-600">Apply Online</li>
                                         </ul>
                                     )}
                                 </li>
@@ -281,20 +242,18 @@ export default function Navbar() {
                                 {/* Mobile Discover */}
                                 <li className="py-3 border-b text-black">
                                     <button
-                                        onClick={() => setDiscoverOpen(!discoverOpen)}
+                                        onClick={() => setAcadamicOpen(!acadamicOpen)}
                                         className="w-full flex justify-between items-center text-black hover:text-orange-600"
                                     >
-                                        <span>DISCOVER</span>
-                                        <ChevronDown className={`w-4 h-4 transition-transform ${discoverOpen ? 'rotate-180' : ''}`} />
+                                        <span>ACADEMIC</span>
+                                        <ChevronDown className={`w-4 h-4 transition-transform ${acadamicOpen ? 'rotate-180' : ''}`} />
                                     </button>
-                                    {discoverOpen && (
+                                    {acadamicOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                            <li className="py-1 text-black hover:text-orange-600">Life At GSDR</li>
-                                            <li className="py-1 text-black hover:text-orange-600">Infrastructure</li>
-                                            <li className="py-1 text-black hover:text-orange-600">Sports At GSDR</li>
-                                            <li className="py-1 text-black hover:text-orange-600">Awards & Certifications</li>
-                                            <li className="py-1 text-black hover:text-orange-600">360 Virtual Tour</li>
-                                            <li className="py-1 text-black hover:text-orange-600">Results</li>
+                                            <li className="py-1 text-black hover:text-orange-600">Curriculum</li>
+                                            <li className="py-1 text-black hover:text-orange-600">Faculty</li>
+                                           
+                                            
                                         </ul>
                                     )}
                                 </li>
@@ -336,6 +295,22 @@ export default function Navbar() {
                                             <li className="py-1 text-black hover:text-orange-600">Circulars</li>
                                             <li className="py-1 text-black hover:text-orange-600">Newsletter</li>
                                             <li className="py-1 text-black hover:text-orange-600">Magazine</li>
+                                        </ul>
+                                    )}
+                                </li>
+                                 <li className="py-3 border-b text-black">
+                                    <button
+                                        onClick={() => setGalleryOpen(!galleryOpen)}
+                                        className="w-full flex justify-between items-center text-black hover:text-orange-600"
+                                    >
+                                        <span>GALLERY</span>
+                                        <ChevronDown className={`w-4 h-4 transition-transform ${galleryOpen ? 'rotate-180' : ''}`} />
+                                    </button>
+                                    {galleryOpen && (
+                                        <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
+                                            <li className="py-1 text-black hover:text-orange-600">Photos</li>
+                                            <li className="py-1 text-black hover:text-orange-600">Videos</li>
+                                           
                                         </ul>
                                     )}
                                 </li>
