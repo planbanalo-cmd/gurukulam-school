@@ -121,7 +121,7 @@ export default function Navbar() {
                             </ul>
                         </li>
 
-                        {/* Discover Dropdown */}
+                        {/* Acadamics Dropdown */}
                       <li className="relative group text-black hover:text-orange-600 cursor-pointer px-1 xl:px-2 py-2 rounded transition duration-200 hover:scale-105 whitespace-nowrap">
                             <div className="flex items-center gap-1">
                             <span className="text-xs xl:text-base">ACADAMICS</span>

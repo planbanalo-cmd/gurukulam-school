@@ -14,27 +14,33 @@ export default function InfrastructurePage() {
   const facilities = [
     {
       title: "Classrooms",
-      desc: "Our classrooms are spacious, well-ventilated, and equipped with modern teaching aids, creating an interactive and engaging learning environment."
+      desc: "Our classrooms are spacious, well-ventilated, and equipped with modern teaching aids, creating an interactive and engaging learning environment for students.",
+      image: "/images/classroom.jpg"
     },
     {
       title: "Laboratories",
-      desc: "We provide well-equipped science and computer laboratories that encourage practical learning, experimentation, and innovation."
+      desc: "We provide well-equipped science and computer laboratories that encourage practical learning, experimentation, and innovation.",
+      image: "/images/lab.jpg"
     },
     {
       title: "Library",
-      desc: "Our library is a knowledge hub with a wide collection of books, reference materials, and digital resources."
+      desc: "Our library is a knowledge hub with a wide collection of books, reference materials, and digital resources to promote reading habits and research skills.",
+      image: "/images/library.jpg"
     },
     {
       title: "Sports Facilities",
-      desc: "We offer excellent sports infrastructure with dedicated spaces and coaching to support physical fitness and teamwork."
+      desc: "We offer excellent sports infrastructure with dedicated spaces and coaching to support physical fitness, teamwork, and overall development.",
+      image: "/images/sports.jpg"
     },
     {
       title: "Transport",
-      desc: "Safe and reliable transport facilities with well-maintained buses and trained staff for comfortable student travel."
+      desc: "The school provides safe and reliable transport facilities with well-maintained buses and trained staff, ensuring comfortable travel for students.",
+      image: "/images/bus.jpg"
     },
     {
       title: "Hostel",
-      desc: "A safe, disciplined, and homely residential environment with proper care, nutritious meals, and academic support."
+      desc: "Our residential hostel offers a safe, disciplined, and homely environment with proper care, nutritious meals, and academic support for students.",
+      image: "/images/hostel.jpg"
     }
   ];
    const toggle = (index: number) => {
