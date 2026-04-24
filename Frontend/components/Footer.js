@@ -15,8 +15,8 @@ export default function Footer() {
               GURUKULAM SCHOOL
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
-             At Gurukulam, our mission is to shape responsible individuals who are not only academically
-          proficient but also morally grounded and socially aware.
+              At Gurukulam, our mission is to shape responsible individuals who are not only academically
+              proficient but also morally grounded and socially aware.
             </p>
             {/* Social Icons */}
             <div className="flex gap-4">
@@ -26,10 +26,10 @@ export default function Footer() {
               <a href="https://youtube.com/@gurukulamtheschool-c8v?si=HPPlpjD5K1ysol9G" className="bg-orange-600 p-2 rounded-full hover:bg-orange-700 transition">
                 <FaYoutube className="w-4 h-4" />
               </a>
-              <a href="#" className="bg-orange-600 p-2 rounded-full hover:bg-orange-700 transition">
+              <a href="https://instagram.com/gurukulam.the.school?utm_source=ig_web_button_share" className="bg-orange-600 p-2 rounded-full hover:bg-orange-700 transition">
                 <FaInstagram className="w-4 h-4" />
               </a>
-             
+
             </div>
           </div>
 
@@ -96,15 +96,76 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+           <div>
+            <h4 className="text-lg font-bold mb-6">Quick Links</h4>
+            <ul className="space-y-3">
+              <li>
+                <a href="#" className="text-gray-400 hover:text-orange-600 transition text-sm">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-orange-600 transition text-sm">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-orange-600 transition text-sm">
+                  Courses
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-orange-600 transition text-sm">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-orange-600 transition text-sm">
+                  Contact Us
+                </a>
+              </li>
+            </ul>
+          </div>
 
-          {/* Contact Info */}
-          <div>
+        </div>
+
+        {/* Map and Contact Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mt-12 md:mt-16">
+          {/* Google Map on Left - Small */}
+          <div className="lg:col-span-1">
+            <h4 className="text-lg font-bold mb-4">Location</h4>
+            <div className="w-full h-48 rounded-lg overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.6659015157265!2d77.12345670000001!3d28.567890100000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5d6d0000001%3A0x1234567890abcdef!2sGurukulam%20School!5e0!3m2!1sen!2sin!4v1618316216000"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Gurukulam School Location"
+              ></iframe>
+            </div>
+            <a
+              href="https://maps.app.goo.gl/f75FzxTg1nzH23LZ6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-600 hover:text-orange-700 text-sm mt-3 inline-block"
+            >
+           Get Directions →
+            </a>
+          </div>
+
+          {/* Contact Info on Right */}
+          <div className="lg:col-span-2">
             <h4 className="text-lg font-bold mb-6">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex gap-3">
                 <MapPin className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-400 text-sm">
-                  Gurukulam School Campus, City Center, State 123456
+
+                  Gurukulam The School CBSE Residential School<br/>
+                  VPO Masani, NH48, near Masani Barrage, Rewari, Haryana 123106
                 </span>
               </li>
               <li className="flex gap-3">
