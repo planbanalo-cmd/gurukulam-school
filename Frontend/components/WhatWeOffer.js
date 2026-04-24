@@ -9,14 +9,12 @@ export default function WhatWeOffer() {
   const targets = {
     teachers: 156,
     students: 2145,
-  
     awards: 32,
   };
 
   const [stats, setStats] = useState({
     teachers: 0,
     students: 0,
-   
     awards: 0,
   });
 
@@ -50,7 +48,6 @@ export default function WhatWeOffer() {
       setStats({
         teachers: Math.floor(ease * targets.teachers),
         students: Math.floor(ease * targets.students),
-    
         awards: Math.floor(ease * targets.awards),
       });
 
@@ -65,7 +62,6 @@ export default function WhatWeOffer() {
   const data = [
     { label: "Certified Teachers", value: stats.teachers },
     { label: "Total Students", value: stats.students },
-  
     { label: "Awards Won", value: stats.awards },
   ];
 
@@ -85,7 +81,7 @@ export default function WhatWeOffer() {
         </h2>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
 
           {data.map((item, i) => (
             <div
