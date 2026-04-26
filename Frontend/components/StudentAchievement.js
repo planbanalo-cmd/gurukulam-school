@@ -51,7 +51,7 @@ const items = [
     },
 ];
 
-export default function SchoolGallery() {
+export default function StudentAchievement() {
     const [videoOpen, setVideoOpen] = useState(false);
     const [currentVideo, setCurrentVideo] = useState("");
 
@@ -80,7 +80,7 @@ export default function SchoolGallery() {
                     className="text-center mb-10"
                 >
                     <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
-                        School Gallery
+                        Student Achievements
                     </h2>
 
                     <p className="text-gray-600 mt-3 text-lg max-w-2xl mx-auto">

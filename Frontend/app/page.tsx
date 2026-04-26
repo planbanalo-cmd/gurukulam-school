@@ -11,7 +11,7 @@ import RequestQuote from "./../components/RequestQuote";
 
 import Testimonials from "./../components/Testimonials";
 import FinalBossWrapper from "./../components/FinalBossWrapper";
-import SchoolGallery from "../components/SchoolGallery";
+import StudentAchievement from "../components/StudentAchievement";
 import ChairmanMessage from "./../components/ChairmanMessage";
 
 
@@ -40,7 +40,7 @@ export default function Home() {
       <About />
     
       <ChairmanMessage />
-      <SchoolGallery />
+      <StudentAchievement />
       <RequestQuote />
       <Testimonials />
       </FinalBossWrapper>
