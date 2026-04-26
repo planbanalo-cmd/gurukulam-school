@@ -37,7 +37,7 @@ export default function AboutGurukulam() {
                         About Gurukulam
                     </h1>
                 </motion.div>
-                <section className="py-20 px-4 md:px-8 lg:px-16">
+                <section className="py-10 px-4 md:px-8 lg:px-16">
                     <div className="relative max-w-5xl mx-auto group">
 
                         {/* 🔥 Glow Border */}
@@ -114,6 +114,108 @@ export default function AboutGurukulam() {
                         </motion.div>
                     ))}
                 </motion.div>
+                {/* 🌟 WHY CHOOSE GURUKULAM */}
+                <section className="py-20 px-4 md:px-8 lg:px-16">
+                    <div className="max-w-6xl mx-auto">
+
+                        {/* Heading */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                            className="text-center mb-14"
+                        >
+                            <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+                                Why Choose Gurukulam?
+                            </h2>
+                            <div className="mt-6 max-w-3xl mx-auto text-center space-y-4">
+
+                                <p className="text-gray-700 text-lg leading-relaxed">
+                                    At <span className="font-semibold text-orange-600">Gurukulam</span>, we believe education is not just about academics —
+                                    it’s about shaping <span className="font-medium text-gray-900">confident, responsible, and future-ready individuals</span>.
+                                </p>
+
+                                <p className="text-gray-600 text-lg leading-relaxed">
+                                    Our approach blends
+                                    <span className="font-medium text-orange-500"> traditional values</span> with
+                                    <span className="font-medium text-orange-500"> modern learning methods</span>,
+                                    ensuring every student experiences holistic growth in a nurturing and inspiring environment.
+                                </p>
+
+                                <p className="text-gray-600 text-lg leading-relaxed">
+                                    We focus on building strong foundations, encouraging curiosity, and empowering students
+                                    with the skills they need to thrive in an ever-evolving world.
+                                </p>
+
+                            </div>
+                        </motion.div>
+
+                        {/* Cards Grid */}
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                            {[
+                                {
+                                    title: "Holistic Development",
+                                    desc: "We nurture intellectual, emotional, social, and physical growth of every child."
+                                },
+                                {
+                                    title: "Value-Based Education",
+                                    desc: "Strong focus on discipline, ethics, and cultural values along with academics."
+                                },
+                                {
+                                    title: "Expert Faculty",
+                                    desc: "Our teachers act as mentors who guide, support, and inspire students."
+                                },
+                                {
+                                    title: "Modern Learning",
+                                    desc: "Smart classrooms with interactive and activity-based learning methods."
+                                },
+                                {
+                                    title: "Student-Centric Approach",
+                                    desc: "Personal attention to ensure each student reaches full potential."
+                                },
+                                {
+                                    title: "Co-Curricular Excellence",
+                                    desc: "Equal importance to sports, arts, and extracurricular development."
+                                },
+                                {
+                                    title: "Safe Campus",
+                                    desc: "Secure, positive, and nurturing environment for all students."
+                                },
+                                {
+                                    title: "Future-Ready Skills",
+                                    desc: "Focus on critical thinking, creativity, communication, and leadership."
+                                }
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 40 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    whileHover={{ scale: 1.05 }}
+                                    className="relative group"
+                                >
+                                    {/* Glow Border */}
+                                    <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-r from-orange-500 via-amber-400 to-orange-600 opacity-20 blur-lg group-hover:opacity-40 transition duration-500"></div>
+
+                                    {/* Card */}
+                                    <div className="relative bg-white/80 backdrop-blur-xl border border-orange-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition duration-500 h-full">
+
+                                        <h3 className="text-xl font-semibold text-orange-600 mb-3">
+                                            {item.title}
+                                        </h3>
+
+                                        <p className="text-gray-600 text-sm leading-relaxed">
+                                            {item.desc}
+                                        </p>
+
+                                    </div>
+                                </motion.div>
+                            ))}
+
+                        </div>
+                    </div>
+                </section>
 
 
 

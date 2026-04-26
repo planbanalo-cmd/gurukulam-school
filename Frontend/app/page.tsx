@@ -6,12 +6,14 @@ import Hero from "./../components/Hero";
 import Features from "./../components/Features";
 import WhatWeOffer from "./../components/WhatWeOffer";
 import About from "./../components/About";
-import Courses from "./../components/Courses";
-import Teachers from "./../components/Teacher";
+
 import RequestQuote from "./../components/RequestQuote";
-import Blog from "./../components/Blog";
+
 import Testimonials from "./../components/Testimonials";
 import FinalBossWrapper from "./../components/FinalBossWrapper";
+import SchoolGallery from "../components/SchoolGallery";
+import ChairmanMessage from "./../components/ChairmanMessage";
+
 
 export default function Home() {
 
@@ -36,10 +38,10 @@ export default function Home() {
       <Features />
       <WhatWeOffer />
       <About />
-      <Courses />
-      <Teachers />
+    
+      <ChairmanMessage />
+      <SchoolGallery />
       <RequestQuote />
-      <Blog />
       <Testimonials />
       </FinalBossWrapper>
     </>
