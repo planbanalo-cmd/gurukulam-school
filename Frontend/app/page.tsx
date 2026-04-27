@@ -13,6 +13,7 @@ import Testimonials from "./../components/Testimonials";
 import FinalBossWrapper from "./../components/FinalBossWrapper";
 import StudentAchievement from "../components/StudentAchievement";
 import ChairmanMessage from "./../components/ChairmanMessage";
+import SchoolGallery from "../components/SchoolGallery";
 
 
 export default function Home() {
@@ -40,6 +41,7 @@ export default function Home() {
       <About />
     
       <ChairmanMessage />
+      <SchoolGallery />
       <StudentAchievement />
       <RequestQuote />
       <Testimonials />
