@@ -67,15 +67,16 @@ Let us continue to dream together, work together, and grow together — for the 
         },
 
         {
-            name: "HOD",
-            fullName: "Mr. DEF",
+            name: "School coordinator",
+            fullName: "Mrs. Monika Gaur",
             img: "/images/hod.jpg",
-            exp: "8+ Years",
-            quote: "Driving subject excellence.",
-            title: "Message from HOD",
-            message: `We focus on conceptual clarity and subject mastery.
+            exp: "30 years of experience",
+            quote: " Believe in your potential, stay curious, and remember that every small effort you make today builds the foundation for your success tomorrow.",
+            title: "From the Coordinator’s Desk",
+            message: `Our primary mission is to create a dynamic learning environment where academic excellence goes hand-in-hand with character development and personal growth. We believe that every student possesses unique talents, and it is our collective responsibility—as educators, parents, and mentors—to provide the guidance and resources necessary for those talents to flourish. And the commitment to fostering an environment where every student feels empowered to excel and every educator is inspired to lead. As we work together to bridge the gap between potential and achievement, I encourage our entire school community to embrace collaboration, celebrate our diverse strengths, and maintain a shared focus on holistic growth. By setting high standards and supporting one another, we ensure that our school remains a vibrant space for innovation, character building, and lifelong learning.
+As we move forward, we remain dedicated to fostering a culture of curiosity, inclusivity, and resilience. We encourage our students to look beyond the classroom, to question the world around them, and to develop the critical thinking skills essential for the 21st century. Success at our school is measured not just by grades, but by the integrity, empathy, and leadership our students demonstrate every day. Let us continue to work in partnership to inspire a lifelong love of learning and to empower the next generation of global citizens to reach their highest potential.
 
-Our teaching methods evolve continuously to match modern education.`,
+Together, we are not just building students; we are building the leaders and thinkers of tomorrow.`,
         },
     ];
     // 🎬 Scroll animations
@@ -127,62 +128,62 @@ Our teaching methods evolve continuously to match modern education.`,
 
 
             </section>
-           <section className="relative py-10 px-4 md:px-8 lg:px-16 overflow-hidden rounded-3xl">
+            <section className="relative py-10 px-4 md:px-8 lg:px-16 overflow-hidden rounded-3xl">
 
-  {/* 🖼️ BACKGROUND IMAGE */}
-  <div className="absolute inset-0">
-    <img
-      src="/images/school-bg.jpg"   // 👉 your image
-      className="w-full h-full object-cover opacity-25"
-    />
-  </div>
+                {/* 🖼️ BACKGROUND IMAGE */}
+                <div className="absolute inset-0">
+                    <img
+                        src="/images/school-bg.jpg"   // 👉 your image
+                        className="w-full h-full object-cover opacity-25"
+                    />
+                </div>
 
-  {/* 🎨 GRADIENT OVERLAY */}
-  <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-orange-50/80 to-amber-100/80 backdrop-blur-[2px]"></div>
+                {/* 🎨 GRADIENT OVERLAY */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-orange-50/80 to-amber-100/80 backdrop-blur-[2px]"></div>
 
-  {/* 🔥 CONTENT */}
-  <div className="relative max-w-5xl mx-auto z-10">
+                {/* 🔥 CONTENT */}
+                <div className="relative max-w-5xl mx-auto z-10">
 
-    {/* 🧊 GLASS CARD (optional but recommended) */}
-    <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-6 md:p-8 shadow-xl border border-white/40">
+                    {/* 🧊 GLASS CARD (optional but recommended) */}
+                    <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-6 md:p-8 shadow-xl border border-white/40">
 
-      <div className="space-y-5">
+                        <div className="space-y-5">
 
-        <p className="text-gray-700 text-lg leading-relaxed animate-fadeUp delay-100">
-          At Gurukulam The School, our leadership and management team forms the backbone of our
-          commitment to excellence in education. Guided by a clear vision and strong values, the team
-          works collaboratively to create a progressive, student-focused learning environment.
-        </p>
+                            <p className="text-gray-700 text-lg leading-relaxed animate-fadeUp delay-100">
+                                At Gurukulam The School, our leadership and management team forms the backbone of our
+                                commitment to excellence in education. Guided by a clear vision and strong values, the team
+                                works collaboratively to create a progressive, student-focused learning environment.
+                            </p>
 
-        <p className="text-gray-700 text-lg leading-relaxed animate-fadeUp delay-200">
-          Our leadership believes in empowering both students and educators by fostering a culture of
-          innovation, discipline, and continuous improvement. With a blend of experience and
-          forward-thinking strategies, the management ensures that academic standards remain high
-          while also promoting holistic development.
-        </p>
+                            <p className="text-gray-700 text-lg leading-relaxed animate-fadeUp delay-200">
+                                Our leadership believes in empowering both students and educators by fostering a culture of
+                                innovation, discipline, and continuous improvement. With a blend of experience and
+                                forward-thinking strategies, the management ensures that academic standards remain high
+                                while also promoting holistic development.
+                            </p>
 
-        <p className="text-gray-700 text-lg leading-relaxed animate-fadeUp delay-300">
-          Transparency, effective communication, and a commitment to quality are at the core of our
-          management practices. Every decision is taken with the best interest of students in mind,
-          ensuring a safe, inclusive, and inspiring environment for learning and growth.
-        </p>
+                            <p className="text-gray-700 text-lg leading-relaxed animate-fadeUp delay-300">
+                                Transparency, effective communication, and a commitment to quality are at the core of our
+                                management practices. Every decision is taken with the best interest of students in mind,
+                                ensuring a safe, inclusive, and inspiring environment for learning and growth.
+                            </p>
 
-        <p className="text-gray-700 text-lg leading-relaxed animate-fadeUp delay-500">
-          At Gurukulam, leadership is not just about administration—it is about guiding, mentoring, and
-          shaping the future of every child with dedication and integrity.
-        </p>
+                            <p className="text-gray-700 text-lg leading-relaxed animate-fadeUp delay-500">
+                                At Gurukulam, leadership is not just about administration—it is about guiding, mentoring, and
+                                shaping the future of every child with dedication and integrity.
+                            </p>
 
-      </div>
+                        </div>
 
-    </div>
-  </div>
-</section>
+                    </div>
+                </div>
+            </section>
             {/* 🎬 CINEMATIC CHAIRMAN */}
             <section
                 ref={ref}
                 className="max-w-6xl mx-auto mb-16 px-4"
             >
-                
+
                 <div className="relative">
 
                     {/* 🔥 BACKGROUND GLOW PULSE */}
@@ -371,75 +372,75 @@ Our teaching methods evolve continuously to match modern education.`,
 
                 </div>
             </section>
-           {selected && (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    className="fixed inset-0 bg-black/60 backdrop-blur-xl flex items-center justify-center z-50 p-4"
-    onClick={() => setSelected(null)}
-  >
-    <motion.div
-      initial={{ scale: 0.8, y: 60, opacity: 0 }}
-      animate={{ scale: 1, y: 0, opacity: 1 }}
-      onClick={(e) => e.stopPropagation()}
-      className="relative w-full max-w-6xl bg-white rounded-3xl p-8 md:p-10 shadow-2xl"
-    >
-      {/* CLOSE */}
-      <button
-        onClick={() => setSelected(null)}
-        className="absolute top-4 right-6 text-gray-500 text-xl"
-      >
-        ✕
-      </button>
+            {selected && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="fixed inset-0 bg-black/60 backdrop-blur-xl flex items-center justify-center z-50 p-4"
+                    onClick={() => setSelected(null)}
+                >
+                    <motion.div
+                        initial={{ scale: 0.8, y: 60, opacity: 0 }}
+                        animate={{ scale: 1, y: 0, opacity: 1 }}
+                        onClick={(e) => e.stopPropagation()}
+                        className="relative w-full max-w-6xl bg-white rounded-3xl p-8 md:p-10 shadow-2xl"
+                    >
+                        {/* CLOSE */}
+                        <button
+                            onClick={() => setSelected(null)}
+                            className="absolute top-4 right-6 text-gray-500 text-xl"
+                        >
+                            ✕
+                        </button>
 
-      <div className="grid md:grid-cols-2 gap-10">
+                        <div className="grid md:grid-cols-2 gap-10">
 
-        {/* LEFT SIDE */}
-        <div>
-          <img
-            src={selected.img}
-            className="w-60 h-60 object-cover rounded-2xl shadow-xl"
-          />
+                            {/* LEFT SIDE */}
+                            <div>
+                                <img
+                                    src={selected.img}
+                                    className="w-60 h-60 object-cover rounded-2xl shadow-xl"
+                                />
 
-          <h2 className="text-3xl font-bold text-orange-600 mt-5">
-            {selected.fullName}
-          </h2>
+                                <h2 className="text-3xl font-bold text-orange-600 mt-5">
+                                    {selected.fullName}
+                                </h2>
 
-          <p className="text-gray-500">{selected.name}</p>
+                                <p className="text-gray-500">{selected.name}</p>
 
-          <p className="text-gray-500 text-sm mt-2">
-            Experience: {selected.exp}
-          </p>
+                                <p className="text-gray-500 text-sm mt-2">
+                                    Experience: {selected.exp}
+                                </p>
 
-          <p className="mt-4 italic text-gray-700">
-            "{selected.quote}"
-          </p>
-        </div>
+                                <p className="mt-4 italic text-gray-700">
+                                    "{selected.quote}"
+                                </p>
+                            </div>
 
-        {/* RIGHT SIDE */}
-        <div className="space-y-4 text-gray-700 leading-relaxed overflow-y-auto max-h-[70vh] pr-2">
+                            {/* RIGHT SIDE */}
+                            <div className="space-y-4 text-gray-700 leading-relaxed overflow-y-auto max-h-[70vh] pr-2">
 
-          <h3 className="text-2xl font-bold text-orange-600">
-            {selected.title}
-          </h3>
+                                <h3 className="text-2xl font-bold text-orange-600">
+                                    {selected.title}
+                                </h3>
 
-          {selected.message.split("\n").map((para: string, i: number) => (
-            <p key={i}>{para}</p>
-          ))}
+                                {selected.message.split("\n").map((para: string, i: number) => (
+                                    <p key={i}>{para}</p>
+                                ))}
 
-          <p className="mt-6 font-semibold">
-            Warm Regards <br />
-            {selected.fullName} <br />
-            {selected.name} <br />
-            Gurukulam The School
-          </p>
+                                <p className="mt-6 font-semibold">
+                                    Warm Regards <br />
+                                    {selected.fullName} <br />
+                                    {selected.name} <br />
+                                    Gurukulam The School
+                                </p>
 
-        </div>
+                            </div>
 
-      </div>
-    </motion.div>
-  </motion.div>
-)}
+                        </div>
+                    </motion.div>
+                </motion.div>
+            )}
         </div>
     );
 }

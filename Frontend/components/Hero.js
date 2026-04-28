@@ -6,46 +6,33 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const slides = [
   {
     id: 1,
-    image: 'https://themewagon.github.io/fox/images/bg_1.jpg',
-    title: 'Education Needs Complete Solution',
-    description: 'A small river named Duden flows by their place and supplies it with the necessary regelialia.',
-    buttonText: 'Contact Us',
+    image: '/images/Competitive.png',
+    title: 'Competitive Exam Preparation',
+    description: 'Focused guidance to help students achieve their goals.',
+    
   },
   {
     id: 2,
-    image: 'https://images.unsplash.com/photo-1516534775068-bb57e39c1a29?w=1200&h=600&fit=crop',
-    title: 'Learn & Grow Together',
-    description: 'Empower your future with our comprehensive learning platform and expert instructors.',
-    buttonText: 'Explore Courses',
+    image: '/images/Residential.png',
+    title: 'Residential school',
+    description: 'A home away from home, where learning meets life.',
+   
   },
   {
     id: 3,
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop',
-    title: 'Transform Your Skills',
-    description: 'Master new abilities with interactive lessons and real-world projects.',
-    buttonText: 'Get Started',
+    image: '/images/Primary.png',
+    title: 'Primary Wing',
+    description: 'Where young minds begin their journey of learning',
+    
   },
   {
     id: 4,
-    image: 'https://images.unsplash.com/photo-1553619459-d2229ba7433b?w=1200&h=600&fit=crop',
-    title: 'Expert Training Programs',
-    description: 'Access world-class education from industry professionals and experienced mentors.',
-    buttonText: 'Join Now',
+    image: '/images/sport.png',
+    title: 'Sports Excellence',
+    description: 'Building strength, discipline, and champions of tomorrow.',
+    
   },
-  {
-    id: 5,
-    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=600&fit=crop',
-    title: 'Achieve Your Goals',
-    description: 'Reach your potential with personalized learning paths and career guidance.',
-    buttonText: 'Start Learning',
-  },
-  {
-    id: 6,
-    image: 'https://images.unsplash.com/photo-1522202176988-66da0dd55a76?w=1200&h=600&fit=crop',
-    title: 'Build Your Future',
-    description: 'Join thousands of learners building their careers with our innovative platform.',
-    buttonText: 'Sign Up',
-  },
+  
 ];
 
 export default function Hero() {
@@ -102,9 +89,7 @@ export default function Hero() {
           {slide.description}
         </p>
 
-        <button className="bg-orange-600 hover:bg-orange-700 transition duration-300 px-6 md:px-8 py-3 md:py-4 text-white rounded-lg font-semibold text-sm md:text-base shadow-lg">
-          {slide.buttonText}
-        </button>
+        
       </div>
 
       {/* Previous Button */}

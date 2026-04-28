@@ -12,7 +12,8 @@ const images = [
 
 export default function SchoolGallery() {
   return (
-    <section className="py-16 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-orange-50 via-white to-orange-50">
+    <section className="py-16 px-4 md:px-8 lg:px-16 
+    bg-gradient-to-br from-[#f8faf9] via-[#eef5f1] to-[#f8faf9]">
 
       <div className="max-w-6xl mx-auto">
 
@@ -22,7 +23,9 @@ export default function SchoolGallery() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-10"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold 
+          bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] 
+          bg-clip-text text-transparent">
             School Gallery
           </h2>
 
@@ -46,22 +49,32 @@ export default function SchoolGallery() {
             {[...images, ...images].map((item, i) => (
               <div
                 key={i}
-                className="min-w-[260px] h-[200px] rounded-2xl overflow-hidden shadow-lg border border-orange-100 group relative"
+                className="group min-w-[260px] h-[200px] rounded-2xl overflow-hidden 
+                shadow-md border border-[#7B9B68]/30 relative"
               >
 
                 {/* Image */}
                 <img
                   src={item.src}
                   alt={item.title}
-                  className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover 
+                  transition duration-500 group-hover:scale-110"
                 />
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                <div className="absolute inset-0 
+                bg-gradient-to-t from-[#0D6453]/70 to-transparent 
+                opacity-0 group-hover:opacity-100 
+                transition duration-300 flex items-end p-4">
+                  
                   <h3 className="text-white font-semibold text-lg">
                     {item.title}
                   </h3>
                 </div>
+
+                {/* Bottom Accent Line */}
+                <div className="absolute bottom-0 left-0 h-[3px] w-0 
+                bg-[#E4CC6F] group-hover:w-full transition-all duration-300"></div>
 
               </div>
             ))}

@@ -41,10 +41,14 @@ const items = [
 
 export default function Testimonials() {
     return (
-        <section className="py-16 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-orange-50 via-white to-orange-50">
+        <section className="py-16 px-4 md:px-8 lg:px-16 
+        bg-gradient-to-br from-[#f8faf9] via-[#eef5f1] to-[#f8faf9]">
 
-            <div className="max-w-6xl mx-auto text-center mb-10">
-                <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+            <div className="max-w-6xl mx-auto text-center mb-12">
+                <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 
+bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] 
+bg-[length:200%_auto] animate-[shine_5s_linear_infinite] 
+bg-clip-text text-transparent">
                     What Parents & Students Say
                 </h2>
             </div>
@@ -77,26 +81,35 @@ export default function Testimonials() {
             >
                 {items.map((item, i) => (
                     <SwiperSlide key={i}>
-                        <div className="bg-white rounded-2xl shadow-xl p-6 text-center transition hover:scale-105">
+                        <div className="group bg-white rounded-2xl shadow-md p-6 text-center 
+                        transition hover:scale-105 hover:shadow-lg">
 
+                            {/* Image */}
                             <img
                                 src={item.image}
                                 alt={item.name}
-                                className="w-20 h-20 mx-auto rounded-full object-cover border-4 border-orange-100 mb-4"
+                                className="w-20 h-20 mx-auto rounded-full object-cover 
+                                border-4 border-[#7B9B68]/30 mb-4"
                             />
 
+                            {/* Review */}
                             <p className="text-gray-600 text-sm italic mb-4">
                                 "{item.review}"
                             </p>
 
+                            {/* Name */}
                             <h3 className="font-semibold text-lg text-gray-800">
                                 {item.name}
                             </h3>
 
-                            <span className="text-orange-500 text-sm">
+                            {/* Role */}
+                            <span className="text-[#156445] text-sm">
                                 {item.role}
                             </span>
 
+                            {/* Gold Accent Line */}
+                            <div className="mt-4 h-[2px] w-0 mx-auto 
+                            bg-[#E4CC6F] group-hover:w-full transition-all duration-300"></div>
                         </div>
                     </SwiperSlide>
                 ))}

@@ -19,7 +19,7 @@ export default function Features() {
     },
     {
       icon: BookOpen,
-      title: 'Sports Excellence', 
+      title: 'Sports Excellence',
       description:
         'At Gurukulam, sports are an integral part of education. We offer professional training, modern facilities, and dedicated coaching to help students excel in various sports. Our aim is to develop teamwork, discipline, physical fitness, and a winning mindset while encouraging students to pursue their passion for sports.'
     },
@@ -36,8 +36,15 @@ export default function Features() {
   };
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
+    <section className="py-12 md:py-16 lg:py-20 bg-[#f8faf9]">
+      
       <div className="max-w-6xl mx-auto px-4 md:px-6">
+
+        {/* Heading */}
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#156445]">
+          What We Offer
+        </h2>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
@@ -51,28 +58,42 @@ export default function Features() {
             return (
               <div
                 key={index}
-                className="bg-white p-6 md:p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+                className="group p-6 md:p-8 rounded-2xl 
+                bg-white 
+                border border-gray-200 
+                shadow-sm 
+                hover:shadow-lg 
+                hover:-translate-y-1
+                transition-all duration-300"
               >
+                {/* Icon */}
                 <div className="mb-4">
-                  <Icon className="w-12 h-12 text-orange-600" />
+                  <Icon className="w-12 h-12 text-[#156445] group-hover:text-[#CFAF5C] transition" />
                 </div>
 
-                <h3 className="text-lg md:text-xl font-bold mb-3 text-gray-900">
+                {/* Title */}
+                <h3 className="text-lg md:text-xl font-semibold mb-3 text-gray-900">
                   {feature.title}
                 </h3>
 
+                {/* Description */}
                 <p className="text-gray-600 text-sm leading-relaxed">
                   {isExpanded ? feature.description : shortText}
                 </p>
 
+                {/* Button */}
                 {feature.description.length > 120 && (
                   <button
                     onClick={() => toggleReadMore(index)}
-                    className="mt-2 text-orange-600 text-sm font-semibold hover:underline"
+                    className="mt-3 text-[#156445] text-sm font-semibold hover:text-[#CFAF5C]"
                   >
                     {isExpanded ? 'Read Less' : 'Read More'}
                   </button>
                 )}
+
+                {/* Subtle accent line */}
+                <div className="mt-4 h-[2px] w-0 group-hover:w-full 
+                bg-[#CFAF5C] transition-all duration-300"></div>
               </div>
             );
           })}
