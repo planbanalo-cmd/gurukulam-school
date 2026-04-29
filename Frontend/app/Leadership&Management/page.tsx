@@ -252,63 +252,47 @@ Together, we are not just building students; we are building the leaders and thi
                 </div>
             </section>
 
-            {members.map((m, i) => (
-                <motion.div
-                    key={i}
-                    onClick={() => setSelected(m)}
-                    whileHover={{ scale: 1.06, rotateY: 6 }}
-                    className="relative group cursor-pointer"
-                >
-                    <div className="relative bg-white/70 backdrop-blur-xl rounded-2xl p-6 shadow-xl">
-
-                        <img
-                            src={m.img}
-                            className="w-24 h-24 rounded-full mx-auto mb-4"
-                        />
-
-                        <h3 className="font-bold text-lg text-orange-600 text-center">
-                            {m.name}
-                        </h3>
-
-                        <p className="text-xs text-gray-500 text-center">
-                            {m.exp}
-                        </p>
-
-                        <p className="text-gray-600 text-sm text-center italic mt-3">
-                            "{m.quote}"
-                        </p>
-
-                    </div>
-                </motion.div>
-            ))}
-            {/* 🔄 AUTO CAROUSEL */}
-            <section className="overflow-hidden mb-24">
-
-                <motion.div
-                    animate={{ x: ["0%", "-100%"] }}
-                    transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-                    className="flex gap-6 w-max"
-                >
-                    {[...Array(8)].map((_, i) => (
-                        <div
+            {/* 🎬 TEAM MEMBERS SECTION */}
+            <section className="max-w-6xl mx-auto mb-20 px-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {members.map((m, i) => (
+                        <motion.div
                             key={i}
-                            className="min-w-[250px] bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg border border-orange-100"
+                            onClick={() => setSelected(m)}
+                            whileHover={{ scale: 1.06, rotateY: 6 }}
+                            className="relative group cursor-pointer"
                         >
-                            <h3 className="text-orange-600 font-bold">
-                                Leadership Member {i + 1}
-                            </h3>
-                            <p className="text-gray-600 text-sm mt-2">
-                                Dedicated to excellence and innovation.
-                            </p>
-                        </div>
+                            <div className="relative bg-white/70 backdrop-blur-xl rounded-2xl p-6 shadow-xl">
+
+                                <img
+                                    src={m.img}
+                                    className="w-24 h-24 rounded-full mx-auto mb-4"
+                                />
+
+                                <h3 className="font-bold text-lg text-orange-600 text-center">
+                                    {m.name}
+                                </h3>
+
+                                <p className="text-xs text-gray-500 text-center">
+                                    {m.exp}
+                                </p>
+
+                                <p className="text-gray-600 text-sm text-center italic mt-3">
+                                    "{m.quote}"
+                                </p>
+
+                            </div>
+                        </motion.div>
                     ))}
-                </motion.div>
+                </div>
             </section>
+            
+            
 
             {/* 📄 MANAGEMENT */}
-            <section className="max-w-6xl mx-auto">
+            <section className="max-w-6xl mx-auto px-4 mt-24 md:mt-32">
 
-                <h2 className="text-3xl font-bold text-orange-600 mb-10">
+                <h2 className="text-3xl font-bold text-orange-600 mb-10 text-center">
                     Management Details
                 </h2>
 
@@ -376,6 +360,7 @@ Together, we are not just building students; we are building the leaders and thi
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     className="fixed inset-0 bg-black/60 backdrop-blur-xl flex items-center justify-center z-50 p-4"
                     onClick={() => setSelected(null)}
                 >
@@ -383,60 +368,76 @@ Together, we are not just building students; we are building the leaders and thi
                         initial={{ scale: 0.8, y: 60, opacity: 0 }}
                         animate={{ scale: 1, y: 0, opacity: 1 }}
                         onClick={(e) => e.stopPropagation()}
-                        className="relative w-full max-w-6xl bg-white rounded-3xl p-8 md:p-10 shadow-2xl"
+                        className="relative w-full max-w-4xl max-h-[90vh] bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl overflow-hidden"
                     >
-                        {/* CLOSE */}
+                        {/* CLOSE BUTTON */}
                         <button
                             onClick={() => setSelected(null)}
-                            className="absolute top-4 right-6 text-gray-500 text-xl"
+                            className="absolute top-4 right-6 text-gray-500 hover:text-gray-700 text-2xl z-10 transition-colors"
                         >
                             ✕
                         </button>
 
-                        <div className="grid md:grid-cols-2 gap-10">
+                        {/* SCROLLABLE CONTENT */}
+                        <div className="overflow-y-auto max-h-[90vh] p-6 md:p-10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
 
-                            {/* LEFT SIDE */}
-                            <div>
-                                <img
-                                    src={selected.img}
-                                    className="w-60 h-60 object-cover rounded-2xl shadow-xl"
-                                />
+                                {/* LEFT SIDE - PROFILE */}
+                                <div className="flex flex-col items-center md:items-start">
+                                    <img
+                                        src={selected.img}
+                                        alt={selected.fullName}
+                                        className="w-40 h-40 md:w-60 md:h-60 object-cover rounded-2xl shadow-xl"
+                                    />
 
-                                <h2 className="text-3xl font-bold text-orange-600 mt-5">
-                                    {selected.fullName}
-                                </h2>
+                                    <div className="mt-6 md:mt-8 w-full">
+                                        <h2 className="text-2xl md:text-3xl font-bold text-orange-600 text-center md:text-left">
+                                            {selected.fullName}
+                                        </h2>
 
-                                <p className="text-gray-500">{selected.name}</p>
+                                        <p className="text-gray-600 text-center md:text-left font-semibold mt-2">
+                                            {selected.name}
+                                        </p>
 
-                                <p className="text-gray-500 text-sm mt-2">
-                                    Experience: {selected.exp}
-                                </p>
+                                        <p className="text-gray-500 text-sm text-center md:text-left mt-2">
+                                            Experience: {selected.exp}
+                                        </p>
 
-                                <p className="mt-4 italic text-gray-700">
-                                    "{selected.quote}"
-                                </p>
+                                        <p className="mt-4 italic text-gray-700 text-center md:text-left text-sm md:text-base">
+                                            "{selected.quote}"
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* RIGHT SIDE - MESSAGE */}
+                                <div className="space-y-4 text-gray-700 leading-relaxed">
+
+                                    <h3 className="text-2xl md:text-3xl font-bold text-orange-600">
+                                        {selected.title}
+                                    </h3>
+
+                                    <div className="space-y-3 text-sm md:text-base">
+                                        {selected.message.split("\n").map((para: string, i: number) => (
+                                            para.trim() && (
+                                                <p key={i} className="text-justify md:text-left">
+                                                    {para}
+                                                </p>
+                                            )
+                                        ))}
+                                    </div>
+
+                                    <div className="mt-6 md:mt-8 pt-4 border-t border-orange-200 text-sm md:text-base">
+                                        <p className="font-semibold text-gray-800">
+                                            Warm Regards <br />
+                                            <span className="text-orange-600">{selected.fullName}</span> <br />
+                                            <span className="text-gray-600">{selected.name}</span> <br />
+                                            <span className="text-gray-500 text-xs md:text-sm">Gurukulam The School</span>
+                                        </p>
+                                    </div>
+
+                                </div>
+
                             </div>
-
-                            {/* RIGHT SIDE */}
-                            <div className="space-y-4 text-gray-700 leading-relaxed overflow-y-auto max-h-[70vh] pr-2">
-
-                                <h3 className="text-2xl font-bold text-orange-600">
-                                    {selected.title}
-                                </h3>
-
-                                {selected.message.split("\n").map((para: string, i: number) => (
-                                    <p key={i}>{para}</p>
-                                ))}
-
-                                <p className="mt-6 font-semibold">
-                                    Warm Regards <br />
-                                    {selected.fullName} <br />
-                                    {selected.name} <br />
-                                    Gurukulam The School
-                                </p>
-
-                            </div>
-
                         </div>
                     </motion.div>
                 </motion.div>

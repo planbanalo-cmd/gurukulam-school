@@ -4,11 +4,10 @@ import React, { useEffect, useState } from 'react';
 
 export default function InfrastructurePage() {
 
- useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // ✅ ADD THIS (missing state)
   const [expanded, setExpanded] = useState<number | null>(null);
 
   const facilities = [
@@ -43,15 +42,16 @@ export default function InfrastructurePage() {
       image: "/images/hostel.jpg"
     }
   ];
-   const toggle = (index: number) => {
+
+  const toggle = (index: number) => {
     setExpanded(expanded === index ? null : index);
   };
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gradient-to-br from-[#f7f6ef] via-white to-[#eef3ec]">
 
-      {/* 🔥 HERO */}
-      <section className="relative h-[60vh] flex items-center justify-center text-center text-white">
+      {/* HERO */}
+      <section className="relative h-[60vh] flex items-center justify-center text-white text-center">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/campus-bg.jpeg')" }}
@@ -59,18 +59,18 @@ export default function InfrastructurePage() {
         <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="relative z-10 px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          <h1 className="text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-[#CFAF5C] to-white bg-clip-text text-transparent">
             Infrastructure
           </h1>
-          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+          <p className="text-gray-200 mt-4 text-lg max-w-xl mx-auto">
             Modern facilities designed to support holistic learning and development.
           </p>
         </div>
       </section>
 
-      {/* 🔥 INTRO */}
-      <section className="py-16 px-4 md:px-8 lg:px-16">
-        <div className="max-w-5xl mx-auto bg-white shadow-lg rounded-lg p-8 md:p-12">
+      {/* INTRO */}
+      <section className="py-16 px-4 md:px-8">
+        <div className="max-w-5xl mx-auto bg-white/80 backdrop-blur-xl border border-[#e6e2c8] rounded-2xl shadow-xl p-8 md:p-12">
 
           <p className="text-gray-700 text-lg mb-5 leading-relaxed">
             Gurukulam The School offers a well-designed and modern infrastructure that supports a dynamic and effective learning environment. Our campus is thoughtfully planned to provide students with the best facilities for academic, co-curricular, and personal development.
@@ -91,81 +91,104 @@ export default function InfrastructurePage() {
         </div>
       </section>
 
-      {/* 🔥 FACILITIES GRID */}
-      <section className="py-16 px-4 md:px-8 lg:px-16">
-      <div className="max-w-6xl mx-auto">
+      {/* FACILITIES */}
+      <section className="py-16 px-4 md:px-8">
+        <div className="max-w-6xl mx-auto">
 
-        <h2 className="text-3xl font-bold text-center mb-10">
-          School Facilities
-        </h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {facilities.map((item, index) => {
-            const isExpanded = expanded === index;
-            const shortText = item.desc.slice(0, 100) + "...";
-
-            return (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden group"
-              >
-                
-                {/* Image */}
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-orange-600 mb-2">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-gray-600 leading-relaxed text-sm">
-                    {isExpanded ? item.desc : shortText}
-                  </p>
-
-                  <button
-                    onClick={() => toggle(index)}
-                    className="mt-2 text-orange-600 font-semibold text-sm hover:underline"
-                  >
-                    {isExpanded ? "Read Less" : "Read More"}
-                  </button>
-                </div>
-
-              </div>
-            );
-          })}
-        </div>
-
-      </div>
-    </section>
-
-      {/* 🔥 VIRTUAL TOUR */}
-      <section className="bg-gray-100 py-16 px-4 md:px-8 lg:px-16">
-        <div className="max-w-5xl mx-auto text-center">
-
-          <h2 className="text-3xl font-bold mb-6">
-            360° Campus Virtual Tour
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-[#156445] to-[#CFAF5C] bg-clip-text text-transparent">
+            School Facilities
           </h2>
 
-          <p className="text-gray-700 text-lg mb-8">
-            Explore our campus through an immersive 360-degree virtual tour that showcases our infrastructure, facilities, and vibrant learning environment—giving you a complete experience of life at Gurukulam from anywhere.
-          </p>
+          {/* 📱 MOBILE ACCORDION */}
+          <div className="md:hidden space-y-4">
+            {facilities.map((item, index) => {
+              const isOpen = expanded === index;
 
-          {/* Replace with real tour link */}
-          <a
-            href="#"
-            className="inline-block bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300"
-          >
-            Explore Virtual Tour
-          </a>
+              return (
+                <div key={index} className="rounded-xl border bg-white shadow-sm overflow-hidden">
+                  <button
+                    onClick={() => toggle(index)}
+                    className="w-full flex justify-between items-center p-4"
+                  >
+                    <span className="font-semibold text-[#156445]">{item.title}</span>
+                    <span className="text-[#CFAF5C] text-xl">{isOpen ? "−" : "+"}</span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="p-4">
+                      <img src={item.image} className="w-full h-40 object-cover rounded-lg mb-3" />
+                      <p className="text-gray-600 text-sm">{item.desc}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* 💻 DESKTOP CARDS */}
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-8">
+            {facilities.map((item, index) => {
+              const isExpanded = expanded === index;
+
+              return (
+                <div
+                  key={index}
+                  className="group relative rounded-2xl overflow-hidden bg-white/70 backdrop-blur-xl border border-[#e6e2c8] shadow-lg hover:shadow-2xl transition duration-500"
+                >
+                  {/* Image */}
+                  <div className="h-52 overflow-hidden">
+                    <img
+                      src={item.image}
+                      className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-[#156445] mb-2">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {isExpanded ? item.desc : item.desc.slice(0, 100) + "..."}
+                    </p>
+
+                    <button
+                      onClick={() => toggle(index)}
+                      className="mt-3 text-[#CFAF5C] font-semibold text-sm hover:underline"
+                    >
+                      {isExpanded ? "Read Less" : "Read More"}
+                    </button>
+                  </div>
+
+                  {/* Glow Effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
+                    <div className="absolute -inset-[2px] bg-gradient-to-r from-[#156445] via-[#CFAF5C] to-[#156445] blur-xl opacity-20"></div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
         </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-[#eef3ec] py-16 text-center">
+        <h2 className="text-3xl font-bold text-[#156445] mb-4">
+          360° Campus Virtual Tour
+        </h2>
+
+        <p className="text-gray-600 mb-6">
+          Experience our campus through an immersive virtual tour.
+        </p>
+
+        <a
+          href="#"
+          className="inline-block bg-gradient-to-r from-[#156445] to-[#0d4d35] text-white px-8 py-3 rounded-xl shadow-lg hover:scale-105 transition"
+        >
+          Explore Now
+        </a>
       </section>
 
     </div>

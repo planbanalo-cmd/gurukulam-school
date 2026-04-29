@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function VisionMission() {
 
-  // ✅ FIXED TYPE
+  // ✅ Proper typing (fixes your error)
   const sections = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
@@ -34,10 +34,10 @@ export default function VisionMission() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-gray-100 px-4 py-16">
+    <div className="min-h-screen bg-gradient-to-br from-[#f7f6ef] via-white to-[#eef3ec] px-4 py-16">
 
       {/* HEADER */}
-      <h1 className="text-5xl font-extrabold text-center mb-16 bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+      <h1 className="text-5xl font-extrabold text-center mb-16 bg-gradient-to-r from-[#156445] to-[#CFAF5C] bg-clip-text text-transparent">
         Vision & Mission
       </h1>
 
@@ -48,27 +48,18 @@ export default function VisionMission() {
         }}
         className="relative max-w-5xl mx-auto mb-12 group"
       >
-
-        {/* 🔥 ANIMATED GLOW BORDER */}
         <div className="absolute -inset-[2px] rounded-3xl overflow-hidden">
-          <div className="w-full h-full animate-spin-slow bg-gradient-to-r from-orange-500 via-amber-400 to-orange-600 opacity-40 blur-lg"></div>
+          <div className="w-full h-full animate-spin-slow bg-gradient-to-r from-[#156445] via-[#CFAF5C] to-[#296236] opacity-40 blur-lg"></div>
         </div>
 
-        {/* 🧊 MAIN CARD */}
-        <div className="relative bg-white/85 backdrop-blur-xl border border-orange-100 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition duration-300">
+        <div className="relative bg-white/85 backdrop-blur-xl border border-[#e6e2c8] rounded-3xl p-8 shadow-xl hover:shadow-2xl transition duration-300">
 
-          {/* 🟠 HEADING */}
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 
-      bg-gradient-to-r from-orange-600 to-amber-500 
-      bg-clip-text text-transparent flex items-center gap-2"
-          >
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-[#156445] to-[#CFAF5C] bg-clip-text text-transparent flex items-center gap-2">
             🌟 Our Vision
           </h2>
 
-          {/* ✨ DIVIDER */}
-          <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-amber-400 mb-4 rounded-full"></div>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#156445] to-[#CFAF5C] mb-4 rounded-full"></div>
 
-          {/* 📄 CONTENT */}
           <p className="text-gray-700 leading-relaxed">
             To create a nurturing and inspiring learning environment that empowers students to become
             confident, responsible, and future-ready individuals. We aim to blend traditional values with
@@ -90,27 +81,18 @@ export default function VisionMission() {
         }}
         className="relative max-w-5xl mx-auto mb-12 group"
       >
-
-        {/* 🔥 ANIMATED GLOW BORDER */}
         <div className="absolute -inset-[2px] rounded-3xl overflow-hidden">
-          <div className="w-full h-full animate-spin-slow bg-gradient-to-r from-orange-500 via-amber-400 to-orange-600 opacity-40 blur-lg"></div>
+          <div className="w-full h-full animate-spin-slow bg-gradient-to-r from-[#156445] via-[#CFAF5C] to-[#296236] opacity-40 blur-lg"></div>
         </div>
 
-        {/* 🧊 MAIN CARD */}
-        <div className="relative bg-white/85 backdrop-blur-xl border border-orange-100 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition duration-300">
+        <div className="relative bg-white/85 backdrop-blur-xl border border-[#e6e2c8] rounded-3xl p-8 shadow-xl hover:shadow-2xl transition duration-300">
 
-          {/* 🟠 HEADING */}
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 
-      bg-gradient-to-r from-orange-600 to-amber-500 
-      bg-clip-text text-transparent"
-          >
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-[#156445] to-[#CFAF5C] bg-clip-text text-transparent">
             🎯 Our Mission
           </h2>
 
-          {/* ✨ DIVIDER */}
-          <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-amber-400 mb-6 rounded-full"></div>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#156445] to-[#CFAF5C] mb-6 rounded-full"></div>
 
-          {/* 🎯 MISSION GRID */}
           <div className="grid md:grid-cols-2 gap-4">
             {[
               "To provide quality education that promotes academic excellence and lifelong learning.",
@@ -122,16 +104,16 @@ export default function VisionMission() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="p-4 rounded-xl bg-gradient-to-r from-white to-orange-50 
-          border border-orange-100 
-          text-gray-800 font-medium
-          hover:from-orange-100 hover:to-orange-50
-          hover:text-orange-700
-          hover:shadow-lg 
-          hover:scale-[1.02]
-          transition duration-300"
+                className="p-4 rounded-xl bg-gradient-to-r from-white to-[#eef3ec] 
+                border border-[#e6e2c8] 
+                text-gray-800 font-medium
+                hover:from-[#e6f0eb] hover:to-[#f7f6ef]
+                hover:text-[#156445]
+                hover:shadow-lg 
+                hover:scale-[1.02]
+                transition duration-300"
               >
-                <span className="text-orange-600 font-bold mr-2">✔</span>
+                <span className="text-[#156445] font-bold mr-2">✔</span>
                 {item}
               </div>
             ))}
@@ -143,7 +125,7 @@ export default function VisionMission() {
       {/* 🪄 CORE VALUES */}
       <section
         ref={(el) => {
-          sections.current[2] = el; // ✅ FIXED
+          sections.current[2] = el;
         }}
         className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 mb-12"
       >
@@ -154,18 +136,15 @@ export default function VisionMission() {
         ].map((item, i) => (
           <div
             key={i}
-            className="p-6 bg-white rounded-2xl shadow-xl transition hover:scale-105 hover:shadow-orange-200"
+            className="p-6 bg-white rounded-2xl shadow-xl transition hover:scale-105 hover:shadow-[#cfe3d8]"
           >
-            <h3 className="text-xl font-bold text-orange-600 mb-2">
+            <h3 className="text-xl font-bold text-[#156445] mb-2">
               {item[0]}
             </h3>
             <p className="text-gray-600">{item[1]}</p>
           </div>
         ))}
       </section>
-
-
-
 
     </div>
   );

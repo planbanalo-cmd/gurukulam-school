@@ -110,7 +110,7 @@ At Gurukulam, our mission is to shape responsible individuals who are not only a
               </p>
 
               <Link
-                href="/about"
+                href="/History&Foundation"
                 scroll={true}
                 className="inline-block mt-6 bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105"
               >

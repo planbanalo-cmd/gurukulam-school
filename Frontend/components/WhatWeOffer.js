@@ -61,7 +61,7 @@ export default function WhatWeOffer() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 px-4 md:px-8 lg:px-16 
+      className="relative py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-16 
       bg-gradient-to-br from-[#156445] via-[#0D6453] to-[#296236] 
       text-white overflow-hidden"
     >
@@ -69,22 +69,22 @@ export default function WhatWeOffer() {
       <div className="absolute inset-0 opacity-10 blur-2xl 
       bg-gradient-to-r from-[#CFAF5C] to-[#E4CC6F]"></div>
 
-      <div className="relative max-w-6xl mx-auto">
+      <div className="relative max-w-6xl mx-auto w-full">
 
         {/* Heading */}
-        <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-16 
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-8 sm:mb-10 md:mb-14 lg:mb-16
         bg-gradient-to-r from-[#E4CC6F] to-[#CFAF5C] 
-        bg-clip-text text-transparent">
+        bg-clip-text text-transparent px-2">
           Our Achievements
         </h2>
 
         {/* Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 px-2 sm:px-0">
 
           {data.map((item, i) => (
             <div
               key={i}
-              className="group p-8 rounded-2xl 
+              className="group p-4 sm:p-6 md:p-7 lg:p-8 rounded-xl sm:rounded-2xl 
               bg-white/5 backdrop-blur-md 
               border border-[#7B9B68]/40 
               text-center 
@@ -93,18 +93,18 @@ export default function WhatWeOffer() {
               transition-all duration-300"
             >
               {/* Number */}
-              <div className="text-4xl md:text-5xl font-bold 
-              text-[#E4CC6F] mb-3">
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold 
+              text-[#E4CC6F] mb-2 sm:mb-3">
                 {item.value}+
               </div>
 
               {/* Label */}
-              <p className="text-[#7B9B68] group-hover:text-white transition">
+              <p className="text-xs sm:text-sm md:text-base lg:text-base text-[#7B9B68] group-hover:text-white transition font-medium">
                 {item.label}
               </p>
 
               {/* Bottom accent line */}
-              <div className="mt-4 h-[2px] w-0 group-hover:w-full 
+              <div className="mt-3 sm:mt-4 h-[2px] w-0 group-hover:w-full 
               bg-[#E4CC6F] transition-all duration-300 mx-auto"></div>
             </div>
           ))}
