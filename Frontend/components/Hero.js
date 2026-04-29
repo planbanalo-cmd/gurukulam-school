@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const slides = [
   {
     id: 1,
-    image: '/images/Competitive.png',
+    image: '/images/Competitive.jpeg',
     title: 'Competitive Exam Preparation',
     description: 'Focused guidance to help students achieve their goals.',
     
