@@ -58,18 +58,20 @@ export default function StudentAchievement() {
     const [open, setOpen] = useState(false);
     const [index, setIndex] = useState(0);
 
-    // Lightbox slides (image + video support)
-    const slides = items.map((item) =>
-        item.type === "image"
-            ? { src: item.src }
-            : {
-                type: "video",
-                sources: [{ src: item.src, type: "video/mp4" }],
-            }
-    );
+    const slides = items
+        .filter(item => item.type !== "youtube")
+        .map((item) =>
+            item.type === "image"
+                ? { src: item.src }
+                : {
+                    type: "video",
+                    sources: [{ src: item.src, type: "video/mp4" }],
+                }
+        );
 
     return (
-        <section className="py-16 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-orange-50 via-white to-orange-50">
+        <section className="py-16 px-4 md:px-8 lg:px-16 
+        bg-gradient-to-br from-[#f8faf9] via-[#eef5f1] to-[#f8faf9]">
 
             <div className="max-w-6xl mx-auto">
 
@@ -77,9 +79,11 @@ export default function StudentAchievement() {
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="text-center mb-10"
+                    className="text-center mb-12"
                 >
-                    <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+                    <h2 className="text-4xl md:text-5xl font-bold 
+                    bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] 
+                    bg-clip-text text-transparent">
                         Student Achievements
                     </h2>
 
@@ -89,13 +93,9 @@ export default function StudentAchievement() {
                 </motion.div>
 
                 {/* 🎞️ SLIDER */}
-                <div
-                    className="relative overflow-hidden"
-
-                >
+                <div className="relative overflow-hidden">
                     <motion.div
                         className="flex gap-6 w-max"
-
                         animate={{ x: ["0%", "-50%"] }}
                         transition={{
                             ease: "linear",
@@ -115,18 +115,22 @@ export default function StudentAchievement() {
                                         setOpen(true);
                                     }
                                 }}
-                                className="min-w-[260px] h-[200px] rounded-2xl overflow-hidden shadow-lg border border-orange-100 group relative cursor-pointer"
+                                className="group min-w-[260px] h-[200px] rounded-2xl 
+                                overflow-hidden shadow-md border border-[#7B9B68]/30 
+                                relative cursor-pointer"
                             >
 
-                                {/* Image / Video Thumbnail */}
+                                {/* Image */}
                                 {item.type === "image" && (
                                     <img
                                         src={item.src}
                                         alt={item.name}
-                                        className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+                                        className="w-full h-full object-cover 
+                                        transition duration-500 group-hover:scale-110"
                                     />
                                 )}
 
+                                {/* Video */}
                                 {item.type === "video" && (
                                     <video
                                         src={item.src}
@@ -135,25 +139,38 @@ export default function StudentAchievement() {
                                     />
                                 )}
 
+                                {/* YouTube */}
                                 {item.type === "youtube" && (
                                     <>
                                         <img
                                             src={item.thumbnail}
                                             alt={item.name}
-                                            className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+                                            className="w-full h-full object-cover 
+                                            transition duration-500 group-hover:scale-110"
                                         />
+
+                                        {/* Play Button */}
                                         <div className="absolute inset-0 flex items-center justify-center">
-                                            <div className="bg-white/90 rounded-full p-3 shadow">▶</div>
+                                            <div className="bg-white/90 rounded-full p-3 shadow-lg">
+                                                ▶
+                                            </div>
                                         </div>
                                     </>
                                 )}
-                                {/* 🎖️ Badge */}
-                                <div className="absolute top-3 left-3 bg-orange-600 text-white text-xs px-3 py-1 rounded-full shadow">
+
+                                {/* 🎖️ Badge (Gold) */}
+                                <div className="absolute top-3 left-3 
+                                bg-[#E4CC6F] text-[#0D6453] text-xs 
+                                px-3 py-1 rounded-full shadow font-semibold">
                                     {item.badge}
                                 </div>
 
                                 {/* 🔥 Overlay */}
-                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4">
+                                <div className="absolute inset-0 
+                                bg-gradient-to-t from-[#0D6453]/80 to-transparent 
+                                opacity-0 group-hover:opacity-100 
+                                transition duration-300 flex flex-col justify-end p-4">
+
                                     <h3 className="text-white font-semibold text-lg">
                                         {item.name}
                                     </h3>
@@ -161,6 +178,10 @@ export default function StudentAchievement() {
                                         {item.achievement}
                                     </p>
                                 </div>
+
+                                {/* Gold Accent Line */}
+                                <div className="absolute bottom-0 left-0 h-[3px] w-0 
+                                bg-[#E4CC6F] group-hover:w-full transition-all duration-300"></div>
 
                             </div>
                         ))}
@@ -176,6 +197,8 @@ export default function StudentAchievement() {
                 />
 
             </div>
+
+            {/* 🎥 YouTube Modal */}
             {videoOpen && (
                 <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
                     <div className="relative w-[90%] md:w-[700px] aspect-video">
