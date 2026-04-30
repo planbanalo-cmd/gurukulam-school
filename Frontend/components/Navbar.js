@@ -187,8 +187,7 @@ export default function Navbar() {
                                 <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Aptitude Test</li>
                                 <Link href="/Fees"> <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Fee Structure</li></Link>
                                 <Link href="/Admission&FeePolicy">  <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Admission & Fee Policy</li></Link>
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Eligibility Criteria</li>
-
+                                <Link href="/Eligibility&Criteria"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Eligibility Criteria</li></Link>
                                 <li className="px-3 xl:px-4 py-2 cursor-pointer hover-dropdown-item">Apply Online</li>
                             </ul>
                         </li>
@@ -200,9 +199,9 @@ export default function Navbar() {
                                 <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
                             </div>
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Curriculum</li>
+                               <Link href="/Curriculum"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Curriculum</li></Link>
 
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Faculty</li>
+                                <Link href="/Faculty"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Faculty</li></Link>
 
                             </ul>
                         </li>
@@ -212,8 +211,8 @@ export default function Navbar() {
                                 <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
                             </div>
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Awards & Certification</li>
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Success Stories</li>
+                                <Link href="/Awards&Certification"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Awards & Certification</li></Link>
+                                <Link href="/Success-Stories"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Success Stories</li></Link>
 
                             </ul>
                         </li>
@@ -225,14 +224,11 @@ export default function Navbar() {
                                 <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
                             </div>
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Welcome</li>
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Dean&apos;s Message</li>
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Meals & Nutrition</li>
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">House Rules & Policies</li>
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Parent Involvement</li>
-                                <li className="px-3 xl:px-4 py-2 border-b hidden xl:block cursor-pointer hover-dropdown-item">Boarding House Facilities</li>
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Special Events</li>
-                                <li className="px-3 xl:px-4 py-2 cursor-pointer hover-dropdown-item">Testimonials</li>
+                               <Link href="/Welcome"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Welcome</li></Link>
+                                <Link href="/Room-Allocation"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Room Allocation</li></Link>
+                                <Link href="/Academic-Support"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Academic Support</li></Link>
+                                <Link href="/Daily-Schedule"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Daily Schedule</li></Link>
+                                
                             </ul>
                         </li>
 
@@ -303,9 +299,9 @@ export default function Navbar() {
                                             <li className="py-1 text-black hover:mobile-item">E-Prospectus</li>
                                             <li className="py-1 text-black hover:mobile-item">Aptitude Test</li>
                                             <li className="py-1 text-black hover:mobile-item"><Link href="/Fees">Fee Structure</Link></li>
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Admission&FeePolicy">Admission & Fee Policy</Link></li>
+                                           <li className="py-1 text-black hover:mobile-item"><Link href="/Admission&FeePolicy">Admission & Fee Policy</Link></li>
 
-                                            <li className="py-1 text-black hover:mobile-item">Eligibility Criteria</li>
+                                           <Link href="/EligibilityCriteria"> <li className="py-1 text-black hover:mobile-item">Eligibility Criteria</li></Link>
                                             <li className="py-1 text-black hover:mobile-item">Apply Online</li>
                                         </ul>
                                     )}
@@ -322,8 +318,8 @@ export default function Navbar() {
                                     </button>
                                     {acadamicOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                            <li className="py-1 text-black hover-mobile-dropdown">Curriculum</li>
-                                            <li className="py-1 text-black hover-mobile-dropdown">Faculty</li>
+                                            <Link href="/Curriculum"><li className="py-1 text-black hover-mobile-dropdown">Curriculum</li></Link>
+                                            <Link href="/Faculty"><li className="py-1 text-black hover-mobile-dropdown">Faculty</li></Link>
 
 
                                         </ul>
@@ -342,13 +338,12 @@ export default function Navbar() {
                                     {boardingOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
                                             <li className="py-1 text-black hover-mobile-dropdown">Welcome</li>
-                                            <li className="py-1 text-black hover-mobile-dropdown">Dean&apos;s Message</li>
-                                            <li className="py-1 text-black hover-mobile-dropdown">Meals & Nutrition</li>
-                                            <li className="py-1 text-black hover-mobile-dropdown">House Rules & Policies</li>
-                                            <li className="py-1 text-black hover-mobile-dropdown">Parent Involvement</li>
-                                            <li className="py-1 text-black hover-mobile-dropdown">Boarding House Facilities</li>
-                                            <li className="py-1 text-black hover-mobile-dropdown">Special Events & Celebrations</li>
-                                            <li className="py-1 text-black hover-mobile-dropdown">Testimonials From Boarders</li>
+                                            <li className="py-1 text-black hover-mobile-dropdown">Room Allocation</li>
+                                             <li className="py-1 text-black hover-mobile-dropdown">Academic Support</li>
+                                            <li className="py-1 text-black hover-mobile-dropdown">Daily Schedule</li>
+                                           
+                                         
+                                          
                                         </ul>
                                     )}
                                 </li>

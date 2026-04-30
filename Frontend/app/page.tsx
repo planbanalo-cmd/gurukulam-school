@@ -7,7 +7,6 @@ import Features from "./../components/Features";
 import WhatWeOffer from "./../components/WhatWeOffer";
 import About from "./../components/About";
 
-import RequestQuote from "./../components/RequestQuote";
 
 import Testimonials from "./../components/Testimonials";
 import FinalBossWrapper from "./../components/FinalBossWrapper";
@@ -43,7 +42,7 @@ export default function Home() {
       <ChairmanMessage />
       <SchoolGallery />
       <StudentAchievement />
-      <RequestQuote />
+   
       <Testimonials />
       </FinalBossWrapper>
     </>
