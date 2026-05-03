@@ -11,7 +11,7 @@ export default function LeadershipPage() {
         {
             name: "Principal",
             fullName: "Mrs. Snehlata",
-            img: "/images/principal.jpg",
+            img: "/images/Principal.jpeg",
             exp: "15+ Years",
             quote: "Dream big, work hard, shine bright – the future is ours to create!",
             title: "From the Principal’s Desk",
@@ -33,7 +33,7 @@ Every child is a spark of brilliance – here, we make them shine.`,
         {
             name: "Vice Principal",
             fullName: "Mr. Narender Soni",
-            img: "/images/vp.jpg",
+            img: "/images/VicePrincipal.jpeg",
             exp: "12+ Years",
             quote: "Igniting minds, shaping hearts, and building leaders for tomorrow.",
             title: "Message from Vice Principal",
@@ -52,7 +52,7 @@ Let us continue to move forward with determination and heart, transforming every
         {
             name: "Headmistress",
             fullName: "Ms. Neetu Singh",
-            img: "/images/hm.jpg",
+            img: "/images/Headmistress.jpeg",
             exp: "10+ Years",
             quote: "Education is not the learning of facts, but the training of the mind to think.",
             title: "Message from Headmistress",
@@ -69,7 +69,7 @@ Let us continue to dream together, work together, and grow together — for the 
         {
             name: "School coordinator",
             fullName: "Mrs. Monika Gaur",
-            img: "/images/hod.jpg",
+            img: "/images/SchoolCoordinator.jpeg",
             exp: "30 years of experience",
             quote: " Believe in your potential, stay curious, and remember that every small effort you make today builds the foundation for your success tomorrow.",
             title: "From the Coordinator’s Desk",
@@ -113,7 +113,7 @@ Together, we are not just building students; we are building the leaders and thi
     return (
         <div
             ref={ref}
-            className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-gray-100 px-4 py-16"
+            className="min-h-screen bg-gradient-to-br from-[#ECFDF5] via-white to-[#F0FDF4] px-4 py-16"
         >
 
             {/* 🔥 HERO */}
@@ -121,7 +121,7 @@ Together, we are not just building students; we are building the leaders and thi
                 <motion.h1
                     initial={{ opacity: 0, y: -40 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-5xl font-extrabold bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent"
+                    className="text-5xl font-extrabold bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] bg-clip-text text-transparent"
                 >
                     Leadership & Management
                 </motion.h1>
@@ -139,7 +139,7 @@ Together, we are not just building students; we are building the leaders and thi
                 </div>
 
                 {/* 🎨 GRADIENT OVERLAY */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-orange-50/80 to-amber-100/80 backdrop-blur-[2px]"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-[#ECFDF5]/80 to-[#D1FAE5]/80 backdrop-blur-[2px]"></div>
 
                 {/* 🔥 CONTENT */}
                 <div className="relative max-w-5xl mx-auto z-10">
@@ -187,14 +187,14 @@ Together, we are not just building students; we are building the leaders and thi
                 <div className="relative">
 
                     {/* 🔥 BACKGROUND GLOW PULSE */}
-                    <div className="absolute -inset-[3px] rounded-3xl bg-gradient-to-r from-orange-500 via-amber-400 to-orange-500 blur-2xl opacity-30 animate-pulse"></div>
+                    <div className="absolute -inset-[3px] rounded-3xl bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] blur-2xl opacity-30 animate-pulse"></div>
 
                     {/* 🧊 MAIN CONTAINER */}
                     <div className="relative bg-white/70 backdrop-blur-2xl rounded-3xl p-10 md:p-14 shadow-2xl border border-white/40 grid md:grid-cols-2 gap-12 items-center overflow-hidden">
 
                         {/* 🌟 FLOATING LIGHTS */}
-                        <div className="absolute w-52 h-52 bg-orange-300 opacity-20 blur-3xl top-0 left-0"></div>
-                        <div className="absolute w-40 h-40 bg-amber-400 opacity-20 blur-3xl bottom-0 right-0"></div>
+                        <div className="absolute w-52 h-52 bg-[#156445] opacity-20 blur-3xl top-0 left-0"></div>
+                        <div className="absolute w-40 h-40 bg-[#0D6453] opacity-20 blur-3xl bottom-0 right-0"></div>
 
                         {/* 🖼️ IMAGE WITH PARALLAX */}
                         <motion.div
@@ -218,7 +218,7 @@ Together, we are not just building students; we are building the leaders and thi
                         {/* 📝 TEXT SIDE */}
                         <div>
 
-                            <h2 className="text-4xl font-extrabold mb-6 bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+                            <h2 className="text-4xl font-extrabold mb-6 bg-gradient-to-r from-[#156445] to-[#296236] bg-clip-text text-transparent">
                                 Chairman’s Vision
                             </h2>
 
@@ -241,7 +241,7 @@ Together, we are not just building students; we are building the leaders and thi
 
                             {/* ✍️ SIGNATURE */}
                             <div className="mt-8">
-                                <p className="text-2xl font-semibold text-orange-600 tracking-wide">
+                                <p className="text-2xl font-semibold text-[#156445] tracking-wide">
                                     — Chairman Name
                                 </p>
                                 <p className="text-sm text-gray-500">Founder & Visionary</p>
@@ -269,7 +269,7 @@ Together, we are not just building students; we are building the leaders and thi
                                     className="w-24 h-24 rounded-full mx-auto mb-4"
                                 />
 
-                                <h3 className="font-bold text-lg text-orange-600 text-center">
+                                <h3 className="font-bold text-lg text-[#156445] text-center">
                                     {m.name}
                                 </h3>
 
@@ -292,7 +292,7 @@ Together, we are not just building students; we are building the leaders and thi
             {/* 📄 MANAGEMENT */}
             <section className="max-w-6xl mx-auto px-4 mt-24 md:mt-32">
 
-                <h2 className="text-3xl font-bold text-orange-600 mb-10 text-center">
+                <h2 className="text-3xl font-bold text-[#156445] mb-10 text-center">
                     Management Details
                 </h2>
 
@@ -328,11 +328,11 @@ Together, we are not just building students; we are building the leaders and thi
                         >
 
                             {/* 🔥 Glow */}
-                            <div className="absolute -inset-[2px] bg-gradient-to-r from-orange-500 to-amber-400 blur-lg opacity-20 rounded-2xl"></div>
+                            <div className="absolute -inset-[2px] bg-gradient-to-r from-[#156445] to-[#296236] blur-lg opacity-20 rounded-2xl"></div>
 
-                            <div className="relative p-6 bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg border border-orange-100">
+                            <div className="relative p-6 bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg border border-[#7B9B68]/20">
 
-                                <h3 className="text-xl font-bold text-orange-600">
+                                <h3 className="text-xl font-bold text-[#156445]">
                                     {item.role}
                                 </h3>
 
@@ -391,7 +391,7 @@ Together, we are not just building students; we are building the leaders and thi
                                     />
 
                                     <div className="mt-6 md:mt-8 w-full">
-                                        <h2 className="text-2xl md:text-3xl font-bold text-orange-600 text-center md:text-left">
+                                        <h2 className="text-2xl md:text-3xl font-bold text-[#156445] text-center md:text-left">
                                             {selected.fullName}
                                         </h2>
 
@@ -412,7 +412,7 @@ Together, we are not just building students; we are building the leaders and thi
                                 {/* RIGHT SIDE - MESSAGE */}
                                 <div className="space-y-4 text-gray-700 leading-relaxed">
 
-                                    <h3 className="text-2xl md:text-3xl font-bold text-orange-600">
+                                    <h3 className="text-2xl md:text-3xl font-bold text-[#156445]">
                                         {selected.title}
                                     </h3>
 
@@ -426,10 +426,10 @@ Together, we are not just building students; we are building the leaders and thi
                                         ))}
                                     </div>
 
-                                    <div className="mt-6 md:mt-8 pt-4 border-t border-orange-200 text-sm md:text-base">
+                                    <div className="mt-6 md:mt-8 pt-4 border-t border-[#7B9B68]/30 text-sm md:text-base">
                                         <p className="font-semibold text-gray-800">
                                             Warm Regards <br />
-                                            <span className="text-orange-600">{selected.fullName}</span> <br />
+                                            <span className="text-[#156445]">{selected.fullName}</span> <br />
                                             <span className="text-gray-600">{selected.name}</span> <br />
                                             <span className="text-gray-500 text-xs md:text-sm">Gurukulam The School</span>
                                         </p>

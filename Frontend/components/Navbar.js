@@ -279,7 +279,7 @@ export default function Navbar() {
                                             <li className="py-1 text-black hover:mobile-item"><Link href="/Vision&Mission">Our Vision & Mission</Link></li>
                                             <li className="py-1 text-black hover:mobile-item"><Link href="/Infrastructure">Infrastructure</Link></li>
                                             <li className="py-1 text-black hover:mobile-item"><Link href="/Leadership&Management">Leadership & Management</Link></li>
-                                            <li className="py-1 text-black hover:mobile-item">Privacy Policy</li>
+                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Privacy&Policy">Privacy Policy</Link></li>
 
                                         </ul>
                                     )}
@@ -301,7 +301,7 @@ export default function Navbar() {
                                             <li className="py-1 text-black hover:mobile-item"><Link href="/Fees">Fee Structure</Link></li>
                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Admission&FeePolicy">Admission & Fee Policy</Link></li>
 
-                                           <Link href="/EligibilityCriteria"> <li className="py-1 text-black hover:mobile-item">Eligibility Criteria</li></Link>
+                                           <Link href="/Eligibility&Criteria"> <li className="py-1 text-black hover:mobile-item">Eligibility Criteria</li></Link>
                                             <li className="py-1 text-black hover:mobile-item">Apply Online</li>
                                         </ul>
                                     )}

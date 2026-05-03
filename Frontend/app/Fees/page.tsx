@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useSpring } from "framer-motion";
-
+import { Download } from "lucide-react";
 export default function FeeStructurePage() {
 
   const { scrollYProgress } = useScroll();
@@ -11,12 +11,12 @@ export default function FeeStructurePage() {
   });
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-orange-50 via-white to-gray-100 text-black overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-[#eef7f2] via-white to-gray-100 text-black overflow-hidden">
 
       {/* Scroll Progress */}
       <motion.div
         style={{ scaleX }}
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-600 to-amber-500 origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] origin-left z-50"
       />
 
       {/* Floating Particles */}
@@ -24,7 +24,7 @@ export default function FeeStructurePage() {
         {[...Array(12)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-orange-300 rounded-full opacity-30"
+            className="absolute w-2 h-2 bg-[#6EE7B7] rounded-full opacity-30"
             initial={{
               x: Math.random() * 1200,
               y: Math.random() * 800,
@@ -55,7 +55,7 @@ export default function FeeStructurePage() {
           className="text-4xl md:text-5xl font-extrabold"
         >
           GURUKULAM THE SCHOOL{" "}
-          <span className="text-orange-600">FEE STRUCTURE</span>
+          <span className="text-[#156445]">FEE STRUCTURE</span>
         </motion.h1>
 
         <motion.a
@@ -64,7 +64,7 @@ export default function FeeStructurePage() {
           href="/fee-structure-2026-27.pdf"
           download
           target="_blank"
-          className="inline-block mt-6 px-7 py-3 rounded-full text-white bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 transition shadow-lg"
+          className="inline-block mt-6 px-7 py-3 rounded-full text-white bg-gradient-to-r from-[#156445] to-[#0D6453] hover:from-[#156445] hover:to-[#0D6453] transition shadow-lg"
         >
           Download PDF
         </motion.a>
@@ -72,14 +72,14 @@ export default function FeeStructurePage() {
 
       {/* MAIN TABLE */}
       <section className="max-w-7xl mx-auto px-4 py-10 relative z-10">
-  <h2 className="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-orange-600 pl-3">
+  <h2 className="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-[#156445] pl-3">
     Fee Structure (Session 2026–27)
   </h2>
 
   <div className="overflow-x-auto rounded-2xl shadow-xl bg-white/80 backdrop-blur-lg border border-gray-200">
     <table className="w-full text-sm text-center border border-gray-200">
 
-      <thead className="bg-gradient-to-r from-orange-600 to-amber-500 text-white sticky top-0 z-10">
+      <thead className="bg-gradient-to-r from-[#156445] to-[#0D6453] text-white sticky top-0 z-10">
         <tr>
           <th className="p-3 border">CLASS</th>
           <th className="border">M-I to M-III</th>
@@ -103,7 +103,7 @@ export default function FeeStructurePage() {
         ].map((row, i) => (
           <tr
             key={i}
-            className="border transition hover:scale-[1.01] odd:bg-white even:bg-orange-50 hover:bg-orange-100"
+            className="border transition hover:scale-[1.01] odd:bg-white even:bg-[#eef7f2] hover:bg-[#dff3ea]"
           >
             <td className="p-3 border font-semibold text-left">{row[0]}</td>
 
@@ -125,14 +125,14 @@ export default function FeeStructurePage() {
 
       {/* TRANSPORT */}
       <section className="max-w-6xl mx-auto px-4 py-10 relative z-10">
-  <h2 className="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-orange-600 pl-3">
+  <h2 className="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-[#156445] pl-3">
     Transport Charges (Quick View)
   </h2>
 
   <div className="overflow-x-auto rounded-2xl shadow-xl bg-white/80 backdrop-blur-lg border border-gray-200">
     <table className="w-full text-sm text-center border border-gray-200">
 
-      <thead className="bg-gradient-to-r from-orange-600 to-amber-500 text-white sticky top-0 z-10">
+      <thead className="bg-gradient-to-r from-[#156445] to-[#0D6453] text-white sticky top-0 z-10">
         <tr>
           <th className="p-3 border">K.M</th>
           <th className="border">0–2</th>
@@ -146,7 +146,7 @@ export default function FeeStructurePage() {
       </thead>
 
       <tbody>
-        <tr className="border transition hover:scale-[1.01] odd:bg-white even:bg-orange-50 hover:bg-orange-100">
+        <tr className="border transition hover:scale-[1.01] odd:bg-white even:bg-[#eef7f2] hover:bg-[#dff3ea]">
           <td className="p-3 border font-semibold">Charges</td>
           <td className="border text-700 ">₹600</td>
           <td className="border text-700">₹800</td>
@@ -164,14 +164,14 @@ export default function FeeStructurePage() {
 
       {/* HOSTEL */}
      <section className="max-w-6xl mx-auto px-4 py-10 relative z-10">
-  <h2 className="text-xl md:text-2xl font-bold mb-6 border-l-4 border-orange-600 pl-3">
+  <h2 className="text-xl md:text-2xl font-bold mb-6 border-l-4 border-[#156445] pl-3">
     Hostel Fee (Quick View)
   </h2>
 
   <div className="overflow-x-auto rounded-2xl shadow-xl bg-white/80 backdrop-blur-lg border border-gray-200">
     <table className="w-full text-sm text-center border border-gray-200">
 
-      <thead className="bg-gradient-to-r from-orange-600 to-amber-500 text-white sticky top-0 z-10">
+      <thead className="bg-gradient-to-r from-[#156445] to-[#0D6453] text-white sticky top-0 z-10">
         <tr>
           <th className="p-3 border">Class</th>
           <th className="border">IV–VIII</th>
@@ -182,7 +182,7 @@ export default function FeeStructurePage() {
       </thead>
 
       <tbody>
-        <tr className="border transition hover:scale-[1.01] odd:bg-white even:bg-orange-50 hover:bg-orange-100">
+        <tr className="border transition hover:scale-[1.01] odd:bg-white even:bg-[#eef7f2] hover:bg-[#dff3ea]">
           <td className="p-3 border font-semibold">Charges</td>
           <td className="border text-700 ">₹80,000</td>
           <td className="border text-700 ">₹1,00,000</td>
@@ -197,13 +197,13 @@ export default function FeeStructurePage() {
 
             {/* SIBLING STRUCTURE */}
 <section className="max-w-7xl mx-auto px-4 py-10 relative z-10">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-orange-600 pl-3">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-[#156445] pl-3">
           SIBLING DISCOUNT & YEARLY FEE
         </h2>
 
         <div className="overflow-x-auto rounded-2xl shadow-xl bg-white/80 backdrop-blur-lg">
           <table className="w-full text-sm text-center border border-gray-200">
-            <thead className="bg-gradient-to-r from-orange-600 to-amber-500 text-white sticky top-0 z-10">
+            <thead className="bg-gradient-to-r from-[#156445] to-[#0D6453] text-white sticky top-0 z-10">
               <tr>
                 <th className="p-3 border border-gray-200">Class</th>
                 <th>Monthly</th>
@@ -223,7 +223,7 @@ export default function FeeStructurePage() {
                 ["XI–XII (SCI)","7500","5625 (67500)","1875 (22500)","90000","82500"],
                 ["XI–XII (COMM)","7000","5250 (63000)","1750 (21000)","84000","77000"],
               ].map((row, i) => (
-                <tr key={i} className="border transition hover:scale-[1.01] odd:bg-white even:bg-orange-50 hover:bg-orange-100">
+                <tr key={i} className="border transition hover:scale-[1.01] odd:bg-white even:bg-[#eef7f2] hover:bg-[#dff3ea]">
                   {row.map((cell, j) => (
                     <td key={j} className="p-3 border border-gray-200">{cell}</td>
                   ))}
@@ -236,13 +236,13 @@ export default function FeeStructurePage() {
 
            {/* BOARDER KIT LIST */}
  <section className="max-w-6xl mx-auto px-4 py-10 relative z-10">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-orange-600 pl-3">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-[#156445] pl-3">
           BOARDER'S KIT LIST (BOYS)
         </h2>
 
         <div className="overflow-x-auto rounded-2xl shadow-xl bg-white/80 backdrop-blur-lg">
           <table className="w-full text-sm text-center border border-gray-200">
-            <thead className="bg-gradient-to-r from-orange-600 to-amber-500 text-white sticky top-0 z-10">
+            <thead className="bg-gradient-to-r from-[#156445] to-[#0D6453] text-white sticky top-0 z-10">
               <tr>
                 <th className="p-3 border border-gray-200">Item</th>
                 <th>Qty</th>
@@ -275,7 +275,7 @@ export default function FeeStructurePage() {
                 ["Desk Lamp","1","Liquid Dettol","1"],
                 ["School Supplies","-","Lock","1"],
               ].map((row, i) => (
-                <tr key={i} className="border transition hover:scale-[1.01] odd:bg-white even:bg-orange-50 hover:bg-orange-100 ">
+                <tr key={i} className="border transition hover:scale-[1.01] odd:bg-white even:bg-[#eef7f2] hover:bg-[#dff3ea]">
                   {row.map((cell, j) => (
                     <td key={j} className="p-3 border border-gray-200 ">{cell}</td>
                   ))}
@@ -298,14 +298,14 @@ export default function FeeStructurePage() {
 {/* Transport Fee*/}
 
  <section className="max-w-6xl mx-auto px-4 py-10 relative z-10">
-  <h2 className="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-orange-600 pl-3">
+  <h2 className="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-[#156445] pl-3">
     TRANSPORT CHARGES – SESSION 2026–27
   </h2>
 
   <div className="overflow-x-auto rounded-2xl shadow-xl bg-white/80 backdrop-blur-lg">
     <table className="w-full text-sm text-center border border-gray-200">
       
-      <thead className="bg-gradient-to-r from-orange-600 to-amber-500 text-white sticky top-0 z-10">
+      <thead className="bg-gradient-to-r from-[#156445] to-[#0D6453] text-white sticky top-0 z-10">
         <tr>
           <th className="p-3 border">Distance (km)</th>
           <th className="border">Charges</th>
@@ -353,7 +353,7 @@ export default function FeeStructurePage() {
         ].map((row, i) => (
           <tr
             key={i}
-            className="border transition hover:scale-[1.01] odd:bg-white even:bg-orange-50 hover:bg-orange-100"
+            className="border transition hover:scale-[1.01] odd:bg-white even:bg-[#eef7f2] hover:bg-[#dff3ea]"
           >
             <td className="p-3 border">{row[0]}</td>
             <td className="p-3 border font-semibold text-700">
@@ -373,7 +373,7 @@ export default function FeeStructurePage() {
 
           {/* Documents Required */}
 <section className="max-w-7xl mx-auto px-4 py-10 relative z-10">
-  <h2 className="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-orange-600 pl-3">
+  <h2 className="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-[#156445] pl-3">
     GURUKULAM THE SCHOOL <br />
     Documents Required (Session 2026–27)
   </h2>
@@ -381,7 +381,7 @@ export default function FeeStructurePage() {
   <div className="overflow-x-auto rounded-2xl shadow-xl bg-white/80 backdrop-blur-lg border border-gray-200">
     <table className="w-full text-sm border border-gray-200">
       
-      <thead className="bg-gradient-to-r from-orange-600 to-amber-500 text-white sticky top-0 z-10">
+      <thead className="bg-gradient-to-r from-[#156445] to-[#0D6453] text-white sticky top-0 z-10">
         <tr>
           <th className="p-4 border w-1/4">Class</th>
           <th className="border p-4">Documents</th>
@@ -391,7 +391,7 @@ export default function FeeStructurePage() {
       <tbody>
 
         {/* M1–M3 */}
-        <tr className="border odd:bg-white even:bg-orange-50 hover:bg-orange-100">
+        <tr className="border odd:bg-white even:bg-[#eef7f2] hover:bg-[#dff3ea]">
           <td className="p-4 border font-semibold">M1–M3</td>
           <td className="p-4 border">
             <ul className="list-disc pl-6 space-y-1">
@@ -404,7 +404,7 @@ export default function FeeStructurePage() {
         </tr>
 
         {/* II–IX */}
-        <tr className="border odd:bg-white even:bg-orange-50 hover:bg-orange-100">
+        <tr className="border odd:bg-white even:bg-[#eef7f2] hover:bg-[#dff3ea]">
           <td className="p-4 border font-semibold">II–IX</td>
           <td className="p-4 border">
             <ul className="list-disc pl-6 space-y-1">
@@ -419,7 +419,7 @@ export default function FeeStructurePage() {
         </tr>
 
         {/* X & XII */}
-        <tr className="border odd:bg-white even:bg-orange-50 hover:bg-orange-100">
+        <tr className="border odd:bg-white even:bg-[#eef7f2] hover:bg-[#dff3ea]">
           <td className="p-4 border font-semibold">X & XII</td>
           <td className="p-4 border">
             <ul className="list-disc pl-6 space-y-1">
@@ -436,7 +436,7 @@ export default function FeeStructurePage() {
         </tr>
 
         {/* XI */}
-        <tr className="border odd:bg-white even:bg-orange-50 hover:bg-orange-100">
+        <tr className="border odd:bg-white even:bg-[#eef7f2] hover:bg-[#dff3ea]">
           <td className="p-4 border font-semibold">XI</td>
           <td className="p-4 border">
             <ul className="list-disc pl-6 space-y-1">

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Users, ShieldCheck, Home } from 'lucide-react';
-
+import { Download } from "lucide-react";
 export default function RoomAllocationPage() {
   return (
     <div className="min-h-screen px-4 md:px-10 lg:px-20 py-14 
@@ -31,12 +31,10 @@ export default function RoomAllocationPage() {
         whileInView={{ opacity: 1, y: 0 }}
         className="relative max-w-5xl mx-auto mb-16 group"
       >
-        {/* Glow */}
         <div className="absolute -inset-[2px] rounded-3xl 
         bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] 
         opacity-20 blur-xl group-hover:opacity-40 transition"></div>
 
-        {/* Content */}
         <div className="relative bg-white/80 backdrop-blur-xl 
         border border-[#156445]/20 rounded-3xl p-8 md:p-12 shadow-xl">
 
@@ -58,8 +56,7 @@ export default function RoomAllocationPage() {
       </motion.div>
 
       {/* 🌟 FEATURES */}
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-
+      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 mb-20">
         {[
           {
             icon: <Home />,
@@ -85,16 +82,13 @@ export default function RoomAllocationPage() {
             whileHover={{ scale: 1.05 }}
             className="relative group"
           >
-            {/* Glow */}
             <div className="absolute -inset-[2px] rounded-2xl 
             bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] 
             opacity-20 blur-lg group-hover:opacity-40 transition"></div>
 
-            {/* Card */}
             <div className="relative bg-white/80 backdrop-blur-xl 
             border border-[#156445]/20 rounded-2xl p-6 shadow-lg">
 
-              {/* Icon */}
               <div className="w-12 h-12 flex items-center justify-center 
               rounded-full mb-4
               bg-gradient-to-r from-[#156445] to-[#0D6453] text-white">
@@ -112,8 +106,104 @@ export default function RoomAllocationPage() {
             </div>
           </motion.div>
         ))}
-
       </div>
+
+      {/* 🧳 BOARDER KIT TABLE */}
+    <section className="max-w-6xl mx-auto mb-16">
+  <div className="flex justify-between items-center mb-6 flex-wrap gap-4">
+
+  <h2 className="text-3xl font-bold border-l-4 border-[#0D6453] pl-3 text-[#0D6453]">
+    BOARDER'S KIT LIST (BOYS)
+  </h2>
+
+  <motion.a
+    href="/boarders-kit-list.pdf"
+    download
+    target="_blank"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="flex items-center gap-2 px-5 py-2.5 rounded-full 
+    text-white text-sm font-semibold
+    bg-gradient-to-r from-[#0D6453] to-[#156445]
+    hover:from-[#094d40] hover:to-[#0e4f3a]
+    shadow-md transition"
+  >
+    <Download size={16} />
+    Download PDF
+  </motion.a>
+
+</div>
+
+  <div className="overflow-x-auto rounded-2xl shadow-xl bg-white/90 backdrop-blur-lg border border-[#156445]/30">
+    <table className="w-full text-sm text-center border border-gray-300">
+
+      <thead className="bg-gradient-to-r from-[#0D6453] to-[#156445] text-white">
+        <tr>
+          <th className="p-3 border">Item</th>
+          <th className="border">Qty</th>
+          <th className="border">Item</th>
+          <th className="border">Qty</th>
+        </tr>
+      </thead>
+
+      <tbody>
+  {[
+    ["Vest Cotton","6","Tooth Paste","4"],
+    ["Briefs","6","Tooth Brush","4"],
+    ["Bed Sheets","3","Shoe Brush","1"],
+    ["Pillow","1","Shoe Polish","2"],
+    ["Pillow Covers","1","Bath Soap","6"],
+    ["Bath Towel","1","Washing Soap","2"],
+    ["Hand Towel","1","Soap Case","2"],
+    ["Trimmer (If required)","1","Hair Oil","1"],
+    ["Camphor (Kapoor)","Few","Shampoo","2"],
+    ["Handkerchief","6","Hair Comb","1"],
+    ["Sanitizer & Masks","*","Nail Cutter","1"],
+    ["Sports Shoes","1 Pair","Black Marker","1"],
+    ["Bathroom Slippers","1 Pair","Raincoat","1"],
+    ["Cloth Clips","10","Umbrella","1"],
+    ["White Cotton Socks","6 Pair","Bucket","1"],
+    ["Tissues","1","Mug","1"],
+    ["Small Sewing Kit","1","Water Bottle","1"],
+    ["Storage Crates","1","Talcum Powder","1"],
+    ["Alarm Clock","1","Body Lotion","1"],
+    ["Desk Lamp","1","Liquid Dettol","1"],
+    ["School Supplies","-","Lock","1"],
+  ].map((row, i) => (
+    <tr
+      key={i}
+      className="border odd:bg-white even:bg-[#e6f2ee] hover:bg-[#d2ebe2] transition"
+    >
+      {/* Item 1 (BOLD) */}
+      <td className="p-3 border text-gray-900 font-bold">{row[0]}</td>
+
+      {/* Qty 1 */}
+      <td className="p-3 border text-gray-900">{row[1]}</td>
+
+      {/* Item 2 (BOLD) */}
+      <td className="p-3 border text-gray-900 font-bold">{row[2]}</td>
+
+      {/* Qty 2 */}
+      <td className="p-3 border text-gray-900">{row[3]}</td>
+    </tr>
+  ))}
+</tbody>
+
+    </table>
+  </div>
+
+  {/* NOTE */}
+  <div className="mt-6 bg-white/90 backdrop-blur-lg shadow-xl rounded-2xl p-5 border border-[#156445]/30 text-sm">
+    <p className="font-semibold mb-2 text-[#0D6453] text-base">Note:</p>
+    <ul className="list-disc pl-6 space-y-1 text-gray-800 font-medium">
+      <li>Bring laundry detergent & stain remover.</li>
+      <li>Solid colour/pattern cloth face mask only.</li>
+      <li>No electronic gadgets allowed.</li>
+      <li>Carry necessary medications if required.</li>
+      <li>Submit medical documents if any condition exists.</li>
+    </ul>
+  </div>
+</section>
 
     </div>
   );

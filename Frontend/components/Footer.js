@@ -1,8 +1,15 @@
+
+'use client';
+
+import Link from "next/link";
+import { useState } from "react";
 import React from 'react';
 import { Mail, Phone, MapPin } from "lucide-react";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
+
 export default function Footer() {
+  const [open, setOpen] = useState(false);
   return (
     <footer className="text-white 
     bg-gradient-to-br from-[#0D6453] via-[#156445] to-[#296236]">
@@ -150,13 +157,72 @@ export default function Footer() {
             © 2024 Gurukulam School. All rights reserved.
           </p>
 
-          <div className="flex gap-6 text-xs md:text-sm">
-            {["Privacy Policy", "Terms & Conditions", "Sitemap"].map((item, i) => (
-              <a key={i} href="#" className="text-[#DDE5D8] hover:text-[#E4CC6F] transition">
-                {item}
-              </a>
-            ))}
+        <div className="flex gap-6 text-xs md:text-sm">
+        
+        {/* Privacy Policy Page */}
+        <Link
+          href="/Privacy&Policy"
+          className="text-[#DDE5D8] hover:text-[#E4CC6F] transition"
+        >
+          Privacy Policy
+        </Link>
+
+        {/* Terms Popup Trigger */}
+        <button
+          onClick={() => setOpen(true)}
+          className="text-[#DDE5D8] hover:text-[#E4CC6F] transition"
+        >
+          Terms & Conditions
+        </button>
+      </div>
+
+      {/* Modal */}
+      {open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          
+          {/* Card */}
+          <div className="bg-white w-[90%] max-w-md rounded-xl shadow-xl p-6 relative">
+
+            {/* Close */}
+            <button
+              onClick={() => setOpen(false)}
+              className="absolute top-3 right-3 text-gray-400 hover:text-black"
+            >
+              ✕
+            </button>
+
+            {/* Title */}
+            <h2 className="text-lg font-semibold mb-3 text-gray-800">
+              Terms & Conditions
+            </h2>
+
+            {/* Content */}
+            <p className="text-sm text-gray-600 leading-relaxed">
+              By using this website, you agree to Gurukulam The School’s terms of use.
+              All content is for informational purposes only and may be updated without notice.
+              Admission is subject to eligibility and availability.
+              Fees once paid are non-refundable.
+              Unauthorized use of content is prohibited.
+              Your data is handled as per our{" "}
+              
+              <Link href="/privacy-policy" className="text-[#E4CC6F] hover:underline">
+                Privacy Policy
+              </Link>.
+            </p>
+
+            {/* Button */}
+            <div className="mt-4 text-right">
+              <button
+                onClick={() => setOpen(false)}
+                className="bg-[#E4CC6F] px-4 py-2 rounded-md text-sm font-medium hover:opacity-90"
+              >
+                Close
+              </button>
+            </div>
+
           </div>
+        </div>
+      )}
         </div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useSpring } from "framer-motion";
-import { FileText, CheckCircle, Users } from "lucide-react";
+import { FileText, CheckCircle } from "lucide-react";
 
 export default function AdmissionFeePolicy() {
 
@@ -13,12 +13,12 @@ export default function AdmissionFeePolicy() {
   });
 
   return (
-    <div className="relative bg-gradient-to-br from-orange-50 to-gray-100 min-h-screen py-12 px-4 overflow-hidden">
+    <div className="relative bg-gradient-to-br from-[#ECFDF5] via-white to-[#F0FDF4] min-h-screen py-12 px-4 overflow-hidden">
 
       {/* Scroll Progress Bar */}
       <motion.div
         style={{ scaleX }}
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-600 to-amber-500 origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] origin-left z-50"
       />
 
       {/* Floating Particles */}
@@ -26,7 +26,7 @@ export default function AdmissionFeePolicy() {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-orange-300 rounded-full opacity-30"
+            className="absolute w-2 h-2 bg-[#6EE7B7] rounded-full opacity-30"
             initial={{
               x: Math.random() * 1000,
               y: Math.random() * 800,
@@ -59,7 +59,7 @@ export default function AdmissionFeePolicy() {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
-            Admission <span className="text-orange-600">& Fee Policy</span>
+            Admission <span className="text-[#156445]">& Fee Policy</span>
           </h1>
           <p className="text-gray-600 mt-3 text-sm md:text-base">
             Clear guidelines for smooth admission and fee management
@@ -71,13 +71,13 @@ export default function AdmissionFeePolicy() {
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="bg-white/80 backdrop-blur-lg shadow-2xl rounded-3xl p-8 border border-gray-200 hover:shadow-orange-200 hover:border-orange-300 transition"
+          className="bg-white/80 backdrop-blur-lg shadow-2xl rounded-3xl p-8 border border-gray-200 hover:shadow-green-200 hover:border-green-300 transition"
         >
           <div className="flex items-center gap-3 mb-6">
-            <FileText className="w-6 h-6 text-orange-600" />
-          <h2 className="text-2xl font-bold border-l-4 border-orange-400 pl-3 text-gray-800">
-            Important Instructions
-          </h2>
+            <FileText className="w-6 h-6 text-[#156445]" />
+            <h2 className="text-2xl font-bold border-l-4 border-[#156445] pl-3 text-gray-800">
+              Important Instructions
+            </h2>
           </div>
 
           <ol className="space-y-4 text-sm md:text-base text-gray-700">
@@ -101,17 +101,14 @@ export default function AdmissionFeePolicy() {
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className="flex items-start gap-3 bg-gray-50 p-3 rounded-xl hover:bg-orange-50 hover:shadow-md transition"
+                className="flex items-start gap-3 bg-gray-50 p-3 rounded-xl hover:bg-green-50 hover:shadow-md transition"
               >
-                <CheckCircle className="w-5 h-5 mt-1 text-orange-600" />
+                <CheckCircle className="w-5 h-5 mt-1 text-[#156445]" />
                 <span>{item}</span>
               </motion.li>
             ))}
           </ol>
         </motion.div>
-
-       
-       
 
       </div>
     </div>
