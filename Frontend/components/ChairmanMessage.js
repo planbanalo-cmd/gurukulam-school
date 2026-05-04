@@ -52,7 +52,7 @@ export default function ChairmanMessage() {
             {/* Name */}
             <div className="text-center mt-4">
               <h3 className="text-xl font-semibold text-gray-800">
-                Mr. CP BRAHAM Prakash Yadav
+                Mr. CP BRAHAM PRAKASH YADAV
               </h3>
               <p className="text-[#156445] text-sm">CEO</p>
             </div>
@@ -104,7 +104,7 @@ export default function ChairmanMessage() {
             <div className="pt-4 border-t border-gray-200">
               <p className="text-sm text-gray-500">Warm regards,</p>
               <p className="font-semibold text-gray-800">
-                Mr. CP BRAHAM Prakash Yadav
+                Mr. CP BRAHAM PRAKASH YADAV
               </p>
               <p className="text-sm text-gray-500">CEO, Gurukulam</p>
             </div>

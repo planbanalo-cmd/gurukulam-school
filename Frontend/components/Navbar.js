@@ -188,7 +188,7 @@ export default function Navbar() {
                                 <Link href="/Fees"> <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Fee Structure</li></Link>
                                 <Link href="/Admission&FeePolicy">  <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Admission & Fee Policy</li></Link>
                                 <Link href="/Eligibility&Criteria"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Eligibility Criteria</li></Link>
-                                <li className="px-3 xl:px-4 py-2 cursor-pointer hover-dropdown-item">Apply Online</li>
+                                <Link href="/ApplyOnline"><li className="px-3 xl:px-4 py-2 cursor-pointer hover-dropdown-item">Apply Online</li></Link>
                             </ul>
                         </li>
 
@@ -302,7 +302,7 @@ export default function Navbar() {
                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Admission&FeePolicy">Admission & Fee Policy</Link></li>
 
                                            <Link href="/Eligibility&Criteria"> <li className="py-1 text-black hover:mobile-item">Eligibility Criteria</li></Link>
-                                            <li className="py-1 text-black hover:mobile-item">Apply Online</li>
+                                            <Link href="/ApplyOnline"><li className="py-1 text-black hover:mobile-item">Apply Online</li></Link>
                                         </ul>
                                     )}
                                 </li>
