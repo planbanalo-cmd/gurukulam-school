@@ -6,18 +6,18 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
-  {
+ {
     id: 1,
+    image: "/images/Residential.jpeg",
+    title: "Residential School",
+    description: "A home away from home, where learning meets life.",
+  },{
+    id: 2,
     image: "/images/Competitive.png",
     title: "Competitive Exam Preparation",
     description: "Focused guidance to help students achieve their goals.",
   },
-  {
-    id: 2,
-    image: "/images/Residential.jpeg",
-    title: "Residential School",
-    description: "A home away from home, where learning meets life.",
-  },
+  
   {
     id: 3,
     image: "/images/Primary.jpeg",

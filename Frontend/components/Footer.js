@@ -1,6 +1,6 @@
 
 'use client';
-
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import React from 'react';
@@ -19,29 +19,66 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
 
           {/* About */}
-          <div>
-            <h3 className="text-lg md:text-xl font-bold mb-4 flex items-center gap-2">
-              <div className="w-8 h-8 bg-[#E4CC6F] rounded-full" />
-              GURUKULAM THE SCHOOL
-            </h3>
-            <p className="text-[#DDE5D8] text-sm leading-relaxed mb-4">
-              At Gurukulam, our mission is to shape responsible individuals who are not only academically
-              proficient but also morally grounded and socially aware.
-            </p>
+          {/* About */}
+<div>
+  {/* Logo + School Name */}
+  <div className="flex items-center gap-3 mb-4">
+    
+<Image
+  src="/images/Gurukulamlogo.jpeg"
+  alt="Gurukulam Logo"
+  width={60}
+  height={60}
+  className="object-contain w-[60px] h-auto"
+  priority
+/>
 
-            {/* Social Icons */}
-            <div className="flex gap-4">
-              <a href="#" className="bg-[#CFAF5C] p-2 rounded-full hover:bg-[#E4CC6F] transition">
-                <FaFacebook className="w-4 h-4 text-[#0D6453]" />
-              </a>
-              <a href="#" className="bg-[#CFAF5C] p-2 rounded-full hover:bg-[#E4CC6F] transition">
-                <FaYoutube className="w-4 h-4 text-[#0D6453]" />
-              </a>
-              <a href="#" className="bg-[#CFAF5C] p-2 rounded-full hover:bg-[#E4CC6F] transition">
-                <FaInstagram className="w-4 h-4 text-[#0D6453]" />
-              </a>
-            </div>
-          </div>
+    {/* School Name */}
+    <div>
+      <h3 className="text-lg md:text-2xl font-bold text-[#E4CC6F] leading-tight">
+        GURUKULAM THE SCHOOL
+      </h3>
+
+     
+    </div>
+  </div>
+
+  {/* Description */}
+  <p className="text-[#DDE5D8] text-sm leading-relaxed mb-4">
+    At Gurukulam, our mission is to shape responsible individuals who are not only academically
+    proficient but also morally grounded and socially aware.
+  </p>
+
+  {/* Social Icons */}
+  <div className="flex gap-4">
+    <a
+      href="https://www.facebook.com/GURUKULAMTHESchool/"
+     target="_blank"
+  rel="noopener noreferrer"
+  className="bg-[#CFAF5C] p-2 rounded-full hover:bg-[#E4CC6F] transition"
+    >
+      <FaFacebook className="w-4 h-4 text-[#0D6453]" />
+    </a>
+
+   <a
+  href="https://youtube.com/@gurukulamtheschool-c8v?si=HPPlpjD5K1ysol9G"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="bg-[#CFAF5C] p-2 rounded-full hover:bg-[#E4CC6F] transition"
+>
+  <FaYoutube className="w-4 h-4 text-[#0D6453]" />
+</a>
+
+<a
+  href="https://instagram.com/gurukulam.the.school?utm_source=ig_web_button_share"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="bg-[#CFAF5C] p-2 rounded-full hover:bg-[#E4CC6F] transition"
+>
+  <FaInstagram className="w-4 h-4 text-[#0D6453]" />
+</a> 
+  </div>
+</div>
 
           {/* Quick Links */}
           <div>

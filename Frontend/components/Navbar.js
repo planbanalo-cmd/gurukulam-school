@@ -250,8 +250,8 @@ export default function Navbar() {
                                 <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
                             </div>
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Photos</li>
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Videos</li>
+                                <Link href="/Photos"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Photos</li></Link>
+                                <Link href="/Videos"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Videos</li></Link>
                             </ul>
                         </li>
 
