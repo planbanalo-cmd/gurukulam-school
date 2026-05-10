@@ -13,29 +13,32 @@ export default function Photos() {
     {
       title: 'Annual Function 2026',
       date: '15 January 2026',
-      cover: '/images/gallery/annual/cover.jpg',
+      cover: '/images/gallery/annual/cover.jpeg',
 
       images: [
-        '/images/gallery/annual/1.jpg',
-        '/images/gallery/annual/2.jpg',
-        '/images/gallery/annual/3.jpg',
-        '/images/gallery/annual/4.jpg',
-        '/images/gallery/annual/5.jpg',
-        '/images/gallery/annual/6.jpg',
+        '/images/gallery/annual/1.jpeg',
+        '/images/gallery/annual/2.jpeg',
+        '/images/gallery/annual/3.jpeg',
+        '/images/gallery/annual/4.jpeg',
+        '/images/gallery/annual/5.jpeg',
+        '/images/gallery/annual/6.jpeg',
       ],
     },
 
     {
       title: 'Sports Day',
       date: '10 December 2025',
-      cover: '/images/gallery/sports/cover.jpg',
+      cover: '/images/gallery/sports/cover.jpeg',
 
       images: [
-        '/images/gallery/sports/1.jpg',
-        '/images/gallery/sports/2.jpg',
-        '/images/gallery/sports/3.jpg',
-        '/images/gallery/sports/4.jpg',
-        '/images/gallery/sports/5.jpg',
+        '/images/gallery/sports/1.jpeg',
+        '/images/gallery/sports/2.jpeg',
+        '/images/gallery/sports/3.jpeg',
+        '/images/gallery/sports/4.jpeg',
+        '/images/gallery/sports/5.jpeg',
+        '/images/gallery/sports/6.jpeg',
+        '/images/gallery/sports/7.jpeg',
+        '/images/gallery/sports/8.jpeg',
       ],
     },
 
