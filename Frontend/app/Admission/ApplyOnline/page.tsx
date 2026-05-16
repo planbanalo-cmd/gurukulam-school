@@ -206,22 +206,8 @@ Please guide me with next steps.`;
             />
           </div>
 
-          {/* Upload */}
-          <div>
-            <h2 className="section-title">Upload Documents</h2>
-            <div className="grid md:grid-cols-3 gap-5">
-              {["Birth Certificate", "Report Card", "Photograph"].map((item, i) => (
-                <label key={i} className="upload-box">
-                  <Upload size={18} />
-                  <span className="font-medium text-gray-700">{item}</span>
-                  <input type="file" hidden />
-                </label>
-              ))}
-            </div>
-          </div>
-          {error && (
-            <p className="text-red-600 font-medium text-center">{error}</p>
-          )}
+      
+          
 
           {/* Submit */}
           <button className="submit-btn">

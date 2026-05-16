@@ -43,7 +43,7 @@ export default function ChairmanMessage() {
             {/* Image */}
             <div className="relative rounded-3xl overflow-hidden shadow-md border border-[#7B9B68]/30">
               <img
-                src="/images/CEO.jpeg"
+                src="/images/Leader&Management/CEO.jpeg"
                 alt="CEO"
                 className="w-full h-[400px] object-cover"
               />

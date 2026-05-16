@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Trophy, Star, Target, Users } from 'lucide-react';
+import Link from 'next/link';
 
 export default function SuccessStoriesPage() {
 
@@ -175,11 +176,14 @@ export default function SuccessStoriesPage() {
             Be a part of Gurukulam and create your own success story.
           </h3>
 
-          <button className="px-6 py-3 rounded-lg text-white font-semibold
-            bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236]
-            shadow-lg hover:scale-105 transition">
+          <Link
+            href="/Admission/ApplyOnline"
+            className="inline-block px-6 py-3 rounded-lg text-white font-semibold
+  bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236]
+  shadow-lg hover:scale-105 transition duration-300"
+          >
             Apply Now
-          </button>
+          </Link>
         </motion.div>
 
       </div>

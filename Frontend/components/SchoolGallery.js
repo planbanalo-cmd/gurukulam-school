@@ -19,26 +19,37 @@ export default function SchoolGallery() {
 
   const sliderRef = useRef(null);
   const animationRef = useRef(null);
+  const positionRef = useRef(0);
 
   const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    let position = 0;
-    const speed = 0.5;
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const speed = isMobile ? 0.3 : 0.5;
 
     const animate = () => {
 
       if (!isPaused && sliderRef.current) {
 
-        position -= speed;
+        positionRef.current -= speed;
 
         const sliderWidth = sliderRef.current.scrollWidth / 2;
 
-        if (Math.abs(position) >= sliderWidth) {
-          position = 0;
+        if (Math.abs(positionRef.current) >= sliderWidth) {
+          positionRef.current = 0;
         }
 
-        sliderRef.current.style.transform = `translateX(${position}px)`;
+        sliderRef.current.style.transform = `translateX(${positionRef.current}px)`;
       }
 
       animationRef.current = requestAnimationFrame(animate);
@@ -52,7 +63,7 @@ export default function SchoolGallery() {
       }
     };
 
-  }, [isPaused]);
+  }, [isPaused, isMobile]);
 
   return (
     <section
@@ -71,7 +82,7 @@ export default function SchoolGallery() {
         >
 
           <h2
-            className="text-4xl md:text-5xl font-bold
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold
             bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236]
             bg-clip-text text-transparent"
           >
@@ -89,7 +100,7 @@ export default function SchoolGallery() {
 
           <div
             ref={sliderRef}
-            className="flex gap-6 w-max"
+            className="flex gap-3 sm:gap-4 md:gap-6 w-max"
           >
 
             {[...images, ...images].map((item, i) => (
@@ -97,7 +108,8 @@ export default function SchoolGallery() {
                 key={i}
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
-                className="group min-w-[260px] h-[200px] rounded-2xl overflow-hidden
+                className="group min-w-[140px] sm:min-w-[180px] md:min-w-[220px] lg:min-w-[260px] 
+                h-[140px] sm:h-[160px] md:h-[200px] rounded-xl sm:rounded-2xl overflow-hidden
                 shadow-md border border-[#7B9B68]/30 relative bg-white"
               >
 
@@ -114,10 +126,10 @@ export default function SchoolGallery() {
                   className="absolute inset-0
                   bg-gradient-to-t from-[#0D6453]/80 via-[#0D6453]/30 to-transparent
                   opacity-0 group-hover:opacity-100
-                  transition duration-300 flex items-end p-4"
+                  transition duration-300 flex items-end p-2 sm:p-3 md:p-4"
                 >
 
-                  <h3 className="text-white font-semibold text-lg">
+                  <h3 className="text-white font-semibold text-sm sm:text-base md:text-lg">
                     {item.title}
                   </h3>
 
@@ -141,3 +153,4 @@ export default function SchoolGallery() {
     </section>
   );
 }
+

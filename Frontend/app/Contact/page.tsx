@@ -11,7 +11,6 @@ import {
   Globe,
   Camera,
   Play,
-  
 } from 'lucide-react';
 
 export default function ContactPage() {

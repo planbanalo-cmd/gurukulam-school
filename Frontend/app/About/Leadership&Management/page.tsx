@@ -11,7 +11,7 @@ export default function LeadershipPage() {
         {
             name: "Principal",
             fullName: "Mrs. Snehlata",
-            img: "/images/Principal.jpeg",
+            img: "/images/Leader&Management/Principal.jpeg",
             exp: "15+ Years",
             quote: "Dream big, work hard, shine bright – the future is ours to create!",
             title: "From the Principal’s Desk",
@@ -33,7 +33,7 @@ Every child is a spark of brilliance – here, we make them shine.`,
         {
             name: "Vice Principal",
             fullName: "Mr. Narender Soni",
-            img: "/images/VicePrincipal.jpeg",
+            img: "/images/Leader&Management/VicePrincipal.jpeg",
             exp: "12+ Years",
             quote: "Igniting minds, shaping hearts, and building leaders for tomorrow.",
             title: "Message from Vice Principal",
@@ -52,7 +52,7 @@ Let us continue to move forward with determination and heart, transforming every
         {
             name: "Headmistress",
             fullName: "Ms. Neetu Singh",
-            img: "/images/Headmistress.jpeg",
+            img: "/images/Leader&Management/Headmistress.jpeg",
             exp: "10+ Years",
             quote: "Education is not the learning of facts, but the training of the mind to think.",
             title: "Message from Headmistress",
@@ -69,7 +69,7 @@ Let us continue to dream together, work together, and grow together — for the 
         {
             name: "School coordinator",
             fullName: "Mrs. Monika Gaur",
-            img: "/images/SchoolCoordinator.jpeg",
+            img: "/images/Leader&Management/SchoolCoordinator.jpeg",
             exp: "30 years of experience",
             quote: " Believe in your potential, stay curious, and remember that every small effort you make today builds the foundation for your success tomorrow.",
             title: "From the Coordinator’s Desk",

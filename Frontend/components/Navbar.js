@@ -185,7 +185,7 @@ export default function Navbar() {
                             </div>
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
                                 <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">E-Prospectus</li>
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Aptitude Test</li>
+                                <Link href="/Admission/Aptitude"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Aptitude Test</li></Link>
                                 <Link href="/Admission/Fees"> <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Fee Structure</li></Link>
                                 <Link href="/Admission/Admission&FeePolicy">  <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Admission & Fee Policy</li></Link>
                                 <Link href="/Admission/Eligibility&Criteria"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Eligibility Criteria</li></Link>
@@ -298,7 +298,7 @@ export default function Navbar() {
                                     {admissionOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
                                             <li className="py-1 text-black hover:mobile-item">E-Prospectus</li>
-                                            <li className="py-1 text-black hover:mobile-item">Aptitude Test</li>
+                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Admission/Aptitude">Aptitude Test</Link></li>
                                             <li className="py-1 text-black hover:mobile-item"><Link href="/Admission/Fees">Fee Structure</Link></li>
                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Admission/Admission&FeePolicy">Admission & Fee Policy</Link></li>
 
@@ -400,7 +400,7 @@ export default function Navbar() {
                                     )}
                                 </li>
 
-                                <li className="py-3 text-black hover-mobile-button cursor-pointer"><Link href="/">CONTACT</Link></li>
+                                <li className="py-3 text-black hover-mobile-button cursor-pointer"><Link href="/Contact">CONTACT</Link></li>
                             </ul>
                         </div>
                     )}
