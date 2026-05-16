@@ -11,31 +11,31 @@ const items = [
         name: "Mrs. Neha Sharma",
         role: "Parent",
         review: "Gurukulam has truly transformed my child's confidence and academic performance.",
-        image: "/images/parent1.jpg",
+       
     },
     {
         name: "Aarav Singh",
         role: "Student - Class 10",
         review: "Teachers explain concepts in a very simple way. I enjoy learning here.",
-        image: "/images/student1.jpg",
+        
     },
     {
         name: "Mr. Rajesh Verma",
         role: "Parent",
         review: "Best decision for my child's future. Highly recommended school.",
-        image: "/images/parent2.jpg",
+      
     },
     {
         name: "Simran Kaur",
         role: "Student - Class 12",
         review: "The guidance here helped me achieve my goals.",
-        image: "/images/student2.jpg",
+        
     },
     {
         name: "Mrs. Pooja Yadav",
         role: "Parent",
         review: "Excellent environment and discipline. My child loves going to school.",
-        image: "/images/parent3.jpg",
+       
     },
 ];
 
@@ -84,13 +84,7 @@ bg-clip-text text-transparent">
                         <div className="group bg-white rounded-2xl shadow-md p-6 text-center 
                         transition hover:scale-105 hover:shadow-lg">
 
-                            {/* Image */}
-                            <img
-                                src={item.image}
-                                alt={item.name}
-                                className="w-20 h-20 mx-auto rounded-full object-cover 
-                                border-4 border-[#7B9B68]/30 mb-4"
-                            />
+                            
 
                             {/* Review */}
                             <p className="text-gray-600 text-sm italic mb-4">

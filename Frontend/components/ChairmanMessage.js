@@ -65,29 +65,33 @@ export default function ChairmanMessage() {
             className="space-y-4"
           >
             <p className="text-gray-700 text-lg leading-relaxed italic">
-              “The purpose of education is not to fill minds, but to ignite them.”
+             “The purpose of education is not to fill minds, but to ignite them.”
             </p>
 
             <p className="text-gray-600 text-md leading-relaxed">
-              I still remember a young child who once walked through our gates—quiet, unsure, and hesitant to speak. Over time, that same child found confidence on the playground, curiosity in the classroom, and courage within. Watching that transformation is what education truly means to us.
+             Education is not merely about preparing children for examinations; it is about shaping their character and preparing them for life itself. At our school, we are deeply committed to creating an environment where every child discovers their true potential, nurtures their curiosity, and evolves into a confident, compassionate, and responsible individual.
             </p>
 
             {expanded && (
               <>
                 <p className="text-gray-600 text-md leading-relaxed">
-                  At our school, we don’t just teach lessons—we witness journeys. Every child arrives with a story waiting to unfold, and it is our privilege to help shape that story with care, patience, and purpose. We believe that education goes far beyond books and examinations; it is about discovering one’s voice, building character, and learning how to face life with strength and kindness.
+                 The real strength of an institution lies not only in academic excellence but in the values it instills and the vision it upholds. We envision a learning community where curiosity drives exploration, discipline comes from within, and innovation is a way of life. We empower our students to dream without fear, think with independence, and act with integrity—qualities that will enable them to face the complexities of the modern world with courage and conviction.
                 </p>
 
                 <p className="text-gray-600 text-md leading-relaxed">
-                  Being a residential school, we become a second home for our students. Here, friendships are formed over shared meals, resilience is built through everyday challenges, and values are quietly instilled in moments both big and small. It is in these simple, meaningful experiences that children grow—not just academically, but as individuals.
+                  As a residential school, we provide more than education—we provide a “home away from home.” Here, every experience, whether in the classroom, on the field, or in daily life, contributes to shaping character, strengthening resilience, and building lifelong values. We are dedicated to nurturing not just achievers, but future leaders—individuals who will lead with wisdom, serve with empathy, and contribute meaningfully to society.
 
                 </p>
 
                 <p className="text-gray-600 text-md leading-relaxed">
-                  We dream of a community where every child feels seen, heard, and valued. A place where curiosity is encouraged, mistakes are embraced as lessons, and every success—big or small—is celebrated. Our aim is not only to prepare students for the future, but to help them become individuals who will shape it with integrity, empathy, and courage.
+                 Our mission is to ensure that every child who enters our gates is transformed—not just academically, but holistically—emerging as a confident individual with a strong sense of purpose and responsibility.
                 </p>
                 <p className="text-gray-600 text-md leading-relaxed">
-                  As we continue this journey together, I invite you to be a part of this shared vision—where we give our children the wings to explore the world, and the roots to always stay grounded in values.
+                  Let us continue to move forward together with unwavering dedication, guided by our vision of excellence and our commitment to holistic education. Together, we will shape a future where our students not only succeed but inspire.
+                </p>
+                <p className="text-gray-600 text-md leading-relaxed">
+                  “Give your children wings of knowledge and roots of values, and they will conquer the world with humility and strength.”
+
                 </p>
               </>
             )}

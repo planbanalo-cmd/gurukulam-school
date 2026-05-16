@@ -83,41 +83,71 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h4 className="text-lg font-bold mb-6 text-[#E4CC6F]">Quick Links</h4>
-            <ul className="space-y-3">
-              {["Home", "About Us", "Courses", "Blog", "Contact Us"].map((item, i) => (
-                <li key={i}>
-                  <a href="#" className="text-[#DDE5D8] hover:text-[#E4CC6F] transition text-sm">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
+           <ul className="space-y-3">
+  {[
+    { name: "Home", link: "/" },
+    { name: "About Us", link: "/About/History&Foundation" },
+    { name: "Infrastructure", link: "/About/Infrastructure" },
+    { name: "Photos", link: "/Gallery/Photos" },
+    { name: "Videos", link: "/Gallery/Videos" }
+  ].map((item, i) => (
+    <li key={i}>
+      <a
+        href={item.link}
+        className="text-[#DDE5D8] hover:text-[#E4CC6F] transition text-sm flex items-center gap-2 group"
+      >
+        <span className="w-0 group-hover:w-2 h-[2px] bg-[#E4CC6F] transition-all duration-300"></span>
+        {item.name}
+      </a>
+    </li>
+  ))}
+</ul>
           </div>
            <div>
             <h4 className="text-lg font-bold mb-6 text-[#E4CC6F]">Quick Links</h4>
-            <ul className="space-y-3">
-              {["Home", "About Us", "Courses", "Blog", "Contact Us"].map((item, i) => (
-                <li key={i}>
-                  <a href="#" className="text-[#DDE5D8] hover:text-[#E4CC6F] transition text-sm">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
+           <ul className="space-y-3">
+  {[
+    { name: "Vision & Mission", link: "/About/Vision&Mission" },
+    { name: "Boarding", link: "/Boarding/Welcome" },
+    { name: "Awards", link: "/Achivements/Awards&Certificates" },
+    { name: "Faculty", link: "/Academic/Faculty" },
+    { name: "Curriculum", link: "/Academic/Curriculum" }
+  ].map((item, i) => (
+    <li key={i}>
+      <a
+        href={item.link}
+        className="text-[#DDE5D8] hover:text-[#E4CC6F] transition text-sm flex items-center gap-2 group"
+      >
+        <span className="w-0 group-hover:w-2 h-[2px] bg-[#E4CC6F] transition-all duration-300"></span>
+        {item.name}
+      </a>
+    </li>
+  ))}
+</ul>
           </div>
 
           {/* Academics */}
           <div>
-            <h4 className="text-lg font-bold mb-6 text-[#E4CC6F]">Academics</h4>
+            <h4 className="text-lg font-bold mb-6 text-[#E4CC6F]">Quick Links</h4>
             <ul className="space-y-3">
-              {["Pre-Primary", "Primary", "Secondary", "Higher Secondary", "Admissions"].map((item, i) => (
-                <li key={i}>
-                  <a href="#" className="text-[#DDE5D8] hover:text-[#E4CC6F] transition text-sm">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
+  {[
+    { name: "Contact", link: "/Contact" },
+    { name: "Fees", link: "/Admissions/Fees" },
+    { name: "Eligibility & Criteria", link: "/Admissions/Eligibility&Criteria" },
+    { name: "Leadership & Management", link: "/About/Leadership&Management" },
+    { name: "Daily Schedule", link: "/Academic/DailySchedule" }
+  ].map((item, i) => (
+    <li key={i}>
+      <a
+        href={item.link}
+        className="text-[#DDE5D8] hover:text-[#E4CC6F] transition text-sm flex items-center gap-2 group"
+      >
+        <span className="w-0 group-hover:w-2 h-[2px] bg-[#E4CC6F] transition-all duration-300"></span>
+        {item.name}
+      </a>
+    </li>
+  ))}
+</ul>
           </div>
 
           {/* Contact */}
@@ -129,26 +159,49 @@ export default function Footer() {
 
               {/* 📍 Map */}
               <div>
-                <div className="w-full h-48 rounded-lg overflow-hidden border border-[#7B9B68]/30">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.6659015157265!2d77.12345670000001!3d28.567890100000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5d6d0000001%3A0x1234567890abcdef!2sGurukulam%20School!5e0!3m2!1sen!2sin!4v1618316216000"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    loading="lazy"
-                    title="Gurukulam School Location"
-                  ></iframe>
-                </div>
+  <a
+    href="https://maps.app.goo.gl/f75FzxTg1nzH23LZ6"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="block w-full h-48 rounded-lg overflow-hidden border border-[#7B9B68]/30 group relative"
+  >
 
-                <a
-                  href="https://maps.app.goo.gl/f75FzxTg1nzH23LZ6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#E4CC6F] hover:text-white text-sm mt-2 inline-block transition"
-                >
-                  Get Directions →
-                </a>
-              </div>
+    {/* Map */}
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.6659015157265!2d77.12345670000001!3d28.567890100000003!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5d6d0000001%3A0x1234567890abcdef!2sGurukulam%20School!5e0!3m2!1sen!2sin!4v1618316216000"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      loading="lazy"
+      title="Gurukulam School Location"
+      className="pointer-events-none"
+    ></iframe>
+
+    {/* Hover Overlay */}
+    <div
+      className="absolute inset-0 bg-[#0D6453]/20 
+      opacity-0 group-hover:opacity-100 transition duration-300
+      flex items-center justify-center"
+    >
+      <span
+        className="bg-[#E4CC6F] text-[#0D6453] px-4 py-2 rounded-full 
+        font-semibold text-sm shadow-lg"
+      >
+        Open Directions
+      </span>
+    </div>
+
+  </a>
+
+  <a
+    href="https://maps.app.goo.gl/f75FzxTg1nzH23LZ6"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-[#E4CC6F] hover:text-white text-sm mt-3 inline-flex items-center gap-2 transition"
+  >
+    Get Directions →
+  </a>
+</div>
 
               {/* 📞 Contact Info */}
               <ul className="space-y-4">
@@ -167,8 +220,12 @@ export default function Footer() {
                     <a href="tel:+919996007481" className="text-[#DDE5D8] hover:text-[#E4CC6F] text-sm">
                       +91 9996007481
                     </a>
+                    
                     <a href="tel:+919996007482" className="text-[#DDE5D8] hover:text-[#E4CC6F] text-sm">
-                      +91 9996007482
+                      +91 9996007482 
+                    </a>
+                    <a href="tel:+919996009098" className="text-[#DDE5D8] hover:text-[#E4CC6F] text-sm">
+                      +91 9996009098
                     </a>
                   </div>
                 </li>

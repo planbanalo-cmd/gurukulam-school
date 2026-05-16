@@ -13,6 +13,7 @@ export default function Navbar() {
     const [boardingOpen, setBoardingOpen] = useState(false);
     const [eventsOpen, setEventsOpen] = useState(false);
     const [galleryOpen, setGalleryOpen] = useState(false);
+     const [achivementOpen, setAchivementOpen] = useState(false);
 
 
 
@@ -168,11 +169,11 @@ export default function Navbar() {
                                 <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
                             </div>
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
-                                <Link href="/History&Foundation"><li className="px-3 xl:px-4 py-2 border-b text-xs xl:text-sm cursor-pointer hover-dropdown-item">History & Foundation</li></Link>
-                                <Link href="/Vision&Mission"><li className="px-3 xl:px-4 py-2 border-b text-xs xl:text-sm cursor-pointer hover-dropdown-item">Our Vision & Mission</li></Link>
-                                <Link href="/Infrastructure"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Infrastructure</li></Link>
-                                <Link href="/Leadership&Management"><li className="px-3 xl:px-4 py-2 border-b text-xs xl:text-sm cursor-pointer hover-dropdown-item">Leadership & Management</li></Link>
-                                <Link href="/Privacy&Policy"><li className="px-3 xl:px-4 py-2 border-b text-xs xl:text-sm cursor-pointer hover-dropdown-item">Privacy Policy</li></Link>
+                                <Link href="/About/History&Foundation"><li className="px-3 xl:px-4 py-2 border-b text-xs xl:text-sm cursor-pointer hover-dropdown-item">History & Foundation</li></Link>
+                                <Link href="/About/Vision&Mission"><li className="px-3 xl:px-4 py-2 border-b text-xs xl:text-sm cursor-pointer hover-dropdown-item">Our Vision & Mission</li></Link>
+                                <Link href="/About/Infrastructure"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Infrastructure</li></Link>
+                                <Link href="/About/Leadership&Management"><li className="px-3 xl:px-4 py-2 border-b text-xs xl:text-sm cursor-pointer hover-dropdown-item">Leadership & Management</li></Link>
+                                <Link href="/About/Privacy&Policy"><li className="px-3 xl:px-4 py-2 border-b text-xs xl:text-sm cursor-pointer hover-dropdown-item">Privacy Policy</li></Link>
                             </ul>
                         </li>
 
@@ -185,10 +186,10 @@ export default function Navbar() {
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
                                 <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">E-Prospectus</li>
                                 <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Aptitude Test</li>
-                                <Link href="/Fees"> <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Fee Structure</li></Link>
-                                <Link href="/Admission&FeePolicy">  <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Admission & Fee Policy</li></Link>
-                                <Link href="/Eligibility&Criteria"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Eligibility Criteria</li></Link>
-                                <Link href="/ApplyOnline"><li className="px-3 xl:px-4 py-2 cursor-pointer hover-dropdown-item">Apply Online</li></Link>
+                                <Link href="/Admission/Fees"> <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Fee Structure</li></Link>
+                                <Link href="/Admission/Admission&FeePolicy">  <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Admission & Fee Policy</li></Link>
+                                <Link href="/Admission/Eligibility&Criteria"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Eligibility Criteria</li></Link>
+                                <Link href="/Admission/ApplyOnline"><li className="px-3 xl:px-4 py-2 cursor-pointer hover-dropdown-item">Apply Online</li></Link>
                             </ul>
                         </li>
 
@@ -199,9 +200,9 @@ export default function Navbar() {
                                 <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
                             </div>
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
-                               <Link href="/Curriculum"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Curriculum</li></Link>
+                               <Link href="/Academic/Curriculum"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Curriculum</li></Link>
 
-                                <Link href="/Faculty"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Faculty</li></Link>
+                                <Link href="/Academic/Faculty"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Faculty</li></Link>
 
                             </ul>
                         </li>
@@ -211,8 +212,8 @@ export default function Navbar() {
                                 <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
                             </div>
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
-                                <Link href="/Awards&Certification"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Awards & Certification</li></Link>
-                                <Link href="/Success-Stories"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Success Stories</li></Link>
+                                <Link href="/Achivements/Awards&Certification"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Awards & Certification</li></Link>
+                                <Link href="/Achivements/Success-Stories"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Success Stories</li></Link>
 
                             </ul>
                         </li>
@@ -224,10 +225,10 @@ export default function Navbar() {
                                 <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
                             </div>
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
-                               <Link href="/Welcome"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Welcome</li></Link>
-                                <Link href="/Room-Allocation"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Room Allocation</li></Link>
-                                <Link href="/Academic-Support"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Academic Support</li></Link>
-                                <Link href="/Daily-Schedule"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Daily Schedule</li></Link>
+                               <Link href="/Boarding/Welcome"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Welcome</li></Link>
+                                <Link href="/Boarding/Room-Allocation"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Room Allocation</li></Link>
+                                <Link href="/Boarding/Academic-Support"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Academic Support</li></Link>
+                                <Link href="/Boarding/Daily-Schedule"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Daily Schedule</li></Link>
                                 
                             </ul>
                         </li>
@@ -239,9 +240,9 @@ export default function Navbar() {
                                 <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
                             </div>
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Circulars</li>
-                                <li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Newsletter</li>
-                                <li className="px-3 xl:px-4 py-2 cursor-pointer hover-dropdown-item">Magazine</li>
+                                <Link href="/Events/Circulars"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Circulars</li></Link>
+                                <Link href="/Events/Newsletter"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Newsletter</li></Link>
+                                <Link href="/Events/Magazine"><li className="px-3 xl:px-4 py-2 cursor-pointer hover-dropdown-item">Magazine</li></Link>
                             </ul>
                         </li>
                         <li className="relative group text-white cursor-pointer px-1 xl:px-2 py-2 rounded transition duration-200 hover:scale-105 whitespace-nowrap hover-nav-item">
@@ -250,12 +251,12 @@ export default function Navbar() {
                                 <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
                             </div>
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
-                                <Link href="/Photos"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Photos</li></Link>
-                                <Link href="/Videos"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Videos</li></Link>
+                                <Link href="/Gallery/Photos"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Photos</li></Link>
+                                <Link href="/Gallery/Videos"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Videos</li></Link>
                             </ul>
                         </li>
 
-                        <li className="text-white cursor-pointer px-1 xl:px-2 py-2 rounded transition duration-200 hover:scale-105 whitespace-nowrap text-xs xl:text-base hover-nav-item">CONTACT</li>
+                        <Link href="/Contact"><li className="text-white cursor-pointer px-1 xl:px-2 py-2 rounded transition duration-200 hover:scale-105 whitespace-nowrap text-xs xl:text-base hover-nav-item">CONTACT</li></Link>
                     </ul>
 
                     {/* Mobile Menu */}
@@ -275,11 +276,11 @@ export default function Navbar() {
                                     </button>
                                     {aboutOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/History&Foundation">History & Foundation</Link></li>
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Vision&Mission">Our Vision & Mission</Link></li>
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Infrastructure">Infrastructure</Link></li>
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Leadership&Management">Leadership & Management</Link></li>
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Privacy&Policy">Privacy Policy</Link></li>
+                                            <li className="py-1 text-black hover:mobile-item"><Link href="/About/History&Foundation">History & Foundation</Link></li>
+                                            <li className="py-1 text-black hover:mobile-item"><Link href="/About/Vision&Mission">Our Vision & Mission</Link></li>
+                                            <li className="py-1 text-black hover:mobile-item"><Link href="/About/Infrastructure">Infrastructure</Link></li>
+                                            <li className="py-1 text-black hover:mobile-item"><Link href="/About/Leadership&Management">Leadership & Management</Link></li>
+                                            <li className="py-1 text-black hover:mobile-item"><Link href="/About/Privacy&Policy">Privacy Policy</Link></li>
 
                                         </ul>
                                     )}
@@ -298,11 +299,11 @@ export default function Navbar() {
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
                                             <li className="py-1 text-black hover:mobile-item">E-Prospectus</li>
                                             <li className="py-1 text-black hover:mobile-item">Aptitude Test</li>
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Fees">Fee Structure</Link></li>
-                                           <li className="py-1 text-black hover:mobile-item"><Link href="/Admission&FeePolicy">Admission & Fee Policy</Link></li>
+                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Admission/Fees">Fee Structure</Link></li>
+                                           <li className="py-1 text-black hover:mobile-item"><Link href="/Admission/Admission&FeePolicy">Admission & Fee Policy</Link></li>
 
-                                           <Link href="/Eligibility&Criteria"> <li className="py-1 text-black hover:mobile-item">Eligibility Criteria</li></Link>
-                                            <Link href="/ApplyOnline"><li className="py-1 text-black hover:mobile-item">Apply Online</li></Link>
+                                           <Link href="/Admission/Eligibility&Criteria"> <li className="py-1 text-black hover:mobile-item">Eligibility Criteria</li></Link>
+                                            <Link href="/Admission/ApplyOnline"><li className="py-1 text-black hover:mobile-item">Apply Online</li></Link>
                                         </ul>
                                     )}
                                 </li>
@@ -318,13 +319,30 @@ export default function Navbar() {
                                     </button>
                                     {acadamicOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                            <Link href="/Curriculum"><li className="py-1 text-black hover-mobile-dropdown">Curriculum</li></Link>
-                                            <Link href="/Faculty"><li className="py-1 text-black hover-mobile-dropdown">Faculty</li></Link>
+                                            <Link href="/Academic/Curriculum"><li className="py-1 text-black hover-mobile-dropdown">Curriculum</li></Link>
+                                            <Link href="/Academic/Faculty"><li className="py-1 text-black hover-mobile-dropdown">Faculty</li></Link>
 
 
                                         </ul>
                                     )}
                                 </li>
+                                <li className="py-3 border-b text-black">
+                                    <button
+                                        onClick={() => setAchivementOpen(!achivementOpen)}
+                                        className="w-full flex justify-between items-center text-black hover-mobile-button"
+                                    >
+                                        <span>ACHIVEMENTS</span>
+                                        <ChevronDown className={`w-4 h-4 transition-transform ${achivementOpen ? 'rotate-180' : ''}`} />
+                                    </button>
+                                    {achivementOpen && (
+                                        <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
+                                            <Link href="/Achivements/Awards&Certification"><li className="py-1 text-black hover-mobile-dropdown">Awards & Certification</li></Link>
+                                            <Link href="/Achivements/Success-Stories"><li className="py-1 text-black hover-mobile-dropdown">Success Stories</li></Link>
+                                        </ul>
+                                    )}
+                                </li>       
+
+                                       
 
                                 {/* Mobile Boarding House */}
                                 <li className="py-3 border-b text-black">
@@ -337,10 +355,10 @@ export default function Navbar() {
                                     </button>
                                     {boardingOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                            <li className="py-1 text-black hover-mobile-dropdown">Welcome</li>
-                                            <li className="py-1 text-black hover-mobile-dropdown">Room Allocation</li>
-                                             <li className="py-1 text-black hover-mobile-dropdown">Academic Support</li>
-                                            <li className="py-1 text-black hover-mobile-dropdown">Daily Schedule</li>
+                                            <Link href="/Boarding/Welcome"><li className="py-1 text-black hover-mobile-dropdown">Welcome</li></Link>
+                                            <Link href="/Boarding/Room-Allocation"><li className="py-1 text-black hover-mobile-dropdown">Room Allocation</li></Link>
+                                            <Link href="/Boarding/Academic-Support"><li className="py-1 text-black hover-mobile-dropdown">Academic Support</li></Link>
+                                            <Link href="/Boarding/Daily-Schedule"><li className="py-1 text-black hover-mobile-dropdown">Daily Schedule</li></Link>
                                            
                                          
                                           
@@ -359,9 +377,9 @@ export default function Navbar() {
                                     </button>
                                     {eventsOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                            <li className="py-1 text-black hover-mobile-dropdown">Circulars</li>
-                                            <li className="py-1 text-black hover-mobile-dropdown">Newsletter</li>
-                                            <li className="py-1 text-black hover-mobile-dropdown">Magazine</li>
+                                           <Link href="/Events/Circulars"><li className="py-1 text-black hover-mobile-dropdown">Circulars</li></Link>
+                                            <Link href="/Events/Newsletter"><li className="py-1 text-black hover-mobile-dropdown">Newsletter</li></Link>
+                                            <Link href="/Events/Magazine"><li className="py-1 text-black hover-mobile-dropdown">Magazine</li></Link>
                                         </ul>
                                     )}
                                 </li>
@@ -375,8 +393,8 @@ export default function Navbar() {
                                     </button>
                                     {galleryOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                            <li className="py-1 text-black hover-mobile-dropdown">Photos</li>
-                                            <li className="py-1 text-black hover-mobile-dropdown">Videos</li>
+                                           <Link href="/Gallery/Photos"><li className="py-1 text-black hover-mobile-dropdown">Photos</li></Link>
+                                            <Link href="/Gallery/Videos"><li className="py-1 text-black hover-mobile-dropdown">Videos</li></Link>
 
                                         </ul>
                                     )}

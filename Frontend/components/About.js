@@ -95,64 +95,61 @@ At Gurukulam, our mission is to shape responsible individuals who are not only a
                     className="w-full h-80 md:h-96 object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-orange-600 rounded-lg opacity-20"></div>
+                <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#f8faf9]-600 rounded-lg opacity-20"></div>
               </div>
             </div>
 
             {/* Content */}
             <div className="text-white">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                About Gurukulam The School
-              </h2>
 
-              <p className="text-base md:text-lg leading-relaxed text-gray-100 whitespace-pre-line">
-                {expanded ? fullText : shortText}
-              </p>
+  {/* HEADING */}
+  <h2
+    className="
+      text-4xl md:text-5xl font-extrabold mb-6
+      bg-gradient-to-r from-[#E4CC6F] via-[#F6E7A1] to-[#CFAF5C]
+      bg-clip-text text-transparent
+      leading-tight
+    "
+  >
+    About Gurukulam The School
+  </h2>
 
-              <Link
-                href="/History&Foundation"
-                scroll={true}
-                className="inline-block mt-6 bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105"
-              >
-               Learn More
-              </Link>
+  {/* TEXT */}
+  <p
+    className="
+      text-base md:text-lg leading-relaxed
+      text-[#EAF4EE]
+      whitespace-pre-line
+      tracking-wide
+    "
+  >
+    {expanded ? fullText : shortText}
+  </p>
 
+  {/* BUTTON */}
+  <Link
+    href="/About/History&Foundation"
+    scroll={true}
+    className="
+      inline-flex items-center gap-2 mt-8
+      bg-gradient-to-r from-[#E4CC6F] to-[#CFAF5C]
+      hover:from-[#f1d97d] hover:to-[#d9bb63]
+      text-[#0D6453]
+      font-bold
+      py-3 px-8
+      rounded-xl
+      shadow-lg shadow-[#00000020]
+      transition-all duration-300
+      hover:scale-105 hover:shadow-xl
+    "
+  >
+    Learn More
+  </Link>
 
-            </div>
+</div>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-16 pt-12 border-t border-white/20">
-
-            <div className="text-center">
-              <div className="text-3xl md:text-5xl font-bold text-orange-400">
-                {stats.teachers}+
-              </div>
-              <p className="text-gray-100 font-semibold">Certified Teachers</p>
-            </div>
-
-            <div className="text-center">
-              <div className="text-3xl md:text-5xl font-bold text-orange-400">
-                {stats.students}+
-              </div>
-              <p className="text-gray-100 font-semibold">Total Students</p>
-            </div>
-
-            <div className="text-center">
-              <div className="text-3xl md:text-5xl font-bold text-orange-400">
-                {stats.courses}+
-              </div>
-              <p className="text-gray-100 font-semibold">Courses Offered</p>
-            </div>
-
-            <div className="text-center">
-              <div className="text-3xl md:text-5xl font-bold text-orange-400">
-                {stats.awards}+
-              </div>
-              <p className="text-gray-100 font-semibold">Awards Won</p>
-            </div>
-
-          </div>
+         
         </div>
       </div>
     </section>

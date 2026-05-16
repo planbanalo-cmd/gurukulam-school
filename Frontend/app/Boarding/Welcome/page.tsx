@@ -8,6 +8,7 @@ import {
   BookOpen,
   Heart,
   Star,
+  Link,
 } from 'lucide-react';
 
 export default function BoardingPage() {
@@ -209,22 +210,15 @@ export default function BoardingPage() {
 
             <div className="flex flex-wrap justify-center gap-5 mt-12">
               <button
-                className="px-8 py-4 rounded-2xl
-                bg-white text-[#156445]
-                font-bold hover:scale-105 transition duration-300"
-              >
-                Apply Now
-              </button>
-
-              <button
-                className="px-8 py-4 rounded-2xl
+                 className="px-8 py-4 rounded-2xl
                 border border-white/20
                 bg-white/10 backdrop-blur-xl
                 text-white font-semibold 
                 hover:bg-white/20 transition duration-300"
               >
-                Schedule Visit
+               <Link href="/apply"> Apply Now</Link>
               </button>
+
             </div>
           </div>
         </div>
