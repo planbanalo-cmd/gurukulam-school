@@ -43,111 +43,111 @@ const teachers = [
   {
     name: 'Archana Pandey',
     role: 'M3 Class',
-    image: '/images/faculty/PrePrimary/Archana.jpeg',
+    image: '/images/Faculty/PrePrimary/Archana.jpeg',
   },
   {
     name: 'Anju',
     role: '2nd Class',
-    image: '/images/faculty/PrePrimary/Anju.jpeg',
+    image: '/images/Faculty/PrePrimary/Anju.jpeg',
   },
   {
     name: 'Kavita',
     role: 'M2 Class',
-    image: '/images/faculty/PrePrimary/Kavita.jpeg',
+    image: '/images/Faculty/PrePrimary/Kavita.jpeg',
   },
   {
     name: 'Gunjan',
     role: 'M3 Class',
-    image: '/images/faculty/PrePrimary/Gunjan.jpeg',
+    image: '/images/Faculty/PrePrimary/Gunjan.jpeg',
   },
   {
     name: 'Monika',
     role: 'Coordinator',
-    image: '/images/faculty/PrePrimary/MonikaCO.jpeg',
+    image: '/images/Faculty/PrePrimary/MonikaCO.jpeg',
   },
   {
     name: 'Monika',
     role: 'Class 1',
-    image: '/images/faculty/PrePrimary/MonikaC1.jpeg',
+    image: '/images/Faculty/PrePrimary/MonikaC1.jpeg',
   },
   {
     name: 'Monika',
     role: 'Class 1',
-    image: '/images/faculty/PrePrimary/Monika.jpeg',
+    image: '/images/Faculty/PrePrimary/Monika.jpeg',
   },
 ];
 const seniorTeachers = [
   {
     name: 'Akansha Yadav',
     role: 'PGT English',
-    image: '/images/faculty/Senior/AkanshaYadav.jpeg',
+    image: '/images/Faculty/Senior/AkanshaYadav.jpeg',
   },
   {
     name: 'Anju',
     role: 'TGT',
-    image: '/images/faculty/Senior/Anju.jpeg',
+    image: '/images/Faculty/Senior/Anju.jpeg',
   },
 
   {
     name: 'Kajal',
     role: 'PGT Chemistry',
-    image: '/images/faculty/Senior/Kajal.jpeg',
+    image: '/images/Faculty/Senior/Kajal.jpeg',
   },
   {
     name: 'Komal',
     role: 'Receptionist',
-    image: '/images/faculty/Senior/Komal.jpeg',
+    image: '/images/Faculty/Senior/Komal.jpeg',
   },
   {
     name: 'Poonam',
     role: 'PGT Hindi',
-    image: '/images/faculty/Senior/Poonam.jpeg',
+    image: '/images/Faculty/Senior/Poonam.jpeg',
   },
   {
     name: 'Pinki',
     role: 'PRT',
-    image: '/images/faculty/Senior/Pinki.jpeg',
+    image: '/images/Faculty/Senior/Pinki.jpeg',
   },
   {
     name: 'Priya',
     role: 'PGT Eco & Bst',
-    image: '/images/faculty/Senior/Priya.jpeg',
+    image: '/images/Faculty/Senior/Priya.jpeg',
   },
   {
     name: 'Pushpa',
     role: 'PGT Eco & Bst',
-    image: '/images/faculty/Senior/Pushpa.jpeg',
+    image: '/images/Faculty/Senior/Pushpa.jpeg',
   }, {
     name: 'Tannu',
     role: 'PGT Eco & Bst',
-    image: '/images/faculty/Senior/Tannu.jpeg',
+    image: '/images/Faculty/Senior/Tannu.jpeg',
   }, {
     name: 'Khushwinder',
     role: 'PGT Eco & Bst',
-    image: '/images/faculty/Senior/Khushwinder.jpeg',
+    image: '/images/Faculty/Senior/Khushwinder.jpeg',
   }, {
     name: 'Vandana',
     role: 'PGT Eco & Bst',
-    image: '/images/faculty/Senior/Vandana.jpeg',
+    image: '/images/Faculty/Senior/Vandana.jpeg',
   },
   {
     name: 'Sumant',
     role: 'PGT Eco & Bst',
-    image: '/images/faculty/Senior/Sumant.jpeg',
+    image: '/images/Faculty/Senior/Sumant.jpeg',
   }, {
     name: 'VijenderSharma',
     role: 'PGT Eco & Bst',
-    image: '/images/faculty/Senior/VijenderSharma.jpeg',
+    image: '/images/Faculty/Senior/VijenderSharma.jpeg',
   },
   {
     name: 'Vinay Sharma',
     role: 'PGT Eco & Bst',
-    image: '/images/faculty/Senior/VinaySharma.jpeg',
+    image: '/images/Faculty/Senior/VinaySharma.jpeg',
   },
   {
     name: 'Dhananjay',
     role: 'Coordinator',
-    image: '/images/faculty/Senior/Dhananjay.jpeg',
+    image: '/images/Faculty/Senior/Dhananjay.jpeg',
   },
 ];
 

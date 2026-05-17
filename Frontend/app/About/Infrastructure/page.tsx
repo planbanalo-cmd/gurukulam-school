@@ -14,32 +14,32 @@ export default function InfrastructurePage() {
     {
       title: "Classrooms",
       desc: "Our classrooms are spacious, well-ventilated, and equipped with modern teaching aids, creating an interactive and engaging learning environment for students.",
-      image: "/images/classroom.jpg"
+      image: "/images/Infrastructure/Classroom.jpeg"
     },
     {
       title: "Laboratories",
       desc: "We provide well-equipped science and computer laboratories that encourage practical learning, experimentation, and innovation.",
-      image: "/images/lab.jpg"
+      image: "/images/Infrastructure/Lab.jpeg"
     },
     {
       title: "Library",
       desc: "Our library is a knowledge hub with a wide collection of books, reference materials, and digital resources to promote reading habits and research skills.",
-      image: "/images/library.jpg"
+      image: "/images/Infrastructure/Library.jpeg"
     },
     {
       title: "Sports Facilities",
       desc: "We offer excellent sports infrastructure with dedicated spaces and coaching to support physical fitness, teamwork, and overall development.",
-      image: "/images/sports.jpg"
+      image: "/images/Infrastructure/Sports.jpeg"
     },
     {
       title: "Transport",
       desc: "The school provides safe and reliable transport facilities with well-maintained buses and trained staff, ensuring comfortable travel for students.",
-      image: "/images/bus.jpg"
+      image: "/images/Infrastructure/Bus.jpeg"
     },
     {
       title: "Hostel",
       desc: "Our residential hostel offers a safe, disciplined, and homely environment with proper care, nutritious meals, and academic support for students.",
-      image: "/images/hostel.jpg"
+      image: "/images/Infrastructure/Hostel.jpeg"
     }
   ];
 

@@ -209,16 +209,24 @@ export default function BoardingPage() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-5 mt-12">
-              <button
-                 className="px-8 py-4 rounded-2xl
-                border border-white/20
-                bg-white/10 backdrop-blur-xl
-                text-white font-semibold 
-                hover:bg-white/20 transition duration-300"
+              <Link
+                href="/Admissions/ApplyOnline"
+                className="
+    inline-flex items-center justify-center
+    px-8 py-4
+    rounded-2xl
+    bg-[#146B4D]
+    text-white
+    font-semibold
+    text-lg
+    shadow-xl
+    hover:bg-[#0F5B41]
+    hover:scale-105
+    transition-all duration-300
+    "
               >
-               <Link href="/apply"> Apply Now</Link>
-              </button>
-
+                Apply Now
+              </Link>
             </div>
           </div>
         </div>

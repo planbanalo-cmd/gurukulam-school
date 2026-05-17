@@ -12,7 +12,7 @@ export default function LeadershipPage() {
             name: "Principal",
             fullName: "Mrs. Snehlata",
             img: "/images/Leader&Management/Principal.jpeg",
-            exp: "15+ Years",
+            exp: "12+ Years",
             quote: "Dream big, work hard, shine bright – the future is ours to create!",
             title: "From the Principal’s Desk",
             message: `A school is not just made of classrooms and books—it is made of dreams, values, and the lives we touch each day.
@@ -34,7 +34,7 @@ Every child is a spark of brilliance – here, we make them shine.`,
             name: "Vice Principal",
             fullName: "Mr. Narender Soni",
             img: "/images/Leader&Management/VicePrincipal.jpeg",
-            exp: "12+ Years",
+            exp: "17+ Years",
             quote: "Igniting minds, shaping hearts, and building leaders for tomorrow.",
             title: "Message from Vice Principal",
             message: `Education is not merely the transmission of knowledge—it is the awakening of minds, the shaping of character, and the building of a future filled with purpose. At our school, we believe that every child carries within them a world of possibilities, and our vision is to unlock that potential through care, creativity, and courage.
