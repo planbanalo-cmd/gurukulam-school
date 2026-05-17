@@ -293,43 +293,65 @@ export default function Photos() {
               </div>
 
               {/* GALLERY */}
-              <div className="p-8">
+              {/* GALLERY */}
+<div className="p-8">
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                  {selectedAlbum.images.map((img: string, i: number) => (
-                    <motion.div
-                      key={i}
-                      whileHover={{ scale: 1.03 }}
-                      className="group relative overflow-hidden rounded-2xl shadow-xl border border-gray-200"
-                    >
+    {selectedAlbum.images.map((img: string, i: number) => (
+      <motion.div
+        key={i}
+        whileHover={{ scale: 1.03 }}
+        className="
+          group
+          relative
+          overflow-hidden
+          rounded-2xl
+          shadow-xl
+          border
+          border-gray-200
+          h-64 sm:h-72 md:h-80
+          bg-gray-100
+        "
+      >
 
-                      <Image
-                        src={img}
-                        alt="gallery"
-                        fill
-                        loading="lazy"
-                        placeholder="blur"
-                        blurDataURL={img}
-                        sizes="(max-width: 768px) 100vw,
-           (max-width: 1200px) 50vw,
-           33vw"
-                        className="
-      object-cover
-      transition
-      duration-700
-      group-hover:scale-110
-    "
-                      />
-                      {/* OVERLAY */}
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-500"></div>
+        {/* IMAGE */}
+        <Image
+          src={img}
+          alt={`gallery-${i}`}
+          fill
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL={img}
+          sizes="
+            (max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            33vw
+          "
+          className="
+            object-cover
+            transition
+            duration-700
+            group-hover:scale-110
+          "
+        />
 
-                    </motion.div>
-                  ))}
+        {/* OVERLAY */}
+        <div
+          className="
+            absolute inset-0
+            bg-black/0
+            group-hover:bg-black/20
+            transition duration-500
+          "
+        />
 
-                </div>
+      </motion.div>
+    ))}
 
-              </div>
+  </div>
+
+</div>
 
             </motion.div>
 
