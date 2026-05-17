@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Images, Camera, CalendarDays } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Photos() {
 
@@ -104,10 +105,15 @@ export default function Photos() {
 
       {/* WATERMARK */}
       <div className="absolute inset-0 flex items-center justify-center opacity-[0.04] pointer-events-none">
-        <img
+        <Image
           src="/images/GurukulamLogo.jpeg"
           alt="logo"
-          className="w-[500px]"
+          width={500}
+          height={500}
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL="/images/GurukulamLogo.jpeg"
+          className="w-[500px] h-auto"
         />
       </div>
 
@@ -162,10 +168,23 @@ export default function Photos() {
                 {/* IMAGE */}
                 <div className="relative h-72 overflow-hidden">
 
-                  <img
+
+                  <Image
                     src={album.cover}
                     alt={album.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                    fill
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL={album.cover}
+                    sizes="(max-width: 768px) 100vw,
+           (max-width: 1200px) 50vw,
+           33vw"
+                    className="
+      object-cover
+      group-hover:scale-110
+      transition
+      duration-700
+    "
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
@@ -244,11 +263,18 @@ export default function Photos() {
               {/* HEADER */}
               <div className="relative h-80 overflow-hidden rounded-t-3xl">
 
-                <img
-                  src={selectedAlbum.cover}
-                  alt={selectedAlbum.title}
-                  className="w-full h-full object-cover"
-                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src={selectedAlbum.cover}
+                    alt={selectedAlbum.title}
+                    fill
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL={selectedAlbum.cover}
+                    sizes="100vw"
+                    className="object-cover"
+                  />
+                </div>
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
 
@@ -278,12 +304,23 @@ export default function Photos() {
                       className="group relative overflow-hidden rounded-2xl shadow-xl border border-gray-200"
                     >
 
-                      <img
+                      <Image
                         src={img}
                         alt="gallery"
-                        className="w-full h-72 object-cover transition duration-700 group-hover:scale-110"
+                        fill
+                        loading="lazy"
+                        placeholder="blur"
+                        blurDataURL={img}
+                        sizes="(max-width: 768px) 100vw,
+           (max-width: 1200px) 50vw,
+           33vw"
+                        className="
+      object-cover
+      transition
+      duration-700
+      group-hover:scale-110
+    "
                       />
-
                       {/* OVERLAY */}
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-500"></div>
 

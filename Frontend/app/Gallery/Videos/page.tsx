@@ -49,23 +49,23 @@ export default function VideosGalleryPage() {
       description: 'Showcasing the best of student creativity.',
       videos: [
         {
-          
+
           src: '/videos/exhibition/1.mp4',
         },
         {
-          
+
           src: '/videos/exhibition/2.mp4',
         },
-         {
-          
+        {
+
           src: '/videos/exhibition/3.mp4',
         },
-         {
-        
+        {
+
           src: '/videos/exhibition/4.mp4',
         },
-         {
-         
+        {
+
           src: '/videos/exhibition/5.mp4',
         },
       ],
@@ -142,7 +142,7 @@ export default function VideosGalleryPage() {
                       src={album.cover}
                       alt={album.title}
                       className="w-full h-full object-cover
-                      group-hover:scale-110 transition duration-700"
+  group-hover:scale-110 transition duration-700"
                     />
 
                     {/* Overlay */}
@@ -252,6 +252,8 @@ export default function VideosGalleryPage() {
                       <video
                         className="w-full h-full object-cover"
                         muted
+                        preload="metadata"
+                        playsInline
                       >
                         <source src={video.src} type="video/mp4" />
                       </video>
@@ -329,6 +331,8 @@ export default function VideosGalleryPage() {
                 <video
                   controls
                   autoPlay
+                  preload="metadata"
+                  playsInline
                   className="w-full rounded-3xl shadow-2xl"
                 >
                   <source src={selectedVideo.src} type="video/mp4" />
