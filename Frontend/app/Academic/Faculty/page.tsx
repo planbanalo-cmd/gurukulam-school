@@ -256,7 +256,7 @@ export default function FacultyPage() {
             {/* GROUP IMAGE */}
             <div className="relative w-full flex items-center justify-center rounded-[30px] overflow-hidden shadow-2xl border border-[#D8C98D]/40 py-4">
               <Image
-                src="/images/faculty/PrePrimary/GroupPrePrimary.jpeg"
+                src="/images/Faculty/PrePrimary/GroupPrePrimary.jpeg"
                 alt="Faculty Group"
                 width={1200}
                 height={800}
@@ -332,7 +332,7 @@ export default function FacultyPage() {
 
            <div className="relative w-full flex items-center justify-center rounded-[30px] overflow-hidden shadow-2xl border border-[#D8C98D]/40 py-4">
               <Image
-                src="/images/faculty/Senior/GroupSenior.jpeg"
+                src="/images/Faculty/Senior/GroupSenior.jpeg"
                 alt="Faculty Group"
                 width={1200}
                 height={800}
