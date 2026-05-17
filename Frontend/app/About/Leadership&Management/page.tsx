@@ -52,7 +52,7 @@ Let us continue to move forward with determination and heart, transforming every
         {
             name: "Headmistress",
             fullName: "Ms. Neetu Singh",
-            img: "/images/Leader&Management/Headmistress.jpeg",
+            img: "/images/Leader&Management/HeadMistress.jpeg",
             exp: "10+ Years",
             quote: "Education is not the learning of facts, but the training of the mind to think.",
             title: "Message from Headmistress",

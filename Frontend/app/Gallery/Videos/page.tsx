@@ -44,17 +44,29 @@ export default function VideosGalleryPage() {
     },
 
     {
-      title: 'Independence Day',
-      cover: '/videos/independence-cover.jpg',
-      description: 'Patriotic performances and celebrations.',
+      title: 'Books Exhibition',
+      cover: '/images/gallery/exhibition/cover.jpeg',
+      description: 'Showcasing the best of student creativity.',
       videos: [
         {
-          title: 'Flag Hoisting',
-          src: '/videos/independence1.mp4',
+          
+          src: '/videos/exhibition/1.mp4',
         },
         {
-          title: 'Cultural Program',
-          src: '/videos/independence2.mp4',
+          
+          src: '/videos/exhibition/2.mp4',
+        },
+         {
+          
+          src: '/videos/exhibition/3.mp4',
+        },
+         {
+        
+          src: '/videos/exhibition/4.mp4',
+        },
+         {
+         
+          src: '/videos/exhibition/5.mp4',
         },
       ],
     },

@@ -43,15 +43,20 @@ export default function Photos() {
     },
 
     {
-      title: 'Science Exhibition',
+      title: 'Books Exhibition',
       date: '18 November 2025',
-      cover: '/images/gallery/science/cover.jpg',
+      cover: '/images/gallery/exhibition/cover.jpeg',
 
       images: [
-        '/images/gallery/science/1.jpg',
-        '/images/gallery/science/2.jpg',
-        '/images/gallery/science/3.jpg',
-        '/images/gallery/science/4.jpg',
+        '/images/gallery/exhibition/1.jpeg',
+        '/images/gallery/exhibition/7.jpeg',
+        '/images/gallery/exhibition/3.jpeg',
+        '/images/gallery/exhibition/4.jpeg',
+        '/images/gallery/exhibition/5.jpeg',
+        '/images/gallery/exhibition/6.jpeg',
+        '/images/gallery/exhibition/8.jpeg',
+        '/images/gallery/exhibition/9.jpeg',
+
       ],
     },
 

@@ -10,9 +10,9 @@ const images = [
   { src: "/images/gallery/sports/4.jpeg", title: "Sports Day" },
   { src: "/images/gallery/sports/7.jpeg", title: "Sports Day" },
   { src: "/images/gallery/sports/6.jpeg", title: "Sports Day" },
-  { src: "/images/gallery/classroom/3.jpeg", title: "Classroom Activities" },
-  { src: "/images/gallery/art/4.jpeg", title: "Art & Craft" },
-  { src: "/images/gallery/events/5.jpeg", title: "School Events" },
+ { src: "/images/gallery/exhibition/3.jpeg", title: "Books Exhibition" },
+  { src: "/images/gallery/exhibition/4.jpeg", title: "Books Exhibition" },
+  { src: "/images/gallery/exhibition/5.jpeg", title: "Books Exhibition" },
 ];
 
 export default function SchoolGallery() {
