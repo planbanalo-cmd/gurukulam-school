@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 import Navbar from "./../components/Navbar";
 import Footer from "./../components/Footer";
-import PageLoader from "./../components/PageLoader"; // ✅ IMPORT
-import 'nprogress/nprogress.css';
+
+import NextTopLoader from "nextjs-toploader"; // ✅ BETTER LOADER
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,17 +32,30 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        
-        {/* ✅ PAGE LOADER */}
-        <PageLoader />
+      <body className="min-h-screen flex flex-col">
 
+        {/* ✅ PREMIUM PAGE LOADER */}
+        <NextTopLoader
+          color="#E4CC6F"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #E4CC6F,0 0 5px #E4CC6F"
+        />
+
+        {/* ✅ NAVBAR */}
         <Navbar />
 
+        {/* ✅ MAIN CONTENT */}
         <main className="flex-1">
           {children}
         </main>
 
+        {/* ✅ FOOTER */}
         <Footer />
       </body>
     </html>
