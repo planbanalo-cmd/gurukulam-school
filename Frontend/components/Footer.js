@@ -132,10 +132,10 @@ export default function Footer() {
             <ul className="space-y-3">
   {[
     { name: "Contact", link: "/Contact" },
-    { name: "Fees", link: "/Admissions/Fees" },
-    { name: "Eligibility & Criteria", link: "/Admissions/Eligibility&Criteria" },
+    { name: "Fees", link: "/Admission/Fees" },
+    { name: "Eligibility & Criteria", link: "/Admission/Eligibility&Criteria" },
     { name: "Leadership & Management", link: "/About/Leadership&Management" },
-    { name: "Daily Schedule", link: "/Academic/DailySchedule" }
+    { name: "Daily Schedule", link: "/Boarding/DailySchedule" }
   ].map((item, i) => (
     <li key={i}>
       <a
