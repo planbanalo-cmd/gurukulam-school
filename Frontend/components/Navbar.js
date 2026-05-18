@@ -15,7 +15,13 @@ export default function Navbar() {
     const [galleryOpen, setGalleryOpen] = useState(false);
      const [achivementOpen, setAchivementOpen] = useState(false);
 
-
+const handleMobileNav = () => {
+  setMobileMenuOpen(false);
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
 
     return (
         
@@ -276,11 +282,11 @@ export default function Navbar() {
                                     </button>
                                     {aboutOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/About/History&Foundation">History & Foundation</Link></li>
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/About/Vision&Mission">Our Vision & Mission</Link></li>
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/About/Infrastructure">Infrastructure</Link></li>
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/About/Leadership&Management">Leadership & Management</Link></li>
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/About/Privacy&Policy">Privacy Policy</Link></li>
+                                            <Link href="/About/History&Foundation" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">History & Foundation</li></Link>
+                                            <Link href="/About/Vision&Mission" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">Our Vision & Mission</li></Link>
+                                            <Link href="/About/Infrastructure" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">Infrastructure</li></Link>
+                                            <Link href="/About/Leadership&Management" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">Leadership & Management</li></Link>
+                                            <Link href="/About/Privacy&Policy" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">Privacy Policy</li></Link>
 
                                         </ul>
                                     )}
@@ -297,13 +303,12 @@ export default function Navbar() {
                                     </button>
                                     {admissionOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                            <li className="py-1 text-black hover:mobile-item">E-Prospectus</li>
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Admission/Aptitude">Aptitude Test</Link></li>
-                                            <li className="py-1 text-black hover:mobile-item"><Link href="/Admission/Fees">Fee Structure</Link></li>
-                                           <li className="py-1 text-black hover:mobile-item"><Link href="/Admission/Admission&FeePolicy">Admission & Fee Policy</Link></li>
-
-                                           <Link href="/Admission/Eligibility&Criteria"> <li className="py-1 text-black hover:mobile-item">Eligibility Criteria</li></Link>
-                                            <Link href="/Admission/ApplyOnline"><li className="py-1 text-black hover:mobile-item">Apply Online</li></Link>
+                                            <Link href="/Admission/E-Prospectus" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">E-Prospectus</li></Link>
+                                            <Link href="/Admission/Aptitude" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">Aptitude Test</li></Link>
+                                            <Link href="/Admission/Fees" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">Fee Structure</li></Link>
+                                            <Link href="/Admission/Admission&FeePolicy" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">Admission & Fee Policy</li></Link>
+                                            <Link href="/Admission/Eligibility&Criteria" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">Eligibility Criteria</li></Link>
+                                            <Link href="/Admission/ApplyOnline" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">Apply Online</li></Link>
                                         </ul>
                                     )}
                                 </li>
@@ -319,8 +324,8 @@ export default function Navbar() {
                                     </button>
                                     {acadamicOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                            <Link href="/Academic/Curriculum"><li className="py-1 text-black hover-mobile-dropdown">Curriculum</li></Link>
-                                            <Link href="/Academic/Faculty"><li className="py-1 text-black hover-mobile-dropdown">Faculty</li></Link>
+                                            <Link href="/Academic/Curriculum" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Curriculum</li></Link>
+                                            <Link href="/Academic/Faculty" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Faculty</li></Link>
 
 
                                         </ul>
@@ -336,8 +341,8 @@ export default function Navbar() {
                                     </button>
                                     {achivementOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                            <Link href="/Achivements/Awards&Certification"><li className="py-1 text-black hover-mobile-dropdown">Awards & Certification</li></Link>
-                                            <Link href="/Achivements/Success-Stories"><li className="py-1 text-black hover-mobile-dropdown">Success Stories</li></Link>
+                                            <Link href="/Achivements/Awards&Certification" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Awards & Certification</li></Link>
+                                            <Link href="/Achivements/Success-Stories" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Success Stories</li></Link>
                                         </ul>
                                     )}
                                 </li>       
@@ -355,10 +360,10 @@ export default function Navbar() {
                                     </button>
                                     {boardingOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                            <Link href="/Boarding/Welcome"><li className="py-1 text-black hover-mobile-dropdown">Welcome</li></Link>
-                                            <Link href="/Boarding/Room-Allocation"><li className="py-1 text-black hover-mobile-dropdown">Room Allocation</li></Link>
-                                            <Link href="/Boarding/Academic-Support"><li className="py-1 text-black hover-mobile-dropdown">Academic Support</li></Link>
-                                            <Link href="/Boarding/Daily-Schedule"><li className="py-1 text-black hover-mobile-dropdown">Daily Schedule</li></Link>
+                                            <Link href="/Boarding/Welcome" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Welcome</li></Link>
+                                            <Link href="/Boarding/Room-Allocation" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Room Allocation</li></Link>
+                                            <Link href="/Boarding/Academic-Support" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Academic Support</li></Link>
+                                            <Link href="/Boarding/Daily-Schedule" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Daily Schedule</li></Link>
                                            
                                          
                                           
@@ -377,9 +382,9 @@ export default function Navbar() {
                                     </button>
                                     {eventsOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                           <Link href="/Events/Circulars"><li className="py-1 text-black hover-mobile-dropdown">Circulars</li></Link>
-                                            <Link href="/Events/Newsletter"><li className="py-1 text-black hover-mobile-dropdown">Newsletter</li></Link>
-                                            <Link href="/Events/Magazine"><li className="py-1 text-black hover-mobile-dropdown">Magazine</li></Link>
+                                           <Link href="/Events/Circulars" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Circulars</li></Link>
+                                            <Link href="/Events/Newsletter" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Newsletter</li></Link>
+                                            <Link href="/Events/Magazine" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Magazine</li></Link>
                                         </ul>
                                     )}
                                 </li>
@@ -393,14 +398,14 @@ export default function Navbar() {
                                     </button>
                                     {galleryOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                           <Link href="/Gallery/Photos"><li className="py-1 text-black hover-mobile-dropdown">Photos</li></Link>
-                                            <Link href="/Gallery/Videos"><li className="py-1 text-black hover-mobile-dropdown">Videos</li></Link>
+                                           <Link href="/Gallery/Photos" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Photos</li></Link>
+                                            <Link href="/Gallery/Videos" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Videos</li></Link>
 
                                         </ul>
                                     )}
                                 </li>
 
-                                <li className="py-3 text-black hover-mobile-button cursor-pointer"><Link href="/Contact">CONTACT</Link></li>
+                                <Link href="/Contact" onClick={handleMobileNav}><li className="py-3 text-black hover-mobile-button cursor-pointer">CONTACT</li></Link>
                             </ul>
                         </div>
                     )}

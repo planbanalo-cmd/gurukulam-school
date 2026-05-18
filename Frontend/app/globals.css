@@ -130,3 +130,15 @@ body {
     box-shadow: 0 0 0 0 rgba(21, 100, 69, 0);
   }
 }
+#nprogress .bar {
+  background: #E4CC6F !important;
+  height: 3px;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #E4CC6F, 0 0 5px #E4CC6F;
+}
+
+#nprogress .spinner {
+  display: none;
+}

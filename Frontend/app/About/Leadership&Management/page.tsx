@@ -178,6 +178,47 @@ Together, we are not just building students; we are building the leaders and thi
                     </div>
                 </div>
             </section>
+            {/* 📸 LEADERSHIP GROUP PHOTO SECTION */}
+<section className="max-w-7xl mx-auto px-4 mt-10 mb-20">
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+    className="relative overflow-hidden rounded-[32px]"
+  >
+    {/* 🔥 Gradient Border Glow */}
+    <div className="absolute -inset-[2px] bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] rounded-[32px] blur-xl opacity-30"></div>
+
+    {/* 🧊 Main Card */}
+    <div className="relative bg-white/70 backdrop-blur-2xl rounded-[32px] p-4 md:p-6 shadow-2xl border border-white/40">
+
+      {/* IMAGE */}
+      <div className="overflow-hidden rounded-3xl">
+        <motion.img
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.6 }}
+          src="/images/Leader&Management/Group.jpeg"
+          alt="Leadership Team"
+          className="w-full h-full object-cover rounded-3xl"
+        />
+      </div>
+
+      {/* OPTIONAL TEXT */}
+      <div className="mt-6 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] bg-clip-text text-transparent">
+          Our Leadership Team
+        </h2>
+
+        <p className="mt-4 text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Guided by vision, dedication, and excellence, our leadership team
+          works together to nurture young minds and build a strong foundation
+          for the future.
+        </p>
+      </div>
+    </div>
+  </motion.div>
+</section>
             {/* 🎬 CINEMATIC CHAIRMAN */}
             <section
                 ref={ref}
