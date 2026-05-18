@@ -179,46 +179,46 @@ Together, we are not just building students; we are building the leaders and thi
                 </div>
             </section>
             {/* 📸 LEADERSHIP GROUP PHOTO SECTION */}
-<section className="max-w-7xl mx-auto px-4 mt-10 mb-20">
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-    viewport={{ once: true }}
-    className="relative overflow-hidden rounded-[32px]"
-  >
-    {/* 🔥 Gradient Border Glow */}
-    <div className="absolute -inset-[2px] bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] rounded-[32px] blur-xl opacity-30"></div>
+            <section className="max-w-7xl mx-auto px-4 mt-10 mb-20">
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                    className="relative overflow-hidden rounded-[32px]"
+                >
+                    {/* 🔥 Gradient Border Glow */}
+                    <div className="absolute -inset-[2px] bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] rounded-[32px] blur-xl opacity-30"></div>
 
-    {/* 🧊 Main Card */}
-    <div className="relative bg-white/70 backdrop-blur-2xl rounded-[32px] p-4 md:p-6 shadow-2xl border border-white/40">
+                    {/* 🧊 Main Card */}
+                    <div className="relative bg-white/70 backdrop-blur-2xl rounded-[32px] p-4 md:p-6 shadow-2xl border border-white/40">
 
-      {/* IMAGE */}
-      <div className="overflow-hidden rounded-3xl">
-        <motion.img
-          whileHover={{ scale: 1.03 }}
-          transition={{ duration: 0.6 }}
-          src="/images/Leader&Management/Group.jpeg"
-          alt="Leadership Team"
-          className="w-full h-full object-cover rounded-3xl"
-        />
-      </div>
+                        {/* IMAGE */}
+                        <div className="overflow-hidden rounded-3xl">
+                            <motion.img
+                                whileHover={{ scale: 1.03 }}
+                                transition={{ duration: 0.6 }}
+                                src="/images/Leader&Management/Group.jpeg"
+                                alt="Leadership Team"
+                                className="w-full h-full object-cover rounded-3xl"
+                            />
+                        </div>
 
-      {/* OPTIONAL TEXT */}
-      <div className="mt-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] bg-clip-text text-transparent">
-          Our Leadership Team
-        </h2>
+                        {/* OPTIONAL TEXT */}
+                        <div className="mt-6 text-center">
+                            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] bg-clip-text text-transparent">
+                                Our Leadership Team
+                            </h2>
 
-        <p className="mt-4 text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Guided by vision, dedication, and excellence, our leadership team
-          works together to nurture young minds and build a strong foundation
-          for the future.
-        </p>
-      </div>
-    </div>
-  </motion.div>
-</section>
+                            <p className="mt-4 text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                                Guided by vision, dedication, and excellence, our leadership team
+                                works together to nurture young minds and build a strong foundation
+                                for the future.
+                            </p>
+                        </div>
+                    </div>
+                </motion.div>
+            </section>
             {/* 🎬 CINEMATIC CHAIRMAN */}
             <section
                 ref={ref}
@@ -295,40 +295,61 @@ Together, we are not just building students; we are building the leaders and thi
 
             {/* 🎬 TEAM MEMBERS SECTION */}
             <section className="max-w-6xl mx-auto mb-20 px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {members.map((m, i) => (
                         <motion.div
                             key={i}
                             onClick={() => setSelected(m)}
-                            whileHover={{ scale: 1.06, rotateY: 6 }}
+                            whileHover={{ y: -8, scale: 1.03 }}
+                            transition={{ duration: 0.3 }}
                             className="relative group cursor-pointer"
                         >
-                            <div className="relative bg-white/70 backdrop-blur-xl rounded-2xl p-6 shadow-xl">
+                            {/* Glow Effect */}
+                            <div className="absolute -inset-[2px] bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] rounded-3xl blur-lg opacity-20 group-hover:opacity-40 transition duration-500"></div>
 
-                                <img
-                                    src={m.img}
-                                    className="w-24 h-24 rounded-full mx-auto mb-4"
-                                />
+                            {/* Card */}
+                            <div className="relative bg-white/80 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-white/40 h-full">
 
-                                <h3 className="font-bold text-lg text-[#156445] text-center">
-                                    {m.name}
-                                </h3>
+                                {/* IMAGE */}
+                                <div className="w-full h-72 overflow-hidden">
+                                    <img
+                                        src={m.img}
+                                        alt={m.fullName}
+                                        className="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105"
+                                    />
+                                </div>
 
-                                <p className="text-xs text-gray-500 text-center">
-                                    {m.exp}
-                                </p>
+                                {/* DETAILS */}
+                                <div className="p-5 text-center">
 
-                                <p className="text-gray-600 text-sm text-center italic mt-3">
-                                    "{m.quote}"
-                                </p>
+                                    {/* DESIGNATION */}
+                                    <p className="text-sm font-semibold uppercase tracking-wider text-[#156445]/70">
+                                        {m.name}
+                                    </p>
 
+                                    {/* FULL NAME */}
+                                    <h3 className="text-2xl font-bold text-[#156445] mt-2">
+                                        {m.fullName}
+                                    </h3>
+
+                                    {/* EXPERIENCE */}
+                                    <div className="inline-block mt-3 px-4 py-1 rounded-full bg-[#156445]/10 text-[#156445] text-sm font-medium">
+                                        {m.exp}
+                                    </div>
+
+                                    {/* QUOTE */}
+                                    <p className="text-gray-600 text-sm italic leading-relaxed mt-4">
+                                        "{m.quote}"
+                                    </p>
+
+                                </div>
                             </div>
                         </motion.div>
                     ))}
                 </div>
             </section>
-            
-            
+
+
 
             {/* 📄 MANAGEMENT */}
             <section className="max-w-6xl mx-auto px-4 mt-24 md:mt-32">
