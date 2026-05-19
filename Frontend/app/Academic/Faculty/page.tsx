@@ -255,16 +255,16 @@ export default function FacultyPage() {
 
             {/* GROUP IMAGE */}
             <div className="relative w-full flex items-center justify-center rounded-[30px] overflow-hidden shadow-2xl border border-[#D8C98D]/40 py-4">
-             <Image
-  src="/images/Faculty/PrePrimary/GroupPrePrimary.jpeg"
-  alt="Faculty Group"
-  width={1200}
-  height={800}
-  loading="lazy"
-  placeholder="blur"
-  blurDataURL="/images/Faculty/PrePrimary/GroupPrePrimary.jpeg"
-  className="w-full h-auto object-contain"
-/>
+              <Image
+                src="/images/Faculty/PrePrimary/GroupPrePrimary.jpeg"
+                alt="Faculty Group"
+                width={1200}
+                height={800}
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="/images/Faculty/PrePrimary/GroupPrePrimary.jpeg"
+                className="w-full h-auto object-contain"
+              />
             </div>
             {/* TEACHERS */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
@@ -275,18 +275,18 @@ export default function FacultyPage() {
                   className="bg-white rounded-[24px] overflow-hidden shadow-xl border border-[#D8C98D]/30"
                 >
                   <div className="relative h-72 w-full bg-[#F6F4EE]">
-                  <Image
-  src={teacher.image}
-  alt={teacher.name}
-  fill
-  loading="lazy"
-  placeholder="blur"
-  blurDataURL={teacher.image}
-  sizes="(max-width: 768px) 100vw,
+                    <Image
+                      src={teacher.image}
+                      alt={teacher.name}
+                      fill
+                      loading="lazy"
+                      placeholder="blur"
+                      blurDataURL={teacher.image}
+                      sizes="(max-width: 768px) 100vw,
   (max-width: 1200px) 50vw,
   25vw"
-  className="object-cover object-top"
-/>
+                      className="object-cover object-top"
+                    />
                   </div>
 
                   <div className="bg-[#146B4D] text-white text-center p-4">
@@ -336,7 +336,7 @@ export default function FacultyPage() {
               Senior Wing Teachers
             </h2>
 
-           <div className="relative w-full flex items-center justify-center rounded-[30px] overflow-hidden shadow-2xl border border-[#D8C98D]/40 py-4">
+            <div className="relative w-full flex items-center justify-center rounded-[30px] overflow-hidden shadow-2xl border border-[#D8C98D]/40 py-4">
               <Image
                 src="/images/Faculty/Senior/GroupSenior.jpeg"
                 alt="Faculty Group"
@@ -354,16 +354,13 @@ export default function FacultyPage() {
                   className="bg-white rounded-[24px] overflow-hidden shadow-xl border border-[#D8C98D]/30"
                 >
                   <div className="relative h-72 w-full bg-[#F6F4EE]">
-                   <Image
-  src="/images/Faculty/Senior/GroupSenior.jpeg"
-  alt="Faculty Group"
-  width={1200}
-  height={800}
-  loading="lazy"
-  placeholder="blur"
-  blurDataURL="/images/Faculty/Senior/GroupSenior.jpeg"
-  className="w-full h-auto object-contain"
-/>
+                    <Image
+                      src={teacher.image}
+                      alt={teacher.name}
+                      fill
+                      loading="lazy"
+                      className="object-cover group-hover:scale-105 transition duration-500"
+                    />
                   </div>
 
                   <div className="bg-[#146B4D] text-white text-center p-4">

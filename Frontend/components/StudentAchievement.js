@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, useRef } from 'react';
+import Image from 'next/image';
 
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -11,47 +12,84 @@ import "yet-another-react-lightbox/styles.css";
 const items = [
     {
         type: "image",
-        src: "/images/1.jpg",
-        name: "Aarav Sharma",
-        achievement: "CBSE Topper - 98%",
-        badge: "Topper",
+        src: "/images/studentachivement/1.jpg",
+        name: "YOGENDRA S/O MR. BHUVNESWAR",
+        achievement: "Qualified CA",
+        badge: "Qualified CA",
     },
     {
         type: "image",
-        src: "/images/2.jpg",
-        name: "Priya Verma",
-        achievement: "State Level Gold Medal - Athletics",
-        badge: "Gold Medal",
+        src: "/images/studentachivement/2.jpg",
+        name: "VAIBHAV S/O MR. VEER SINGH",
+        achievement: "IIT GUWAHATI ",
+        badge: "IIT GUWAHATI",
     },
+
     {
-        type: "video",
-        src: "/videos/achievement1.mp4",
-        name: "Rohit Yadav",
-        achievement: "Inter-School Debate Winner",
-        badge: "Winner",
+        type: "image",
+        src: "/images/studentachivement/3.jpg",
+        name: "ROHIT S/O MR. AJIT SINGH ",
+        achievement: "NIT KURUSHETRA",
+        badge: "NIT KURUSHETRA",
     },
     {
         type: "image",
-        src: "/images/3.jpg",
-        name: "Simran Kaur",
-        achievement: "District Painting Champion",
-        badge: "Winner",
+        src: "/images/studentachivement/4.jpg",
+        name: "SAHIL S/O MR. SURENDER",
+        achievement: " Qualified CA",
+        badge: "Qualified CA",
     },
     {
         type: "image",
-        src: "/images/4.jpg",
-        name: "Kunal Singh",
-        achievement: "Math Olympiad Qualifier",
-        badge: "Topper",
+        src: "/images/studentachivement/5.jpg",
+        name: "HARSH S/O MR. TUFAN SINGH",
+        achievement: " NIT KURUSHETRA QUALIFIED FOR JEE-ADV & NDA",
+        badge: "NIT KURUSHETRA",
+    }, {
+        type: "image",
+        src: "/images/studentachivement/6.jpg",
+        name: "JINAL D/O DR. LATESH ARORA",
+        achievement: "98.6% QUALIFIED FOR JEE-ADV",
+        badge: "JEE-ADV",
+    }, {
+        type: "image",
+        src: "/images/studentachivement/7.jpg",
+        name: "ANNU D/O MR. RAJENDER",
+        achievement: "QUALIFIED FOR JEE-ADV",
+        badge: "JEE-ADV",
+    }, {
+        type: "image",
+        src: "/images/studentachivement/8.jpg",
+        name: "TANYA D/O MR. RAJENDER",
+        achievement: " FOUNDATION-2025 QUALIFIED FOR JEE-ADV",
+        badge: "JEE-ADV",
+    }, {
+        type: "image",
+        src: "/images/studentachivement/9.jpg",
+        name: "Tarun",
+        achievement: "Scored 97.80% in JEE-Mains",
+        badge: "JEE-Mains",
+    }, {
+        type: "image",
+        src: "/images/studentachivement/10.jpg",
+        name: "MAHAK D/O MR. AMIT",
+        achievement: "93% NON-MEDICAL",
+        badge: "Non-Medical Topper",
+    }, {
+        type: "image",
+        src: "/images/studentachivement/11.jpg",
+        name: "DIKSHANT S/O MR. VIJAY",
+        achievement: "99% ECONOMICS ",
+        badge: "Economics Topper",
+    }, {
+        type: "image",
+        src: "/images/studentachivement/12.jpg",
+        name: "AVANTIKA S/O MR. BHUVNESWAR",
+        achievement: "QUALIFIED CA FOUNDATION-2025",
+        badge: "Qualified CA",
     },
-    {
-        type: "youtube",
-        videoId: "ABC123XYZ",
-        thumbnail: "https://img.youtube.com/vi/ABC123XYZ/hqdefault.jpg",
-        name: "Rohit Yadav",
-        achievement: "Debate Winner",
-        badge: "Winner",
-    },
+
+
 ];
 
 export default function StudentAchievement() {
@@ -82,20 +120,6 @@ export default function StudentAchievement() {
                 }
         );
 
-    const handleOpen = (item, i) => {
-
-        scrollPosition.current = window.scrollY;
-
-        document.body.style.overflow = 'hidden';
-
-        if (item.type === "youtube") {
-            setCurrentVideo(item.videoId);
-            setVideoOpen(true);
-        } else {
-            setIndex(i % items.length);
-            setOpen(true);
-        }
-    };
 
     const restoreScroll = () => {
 
@@ -205,75 +229,32 @@ export default function StudentAchievement() {
 
                                 {/* IMAGE */}
                                 {item.type === "image" && (
-                                    <img
-                                        src={item.src}
-                                        alt={item.name}
-                                        loading="lazy"
-                                        decoding="async"
-                                        className="
-                                            w-full h-full
-                                            object-cover
-                                            transition-transform
-                                            duration-700
-                                            group-hover:scale-110
-                                        "
-                                    />
-                                )}
+                                    <div className="w-full h-full bg-[#f8faf9] flex items-center justify-center overflow-hidden relative">
 
-                                {/* VIDEO */}
-                                {item.type === "video" && (
-                                    <video
-                                        src={item.src}
-                                        muted
-                                        preload="metadata"
-                                        playsInline
-                                        className="
-                                            w-full h-full
-                                            object-cover
-                                        "
-                                    />
-                                )}
-
-                                {/* YOUTUBE */}
-                                {item.type === "youtube" && (
-                                    <>
-                                        <img
-                                            src={item.thumbnail}
+                                        <Image
+                                            src={item.src}
                                             alt={item.name}
+                                            fill
                                             loading="lazy"
-                                            decoding="async"
+                                            sizes="(max-width: 640px) 82vw,
+                   (max-width: 768px) 380px,
+                   (max-width: 1024px) 340px,
+                   360px"
                                             className="
-                                                w-full h-full
-                                                object-cover
-                                                transition-transform
-                                                duration-700
-                                                group-hover:scale-110
-                                            "
+                object-contain
+                transition-transform
+                duration-700
+                group-hover:scale-105
+            "
                                         />
 
-                                        {/* PLAY BUTTON */}
-                                        <div
-                                            className="
-                                                absolute inset-0
-                                                flex items-center justify-center
-                                            "
-                                        >
-                                            <div
-                                                className="
-                                                    bg-white/90
-                                                    backdrop-blur-md
-                                                    rounded-full
-                                                    p-4
-                                                    shadow-xl
-                                                    group-hover:scale-110
-                                                    transition
-                                                "
-                                            >
-                                                ▶
-                                            </div>
-                                        </div>
-                                    </>
+                                    </div>
                                 )}
+
+
+
+
+
 
                                 {/* BADGE */}
                                 <div
@@ -394,55 +375,7 @@ export default function StudentAchievement() {
 
             </div>
 
-            {/* YOUTUBE MODAL */}
-            {videoOpen && (
 
-                <div
-                    className="
-                        fixed inset-0 z-50
-                        bg-black/80 backdrop-blur-sm
-                        flex items-center justify-center
-                        p-4
-                    "
-                >
-
-                    <div
-                        className="
-                            relative
-                            w-full max-w-4xl
-                            aspect-video
-                        "
-                    >
-
-                        {/* CLOSE BUTTON */}
-                        <button
-                            onClick={() => {
-                                setVideoOpen(false);
-                                restoreScroll();
-                            }}
-                            className="
-                                absolute -top-12 right-0
-                                text-white text-3xl
-                                hover:scale-110
-                                transition
-                            "
-                        >
-                            ✕
-                        </button>
-
-                        {/* VIDEO */}
-                        <iframe
-                            className="w-full h-full rounded-2xl"
-                            src={`https://www.youtube.com/embed/${currentVideo}?autoplay=1`}
-                            allow="autoplay; encrypted-media"
-                            allowFullScreen
-                        />
-
-                    </div>
-
-                </div>
-
-            )}
 
         </section>
     );
