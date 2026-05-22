@@ -172,16 +172,38 @@ export default function StudentAchievement() {
 
                     <p
                         className="
-                            text-gray-600
-                            mt-4
-                            text-base sm:text-lg
-                            max-w-2xl
-                            mx-auto
-                        "
+    text-gray-600
+    mt-4
+    text-base sm:text-lg
+    max-w-2xl
+    mx-auto
+  "
                     >
                         Celebrating excellence and success
                         across academics, sports, and beyond.
                     </p>
+
+                    {/* HIGHLIGHT LINE */}
+                    <div className="mt-4 flex justify-center">
+                        <span
+                            className="
+      inline-flex items-center gap-2
+      px-5 py-2
+      rounded-full
+      bg-gradient-to-r
+      from-[#E4CC6F]
+      to-[#f5df8d]
+      text-[#0D6453]
+      font-semibold
+      text-sm sm:text-base
+      shadow-md
+      border border-[#d4ba57]
+      animate-pulse
+    "
+                        >
+                            🌟 Excellence Beyond Limits – Toppers 2025 🌟
+                        </span>
+                    </div>
 
                 </motion.div>
 

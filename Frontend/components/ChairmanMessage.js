@@ -82,8 +82,11 @@ export default function ChairmanMessage() {
                 </p>
 
                 <p className="text-gray-600 text-md leading-relaxed">
-                  As a residential school, we provide more than education—we provide a “home away from home.” Here, every experience, whether in the classroom, on the field, or in daily life, contributes to shaping character, strengthening resilience, and building lifelong values. We are dedicated to nurturing not just achievers, but future leaders—individuals who will lead with wisdom, serve with empathy, and contribute meaningfully to society.
-
+                  As a residential school, we provide more than education—we provide a{" "}
+                  <span className="font-bold text-[#0D6453]">
+                    “Home Away From Home.”
+                  </span>{" "}
+                  Here, every experience, whether in the classroom, on the field, or in daily life, contributes to shaping character, strengthening resilience, and building lifelong values. We are dedicated to nurturing not just achievers, but future leaders—individuals who will lead with wisdom, serve with empathy, and contribute meaningfully to society.
                 </p>
 
                 <p className="text-gray-600 text-md leading-relaxed">
