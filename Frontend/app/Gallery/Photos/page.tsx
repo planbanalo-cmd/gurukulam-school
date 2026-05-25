@@ -62,15 +62,18 @@ export default function Photos() {
     },
 
     {
-      title: 'Independence Day Celebration',
-      date: '15 August 2025',
-      cover: '/images/gallery/independence/cover.jpg',
+      title: 'Art & Craft',
+      date: '1 August 2025',
+      cover: '/images/gallery/art&craft/cover.jpeg',
 
       images: [
-        '/images/gallery/independence/1.jpg',
-        '/images/gallery/independence/2.jpg',
-        '/images/gallery/independence/3.jpg',
-        '/images/gallery/independence/4.jpg',
+        '/images/gallery/art&craft/1.jpeg',
+        '/images/gallery/art&craft/2.jpeg',
+        '/images/gallery/art&craft/3.jpeg',
+        '/images/gallery/art&craft/4.jpeg',
+        '/images/gallery/art&craft/5.jpeg',
+        '/images/gallery/art&craft/6.jpeg',
+        '/images/gallery/art&craft/7.jpeg',
       ],
     },
 

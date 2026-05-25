@@ -8,8 +8,10 @@ import {
   BookOpen,
   Heart,
   Star,
-  Link,
+ 
 } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function BoardingPage() {
   return (
@@ -20,23 +22,99 @@ export default function BoardingPage() {
       bg-[linear-gradient(120deg,#eef5f1_0%,#f5f1e8_40%,#eef5f1_100%)]"
     >
       {/* 🔥 HERO */}
-      <motion.section
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-20 md:mb-28"
-      >
-        <h1
-          className="text-4xl md:text-5xl lg:text-6xl font-extrabold 
-          bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] 
-          bg-clip-text text-transparent"
-        >
-          Welcome to Boarding
-        </h1>
+ {/* 🔥 HERO */}
+<motion.section
+  initial={{ opacity: 0, y: -40 }}
+  animate={{ opacity: 1, y: 0 }}
+  className="mb-24 md:mb-32"
+>
+  <div className="max-w-7xl mx-auto">
 
-        <p className="text-gray-600 mt-5 text-lg md:text-xl">
-          (Only boys' hostel applicable)
-        </p>
-      </motion.section>
+    {/* Image Card */}
+    <div
+      className="
+        relative overflow-hidden 
+        rounded-[36px]
+        shadow-[0_25px_80px_rgba(0,0,0,0.18)]
+        border border-white/40
+      "
+    >
+      {/* Image */}
+      <Image
+        src="/images/boarding/hostel.jpeg"
+        alt="Boys Hostel"
+        width={1600}
+        height={900}
+        priority
+        className="
+          w-full
+          h-[420px] md:h-[600px]
+          object-cover
+        "
+      />
+
+      {/* Premium Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent"></div>
+
+      {/* Content */}
+      <div
+        className="
+          absolute inset-0
+          flex flex-col
+          justify-end
+          items-start
+          p-8 md:p-14 lg:p-20
+        "
+      >
+        {/* Glass Card */}
+        <div
+          className="
+            max-w-3xl
+            bg-white/10
+            backdrop-blur-xl
+            border border-white/20
+            rounded-[28px]
+            p-6 md:p-10
+            shadow-2xl
+          "
+        >
+          <h1
+            className="
+              text-4xl md:text-5xl lg:text-6xl 
+              font-extrabold 
+              text-white
+              leading-tight
+            "
+          >
+            Welcome to Boarding
+          </h1>
+
+          <p className="text-white/80 mt-5 text-lg md:text-xl leading-relaxed">
+            A safe, disciplined, and nurturing environment where
+            students grow academically and personally.
+          </p>
+
+          <div
+            className="
+              inline-flex items-center
+              mt-6
+              px-5 py-2
+              rounded-full
+              bg-[#E4CC6F]/20
+              border border-[#E4CC6F]/30
+              text-[#FFF3C4]
+              text-sm md:text-base
+              font-medium
+              backdrop-blur-md
+            "
+          >
+            Only boys' hostel applicable
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</motion.section>
 
       {/* 🏠 INTRO CARD */}
       <motion.section
@@ -210,7 +288,7 @@ export default function BoardingPage() {
 
             <div className="flex flex-wrap justify-center gap-5 mt-12">
               <Link
-                href="/Admissions/ApplyOnline"
+                href="/Admission/ApplyOnline"
                 className="
     inline-flex items-center justify-center
     px-8 py-4
