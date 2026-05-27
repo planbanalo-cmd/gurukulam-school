@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { API } from "@/lib/api";
 
-const API = "https://gurukulam-backend.onrender.com";
 
 type Notice = {
   _id: string;
@@ -67,10 +67,41 @@ export default function Dashboard() {
 
     fetchNotices();
   };
-
+const handleLogout = () => {
+  localStorage.removeItem("token");
+  router.push("/admin/login");
+};
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Admin Dashboard</h1>
+   <div className="min-h-screen bg-[#f8faf9] p-6 md:p-10">
+      <div className="flex items-center justify-between mb-10">
+  
+  <div>
+    <h1 className="text-3xl font-bold text-[#156445]">
+      Admin Dashboard
+    </h1>
+
+    <p className="text-gray-500 mt-1">
+      Manage school notices and updates
+    </p>
+  </div>
+
+  <button
+    onClick={handleLogout}
+    className="
+      bg-red-500 hover:bg-red-600
+      text-white
+      px-5 py-2.5
+      rounded-xl
+      font-semibold
+      shadow-md
+      transition-all duration-300
+      hover:scale-105
+    "
+  >
+    Logout
+  </button>
+
+</div>
 
       <h3>Add Notice</h3>
       <input

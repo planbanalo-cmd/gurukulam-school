@@ -1,6 +1,6 @@
 'use client';
 import Image from "next/image";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronDown, ChevronRight, Mail, Phone, Menu, X } from 'lucide-react';
 import Link from "next/link";
 
@@ -13,20 +13,30 @@ export default function Navbar() {
     const [boardingOpen, setBoardingOpen] = useState(false);
     const [eventsOpen, setEventsOpen] = useState(false);
     const [galleryOpen, setGalleryOpen] = useState(false);
-     const [achivementOpen, setAchivementOpen] = useState(false);
+    const [achivementOpen, setAchivementOpen] = useState(false);
+    const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
 
-const handleMobileNav = () => {
-  setMobileMenuOpen(false);
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
-};
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            setIsAdminLoggedIn(true);
+        }
+    }, []);
+
+    const handleMobileNav = () => {
+        setMobileMenuOpen(false);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
+
 
     return (
-        
+
         <>
-        
+
             {/* Top Bar */}
             <div className="sticky top-0 z-40 relative 
     bg-[linear-gradient(120deg,#F5F1E8_0%,#eef5f1_40%,#f9f7f2_70%,#F5F1E8_100%)] 
@@ -52,9 +62,11 @@ const handleMobileNav = () => {
                             {/* Logo */}
                             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 
             rounded-full overflow-hidden border border-[#7B9B68]/30 shadow-sm">
-                                <img
+                                <Image
                                     src="/images/Gurukulamlogo.jpeg"
                                     alt="Logo"
+                                    width={100}
+                                    height={100}
                                     className="w-full h-full object-cover"
                                 />
                             </div>
@@ -88,11 +100,11 @@ const handleMobileNav = () => {
 
 
                     {/* Contact */}
-                   {/* Contact */}
-<div className="flex items-center gap-3 sm:gap-4 w-full lg:w-auto">
+                    {/* Contact */}
+                    <div className="flex items-center gap-3 sm:gap-4 w-full lg:w-auto">
 
-  {/* Icon */}
-  <div className="
+                        {/* Icon */}
+                        <div className="
     p-2.5 sm:p-3 rounded-full 
     bg-[linear-gradient(135deg,#eef5f1,#f5f1e8)] 
     border border-[#7B9B68]/20
@@ -100,30 +112,30 @@ const handleMobileNav = () => {
 
     animate-[callPulse_2s_infinite] sm:animate-none
   ">
-    <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-[#156445]" />
-  </div>
+                            <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-[#156445]" />
+                        </div>
 
-  {/* Numbers */}
-  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-    
-    <a 
-      href="tel:9996007479"
-      className="text-[#156445] font-semibold text-sm sm:text-base md:text-lg hover:underline"
-    >
-      9996007479
-    </a>
+                        {/* Numbers */}
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
 
-    <span className="hidden sm:inline text-gray-400">|</span>
+                            <a
+                                href="tel:9996007479"
+                                className="text-[#156445] font-semibold text-sm sm:text-base md:text-lg hover:underline"
+                            >
+                                9996007479
+                            </a>
 
-    <a 
-      href="tel:9996009098"
-      className="text-[#156445] font-semibold text-sm sm:text-base md:text-lg hover:underline"
-    >
-      9996009098
-    </a>
+                            <span className="hidden sm:inline text-gray-400">|</span>
 
-  </div>
-</div>
+                            <a
+                                href="tel:9996009098"
+                                className="text-[#156445] font-semibold text-sm sm:text-base md:text-lg hover:underline"
+                            >
+                                9996009098
+                            </a>
+
+                        </div>
+                    </div>
 
                     {/* Desktop Button */}
                     <button className="hidden lg:block relative overflow-hidden
@@ -206,7 +218,7 @@ const handleMobileNav = () => {
                                 <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
                             </div>
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
-                               <Link href="/Academic/Curriculum"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Curriculum</li></Link>
+                                <Link href="/Academic/Curriculum"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Curriculum</li></Link>
 
                                 <Link href="/Academic/Faculty"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Faculty</li></Link>
 
@@ -231,11 +243,11 @@ const handleMobileNav = () => {
                                 <ChevronDown className="w-3 h-3 xl:w-4 xl:h-4" />
                             </div>
                             <ul className="absolute left-0 top-full mt-0 hidden group-hover:block bg-white text-black shadow-lg rounded w-40 xl:w-48 z-50 text-xs xl:text-sm">
-                               <Link href="/Boarding/Welcome"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Welcome</li></Link>
+                                <Link href="/Boarding/Welcome"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Welcome</li></Link>
                                 <Link href="/Boarding/Room-Allocation"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Room Allocation</li></Link>
                                 <Link href="/Boarding/Academic-Support"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Academic Support</li></Link>
                                 <Link href="/Boarding/Daily-Schedule"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Daily Schedule</li></Link>
-                                
+
                             </ul>
                         </li>
 
@@ -262,7 +274,72 @@ const handleMobileNav = () => {
                             </ul>
                         </li>
 
+
                         <Link href="/Contact"><li className="text-white cursor-pointer px-1 xl:px-2 py-2 rounded transition duration-200 hover:scale-105 whitespace-nowrap text-xs xl:text-base hover-nav-item">CONTACT</li></Link>
+                        {isAdminLoggedIn ? (
+                            <div className="flex items-center gap-3">
+
+                                <Link href="/admin/dashboard">
+                                    <li
+                                        className="
+          relative overflow-hidden
+          bg-gradient-to-r from-[#156445] to-[#0D6453]
+          text-white
+          font-bold
+          px-4 xl:px-5
+          py-2
+          rounded-full
+          shadow-lg
+          hover:scale-105
+          transition-all duration-300
+          whitespace-nowrap
+          text-xs xl:text-sm
+        "
+                                    >
+                                        DASHBOARD
+                                    </li>
+                                </Link>
+
+                               
+
+                            </div>
+                        ) : (
+                            <Link href="/admin/login">
+                                <li
+                                    className="
+        relative overflow-hidden
+        bg-gradient-to-r from-[#E4CC6F] to-[#d6b955]
+        text-[#0D6453]
+        font-bold
+        px-4 xl:px-5
+        py-2
+        rounded-full
+        shadow-lg
+        border border-white/20
+        hover:scale-105
+        hover:shadow-2xl
+        transition-all duration-300
+        whitespace-nowrap
+        text-xs xl:text-sm
+        group
+      "
+                                >
+                                    <span className="relative z-10">
+                                        ADMIN LOGIN
+                                    </span>
+
+                                    <span
+                                        className="
+          absolute inset-0
+          bg-gradient-to-r from-transparent via-white/40 to-transparent
+          translate-x-[-120%]
+          group-hover:translate-x-[120%]
+          transition duration-1000
+        "
+                                    ></span>
+                                </li>
+                            </Link>
+                        )}
                     </ul>
 
                     {/* Mobile Menu */}
@@ -345,9 +422,9 @@ const handleMobileNav = () => {
                                             <Link href="/Achivements/Success-Stories" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Success Stories</li></Link>
                                         </ul>
                                     )}
-                                </li>       
+                                </li>
 
-                                       
+
 
                                 {/* Mobile Boarding House */}
                                 <li className="py-3 border-b text-black">
@@ -364,9 +441,9 @@ const handleMobileNav = () => {
                                             <Link href="/Boarding/Room-Allocation" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Room Allocation</li></Link>
                                             <Link href="/Boarding/Academic-Support" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Academic Support</li></Link>
                                             <Link href="/Boarding/Daily-Schedule" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Daily Schedule</li></Link>
-                                           
-                                         
-                                          
+
+
+
                                         </ul>
                                     )}
                                 </li>
@@ -382,7 +459,7 @@ const handleMobileNav = () => {
                                     </button>
                                     {eventsOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                           <Link href="/Events/Circulars" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Circulars</li></Link>
+                                            <Link href="/Events/Circulars" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Circulars</li></Link>
                                             <Link href="/Events/Newsletter" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Newsletter</li></Link>
                                             <Link href="/Events/Magazine" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Magazine</li></Link>
                                         </ul>
@@ -398,14 +475,68 @@ const handleMobileNav = () => {
                                     </button>
                                     {galleryOpen && (
                                         <ul className="pl-4 mt-2 flex flex-col gap-2 text-xs sm:text-sm text-black">
-                                           <Link href="/Gallery/Photos" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Photos</li></Link>
+                                            <Link href="/Gallery/Photos" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Photos</li></Link>
                                             <Link href="/Gallery/Videos" onClick={handleMobileNav}><li className="py-1 text-black hover-mobile-dropdown">Videos</li></Link>
 
                                         </ul>
                                     )}
                                 </li>
 
+
                                 <Link href="/Contact" onClick={handleMobileNav}><li className="py-3 text-black hover-mobile-button cursor-pointer">CONTACT</li></Link>
+                                {isAdminLoggedIn ? (
+                                    <div className="flex flex-col gap-2 mt-3">
+
+                                        <Link href="/admin/dashboard" onClick={handleMobileNav}>
+                                            <li
+                                                className="
+          py-3
+          text-center
+          rounded-xl
+          bg-gradient-to-r from-[#156445] to-[#0D6453]
+          text-white
+          font-bold
+          shadow-md
+        "
+                                            >
+                                                DASHBOARD
+                                            </li>
+                                        </Link>
+
+                                        <button
+                                            onClick={handleLogout}
+                                            className="
+        py-3
+        rounded-xl
+        bg-red-500
+        text-white
+        font-bold
+      "
+                                        >
+                                            LOGOUT
+                                        </button>
+
+                                    </div>
+                                ) : (
+                                    <Link href="/admin/login" onClick={handleMobileNav}>
+                                        <li
+                                            className="
+        py-3 mt-2
+        text-center
+        rounded-xl
+        bg-gradient-to-r from-[#E4CC6F] to-[#d6b955]
+        text-[#0D6453]
+        font-bold
+        shadow-md
+        hover:scale-[1.02]
+        transition
+        cursor-pointer
+      "
+                                        >
+                                            ADMIN LOGIN
+                                        </li>
+                                    </Link>
+                                )}
                             </ul>
                         </div>
                     )}

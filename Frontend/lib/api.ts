@@ -1,0 +1,2 @@
+export const API =
+  "https://gurukulam-school.onrender.com";
