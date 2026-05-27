@@ -9,23 +9,30 @@ const sendEmail = require("../utils/sendEmail");
 const router = express.Router();
 
 
+// ==============================
 // REGISTER ADMIN
+// ==============================
+
 router.post("/register", async (req, res) => {
 
   try {
 
     const { name, email, password } = req.body;
 
+    // Check existing admin
     const existingAdmin = await Admin.findOne({ email });
 
     if (existingAdmin) {
+
       return res.status(400).json({
         message: "Admin already exists",
       });
     }
 
+    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Create admin
     const admin = new Admin({
       name,
       email,
@@ -34,11 +41,13 @@ router.post("/register", async (req, res) => {
 
     await admin.save();
 
-    res.json({
+    res.status(201).json({
       message: "Admin registered successfully",
     });
 
   } catch (err) {
+
+    console.log(err);
 
     res.status(500).json({
       message: "Server Error",
@@ -47,51 +56,40 @@ router.post("/register", async (req, res) => {
 });
 
 
+// ==============================
 // LOGIN
+// ==============================
+
 router.post("/login", async (req, res) => {
 
   try {
 
     const { email, password } = req.body;
 
-    console.log("EMAIL:", email);
-    console.log("PASSWORD:", password);
-
+    // Check admin
     const admin = await Admin.findOne({ email });
-
-    console.log("ADMIN FOUND:", admin);
 
     if (!admin) {
 
       return res.status(400).json({
-        message: "Invalid credentials",
+        message: "Invalid credentials ❌",
       });
     }
 
-    console.log("HASHED PASSWORD:", admin.password);
-
-   console.log("EMAIL:", email);
-
-console.log("ENTERED PASSWORD:", password);
-
-console.log("DATABASE PASSWORD:", admin.password);
-
-const isMatch = await bcrypt.compare(
-  password,
-  admin.password
-);
-
-
-
-    console.log("PASSWORD MATCH:", isMatch);
+    // Compare password
+    const isMatch = await bcrypt.compare(
+      password,
+      admin.password
+    );
 
     if (!isMatch) {
 
       return res.status(400).json({
-        message: "Invalid credentials",
+        message: "Invalid credentials ❌",
       });
     }
 
+    // Generate JWT token
     const token = jwt.sign(
       {
         id: admin._id,
@@ -102,9 +100,12 @@ const isMatch = await bcrypt.compare(
       }
     );
 
-    res.json({
+    // Success response
+    res.status(200).json({
       token,
+
       admin: {
+        id: admin._id,
         name: admin.name,
         email: admin.email,
       },
@@ -121,7 +122,10 @@ const isMatch = await bcrypt.compare(
 });
 
 
+// ==============================
 // FORGOT PASSWORD
+// ==============================
+
 router.post("/forgot-password", async (req, res) => {
 
   try {
@@ -131,35 +135,44 @@ router.post("/forgot-password", async (req, res) => {
     const admin = await Admin.findOne({ email });
 
     if (!admin) {
+
       return res.status(404).json({
         message: "Admin not found",
       });
     }
 
+    // Generate OTP
     const otp = otpGenerator.generate(6, {
+
       upperCaseAlphabets: false,
       lowerCaseAlphabets: false,
       specialChars: false,
+
     });
 
+    // Save OTP
     admin.otp = otp;
 
-    admin.otpExpiry = Date.now() + 10 * 60 * 1000;
+    admin.otpExpiry =
+      Date.now() + 10 * 60 * 1000;
 
     await admin.save();
 
+    // Send email
     await sendEmail(
       email,
       "Gurukulam Password Reset OTP",
       `Your OTP is: ${otp}`
     );
 
-    res.json({
+    res.status(200).json({
       message: "OTP sent to email",
     });
 
   } catch (err) {
 
+    console.log(err);
+
     res.status(500).json({
       message: "Server Error",
     });
@@ -167,49 +180,70 @@ router.post("/forgot-password", async (req, res) => {
 });
 
 
+// ==============================
 // RESET PASSWORD
+// ==============================
+
 router.post("/reset-password", async (req, res) => {
 
   try {
 
-    const { email, otp, newPassword } = req.body;
+    const {
+      email,
+      otp,
+      newPassword,
+    } = req.body;
 
     const admin = await Admin.findOne({ email });
 
     if (!admin) {
+
       return res.status(404).json({
         message: "Admin not found",
       });
     }
 
+    // Check OTP
     if (
       admin.otp !== otp ||
       admin.otpExpiry < Date.now()
     ) {
+
       return res.status(400).json({
         message: "Invalid or expired OTP",
       });
     }
 
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    // Hash new password
+    const hashedPassword =
+      await bcrypt.hash(newPassword, 10);
 
+    // Update password
     admin.password = hashedPassword;
 
+    // Clear OTP
     admin.otp = null;
     admin.otpExpiry = null;
 
     await admin.save();
 
-    res.json({
+    res.status(200).json({
       message: "Password reset successful",
     });
 
   } catch (err) {
+
+    console.log(err);
 
     res.status(500).json({
       message: "Server Error",
     });
   }
 });
+
+
+// ==============================
+// EXPORT
+// ==============================
 
 module.exports = router;
