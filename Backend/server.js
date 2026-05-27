@@ -11,7 +11,12 @@ const authRoutes = require("./routes/auth");
 const noticeRoutes = require("./routes/notice");
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://gurukulam.planbanalo.in"
+  ]
+}));
 app.use(express.json());
 
 // Route middleware
