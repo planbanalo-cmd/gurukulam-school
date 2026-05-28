@@ -1,27 +1,34 @@
 const express = require("express");
+
 const multer = require("multer");
-const path = require("path");
+
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+
+const cloudinary = require("../config/cloudinary");
 
 const Newsletter = require("../models/Newsletter");
 
 const router = express.Router();
 
-// STORAGE
 
-const storage = multer.diskStorage({
+// ================= CLOUDINARY STORAGE =================
 
-  destination: function (req, file, cb) {
+const storage = new CloudinaryStorage({
+  cloudinary,
 
-    cb(null, "uploads/");
-  },
+  params: async (req, file) => {
 
-  filename: function (req, file, cb) {
+    if (file.fieldname === "pdf") {
 
-    cb(
-      null,
-      Date.now() +
-        path.extname(file.originalname)
-    );
+      return {
+        folder: "gurukulam-newsletters/pdfs",
+        resource_type: "raw",
+      };
+    }
+
+    return {
+      folder: "gurukulam-newsletters/covers",
+    };
   },
 });
 
@@ -39,7 +46,7 @@ const upload = multer({
 ]);
 
 
-// GET ALL NEWSLETTERS
+// ================= GET ALL NEWSLETTERS =================
 
 router.get("/", async (req, res) => {
 
@@ -54,6 +61,8 @@ router.get("/", async (req, res) => {
 
   } catch (err) {
 
+    console.log(err);
+
     res.status(500).json({
       message: "Server Error",
     });
@@ -61,44 +70,62 @@ router.get("/", async (req, res) => {
 });
 
 
-// ADD NEWSLETTER
+// ================= ADD NEWSLETTER =================
 
 router.post("/", upload, async (req, res) => {
+
   try {
 
-    // 👇 ADD THESE LINES HERE
     console.log("BODY:", req.body);
+
     console.log("FILES:", req.files);
 
-    const { title, description } = req.body;
-    const pdf =
-  req.files["pdf"][0].filename;
+    const { title, description } =
+      req.body;
 
-const coverImage =
-  req.files["coverImage"]?.[0]
-    ?.filename || "";
+    if (!req.files?.pdf) {
+
+      return res.status(400).json({
+        message: "PDF is required",
+      });
+    }
+
+    const pdf =
+      req.files["pdf"][0].path;
+
+    const coverImage =
+      req.files["coverImage"]?.[0]
+        ?.path || "";
 
     const newsletter =
-  new Newsletter({
-    title,
-    description,
-    pdf,
-    coverImage,
-  });
+      new Newsletter({
+        title,
+        description,
+        pdf,
+        coverImage,
+      });
+
     await newsletter.save();
 
     res.json({
-      message: "Newsletter uploaded successfully",
+      message:
+        "Newsletter uploaded successfully",
+
       data: newsletter,
     });
 
   } catch (err) {
+
     console.log(err);
-    res.status(500).json({ message: "Server Error" });
+
+    res.status(500).json({
+      message: "Server Error",
+    });
   }
 });
 
-// DELETE NEWSLETTER
+
+// ================= DELETE NEWSLETTER =================
 
 router.delete("/:id", async (req, res) => {
 
@@ -115,39 +142,39 @@ router.delete("/:id", async (req, res) => {
 
   } catch (err) {
 
+    console.log(err);
+
     res.status(500).json({
       message: "Server Error",
     });
   }
 });
-router.post("/", upload, async (req, res) => {
+
+
+// ================= UPDATE NEWSLETTER =================
+
+router.put("/:id", async (req, res) => {
 
   try {
 
     const { title, description } =
       req.body;
 
-    const pdf =
-      req.files["pdf"][0].filename;
-
-    const coverImage =
-      req.files["coverImage"]?.[0]
-        ?.filename || "";
-
-    const newsletter =
-      new Newsletter({
-        title,
-        description,
-        pdf,
-        coverImage,
-      });
-
-    await newsletter.save();
+    const updated =
+      await Newsletter.findByIdAndUpdate(
+        req.params.id,
+        {
+          title,
+          description,
+        },
+        { new: true }
+      );
 
     res.json({
       message:
-        "Newsletter uploaded successfully",
-      data: newsletter,
+        "Newsletter updated successfully",
+
+      updated,
     });
 
   } catch (err) {
@@ -159,4 +186,5 @@ router.post("/", upload, async (req, res) => {
     });
   }
 });
+
 module.exports = router;
