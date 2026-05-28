@@ -3,7 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+const newsletterRoutes = require("./routes/newsletter");
+const path = require("path");
 const app = express();
 
 // Routes
@@ -22,7 +23,8 @@ app.use(express.json());
 // Route middleware
 app.use("/api/auth", authRoutes);
 app.use("/api/notices", noticeRoutes);
-
+app.use("/api/newsletters", newsletterRoutes);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Connect DB
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Connected ✅"))
