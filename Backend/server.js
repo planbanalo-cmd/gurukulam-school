@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+const fs = require("fs");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -24,6 +24,10 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/notices", noticeRoutes);
 app.use("/api/newsletters", newsletterRoutes);
+
+if (!fs.existsSync("uploads")) {
+  fs.mkdirSync("uploads");
+}
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Connect DB
 mongoose.connect(process.env.MONGO_URI)
