@@ -6,7 +6,6 @@ const Newsletter = require("../models/Newsletter");
 
 const router = express.Router();
 
-
 // STORAGE
 
 const storage = multer.diskStorage({
@@ -28,7 +27,16 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage,
-});
+}).fields([
+  {
+    name: "pdf",
+    maxCount: 1,
+  },
+  {
+    name: "coverImage",
+    maxCount: 1,
+  },
+]);
 
 
 // GET ALL NEWSLETTERS
@@ -55,21 +63,28 @@ router.get("/", async (req, res) => {
 
 // ADD NEWSLETTER
 
-router.post("/", upload.single("pdf"), async (req, res) => {
+router.post("/", upload, async (req, res) => {
   try {
 
     // 👇 ADD THESE LINES HERE
     console.log("BODY:", req.body);
-    console.log("FILE:", req.file);
+    console.log("FILES:", req.files);
 
     const { title, description } = req.body;
+    const pdf =
+  req.files["pdf"][0].filename;
 
-    const newsletter = new Newsletter({
-      title,
-      description,
-      pdf: req.file.filename,
-    });
+const coverImage =
+  req.files["coverImage"]?.[0]
+    ?.filename || "";
 
+    const newsletter =
+  new Newsletter({
+    title,
+    description,
+    pdf,
+    coverImage,
+  });
     await newsletter.save();
 
     res.json({
@@ -105,26 +120,43 @@ router.delete("/:id", async (req, res) => {
     });
   }
 });
-router.put("/:id", async (req, res) => {
-  try {
-    const { title, description } = req.body;
+router.post("/", upload, async (req, res) => {
 
-    const updated = await Newsletter.findByIdAndUpdate(
-      req.params.id,
-      { title, description },
-      { new: true }
-    );
+  try {
+
+    const { title, description } =
+      req.body;
+
+    const pdf =
+      req.files["pdf"][0].filename;
+
+    const coverImage =
+      req.files["coverImage"]?.[0]
+        ?.filename || "";
+
+    const newsletter =
+      new Newsletter({
+        title,
+        description,
+        pdf,
+        coverImage,
+      });
+
+    await newsletter.save();
 
     res.json({
-      message: "Newsletter updated successfully",
-      updated,
+      message:
+        "Newsletter uploaded successfully",
+      data: newsletter,
     });
 
   } catch (err) {
+
+    console.log(err);
+
     res.status(500).json({
       message: "Server Error",
     });
   }
 });
-
 module.exports = router;
