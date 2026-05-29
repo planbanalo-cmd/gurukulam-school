@@ -1,30 +1,68 @@
 const express = require("express");
 const multer = require("multer");
-const path = require("path");
+
+const cloudinary = require("cloudinary").v2;
+
+const {
+  CloudinaryStorage,
+} = require("multer-storage-cloudinary");
 
 const Circular = require("../models/Circular");
 
 const router = express.Router();
 
 
-// STORAGE
+// =========================
+// CLOUDINARY CONFIG
+// =========================
 
-const storage = multer.diskStorage({
+cloudinary.config({
+  cloud_name:
+    process.env.CLOUDINARY_CLOUD_NAME,
 
-  destination: function (req, file, cb) {
+  api_key:
+    process.env.CLOUDINARY_API_KEY,
 
-    cb(null, "uploads/");
-  },
-
-  filename: function (req, file, cb) {
-
-    cb(
-      null,
-      Date.now() +
-        path.extname(file.originalname)
-    );
-  },
+  api_secret:
+    process.env.CLOUDINARY_API_SECRET,
 });
+
+
+// =========================
+// CLOUDINARY STORAGE
+// =========================
+
+const storage =
+  new CloudinaryStorage({
+
+    cloudinary,
+
+    params: async (
+      req,
+      file
+    ) => {
+
+      return {
+
+        folder:
+          "gurukulam-circulars",
+
+        resource_type:
+          "raw",
+
+        public_id:
+          Date.now() +
+          "-" +
+          file.originalname
+            .split(".")[0],
+      };
+    },
+  });
+
+
+// =========================
+// MULTER
+// =========================
 
 const upload = multer({
   storage,
@@ -48,6 +86,8 @@ router.get("/", async (req, res) => {
 
   } catch (err) {
 
+    console.log(err);
+
     res.status(500).json({
       message: "Server Error",
     });
@@ -62,25 +102,42 @@ router.get("/", async (req, res) => {
 router.post(
   "/",
   upload.single("pdf"),
+
   async (req, res) => {
 
     try {
 
-      const { title, desc } =
-        req.body;
+      const {
+        title,
+        desc,
+      } = req.body;
+
+      if (!req.file) {
+
+        return res.status(400).json({
+          message:
+            "PDF is required",
+        });
+      }
 
       const circular =
         new Circular({
+
           title,
+
           desc,
-          pdf: req.file.filename,
+
+          pdf:
+            req.file.path,
         });
 
       await circular.save();
 
       res.json({
+
         message:
           "Circular uploaded successfully",
+
         data: circular,
       });
 
@@ -100,61 +157,81 @@ router.post(
 // DELETE CIRCULAR
 // =========================
 
-router.delete("/:id", async (req, res) => {
+router.delete(
+  "/:id",
 
-  try {
+  async (req, res) => {
 
-    await Circular.findByIdAndDelete(
-      req.params.id
-    );
+    try {
 
-    res.json({
-      message:
-        "Circular deleted successfully",
-    });
+      await Circular.findByIdAndDelete(
+        req.params.id
+      );
 
-  } catch (err) {
+      res.json({
 
-    res.status(500).json({
-      message: "Server Error",
-    });
+        message:
+          "Circular deleted successfully",
+      });
+
+    } catch (err) {
+
+      console.log(err);
+
+      res.status(500).json({
+        message: "Server Error",
+      });
+    }
   }
-});
+);
 
 
 // =========================
 // UPDATE CIRCULAR
 // =========================
 
-router.put("/:id", async (req, res) => {
+router.put(
+  "/:id",
 
-  try {
+  async (req, res) => {
 
-    const { title, desc } =
-      req.body;
+    try {
 
-    const updated =
-      await Circular.findByIdAndUpdate(
-        req.params.id,
-        {
-          title,
-          desc,
-        },
-        { new: true }
-      );
+      const {
+        title,
+        desc,
+      } = req.body;
 
-    res.json({
-      message:
-        "Circular updated successfully",
-      updated,
-    });
+      const updated =
+        await Circular.findByIdAndUpdate(
 
-  } catch (err) {
+          req.params.id,
 
-    res.status(500).json({
-      message: "Server Error",
-    });
+          {
+            title,
+            desc,
+          },
+
+          { new: true }
+        );
+
+      res.json({
+
+        message:
+          "Circular updated successfully",
+
+        updated,
+      });
+
+    } catch (err) {
+
+      console.log(err);
+
+      res.status(500).json({
+        message: "Server Error",
+      });
+    }
   }
-});
+);
 
 module.exports = router;
