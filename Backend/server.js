@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const newsletterRoutes = require("./routes/newsletter");
 const path = require("path");
+const circularRoutes = require("./routes/circular");
 const app = express();
 
 // Routes
@@ -24,6 +25,8 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/notices", noticeRoutes);
 app.use("/api/newsletters", newsletterRoutes);
+app.use("/api/circulars",circularRoutes);
+
 
 if (!fs.existsSync("uploads")) {
   fs.mkdirSync("uploads");
