@@ -23,6 +23,7 @@ const storage = new CloudinaryStorage({
       return {
         folder: "gurukulam-newsletters/pdfs",
         resource_type: "raw",
+        format: "pdf",
       };
     }
 
@@ -89,13 +90,11 @@ router.post("/", upload, async (req, res) => {
         message: "PDF is required",
       });
     }
+const pdf =
+  req.files["pdf"][0].path;
 
-    const pdf =
-      req.files["pdf"][0].path;
-
-    const coverImage =
-      req.files["coverImage"]?.[0]
-        ?.path || "";
+const coverImage =
+  req.files["coverImage"]?.[0]?.path || "";
 
     const newsletter =
       new Newsletter({
