@@ -42,20 +42,22 @@ const storage =
       file
     ) => {
 
-      return {
+    return {
 
-        folder:
-          "gurukulam-circulars",
+  folder:
+    "gurukulam-circulars",
 
-        resource_type:
-          "raw",
+  resource_type:
+    "raw",
 
-        public_id:
-          Date.now() +
-          "-" +
-          file.originalname
-            .split(".")[0],
-      };
+  format: "pdf",
+
+  public_id:
+    Date.now() +
+    "-" +
+    file.originalname
+      .split(".")[0],
+};
     },
   });
 

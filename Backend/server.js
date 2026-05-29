@@ -26,6 +26,14 @@ app.use("/api/auth", authRoutes);
 app.use("/api/notices", noticeRoutes);
 app.use("/api/newsletters", newsletterRoutes);
 app.use("/api/circulars",circularRoutes);
+app.use(express.json({
+  limit: "50mb",
+}));
+
+app.use(express.urlencoded({
+  extended: true,
+  limit: "50mb",
+}));
 
 
 if (!fs.existsSync("uploads")) {
