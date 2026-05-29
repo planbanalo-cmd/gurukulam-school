@@ -109,6 +109,10 @@ router.post(
 
     try {
 
+      console.log("BODY:", req.body);
+
+      console.log("FILE:", req.file);
+
       const {
         title,
         desc,
