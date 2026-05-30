@@ -32,8 +32,8 @@ const upload = multer({
 router.get("/", async (req, res) => {
     try {
         const albums = await Gallery.find().sort({
-            createdAt: -1,
-        });
+  date: -1,
+}); 
 
         res.json(albums);
     } catch (err) {
@@ -128,35 +128,13 @@ router.put(
 // DELETE ENTIRE ALBUM
 
 router.delete("/:id", async (req, res) => {
+
+  console.log(
+    "DELETE ALBUM:",
+    req.params.id
+  );
+
   try {
-    const album =
-      await Gallery.findById(
-        req.params.id
-      );
-
-    if (!album) {
-      return res.status(404).json({
-        message: "Album not found",
-      });
-    }
-
-    if (album.cover) {
-      const coverPath =
-        `uploads/gallery/${album.cover}`;
-
-      if (fs.existsSync(coverPath)) {
-        fs.unlinkSync(coverPath);
-      }
-    }
-
-    album.images.forEach((img) => {
-      const imgPath =
-        `uploads/gallery/${img}`;
-
-      if (fs.existsSync(imgPath)) {
-        fs.unlinkSync(imgPath);
-      }
-    });
 
     await Gallery.findByIdAndDelete(
       req.params.id
@@ -166,57 +144,66 @@ router.delete("/:id", async (req, res) => {
       message:
         "Album deleted successfully",
     });
+
   } catch (err) {
+
     console.log(err);
 
     res.status(500).json({
       message: "Server Error",
     });
+
   }
 });
 
 // DELETE SINGLE PHOTO
 
 router.delete(
-    "/:albumId/photo/:photoName",
-    async (req, res) => {
-        try {
-            const album =
-                await Gallery.findById(
-                    req.params.albumId
-                );
+  "/:albumId/photo/:photoName",
+  async (req, res) => {
 
-            if (!album) {
-                return res.status(404).json({
-                    message: "Album not found",
-                });
-            }
+    console.log(
+      "DELETE PHOTO:",
+      req.params.albumId,
+      req.params.photoName
+    );
 
-            const photoPath =
-  `uploads/gallery/${req.params.photoName}`;
+    try {
 
-if (fs.existsSync(photoPath)) {
-  fs.unlinkSync(photoPath);
-}
+      const album =
+        await Gallery.findById(
+          req.params.albumId
+        );
 
-album.images =
-  album.images.filter(
-    (img) =>
-      img !== req.params.photoName
-  );
+      if (!album) {
+        return res.status(404).json({
+          message: "Album not found",
+        });
+      }
 
-            await album.save();
+      album.images =
+        album.images.filter(
+          (img) =>
+            img !== req.params.photoName
+        );
 
-            res.json({
-                message:
-                    "Photo deleted successfully",
-            });
-        } catch (err) {
-            res.status(500).json({
-                message: "Server Error",
-            });
-        }
+      await album.save();
+
+      res.json({
+        message:
+          "Photo deleted successfully",
+      });
+
+    } catch (err) {
+
+      console.log(err);
+
+      res.status(500).json({
+        message: "Server Error",
+      });
+
     }
+  }
 );
 
 module.exports = router;
