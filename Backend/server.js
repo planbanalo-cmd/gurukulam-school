@@ -8,7 +8,7 @@ const path = require("path");
 const circularRoutes = require("./routes/circular");
 const app = express();
 const galleryRoutes =require("./routes/gallery");
-
+const videoGalleryRoutes =require("./routes/videoGallery");
 
 if (
   !fs.existsSync("uploads/gallery")
