@@ -10,13 +10,22 @@ const app = express();
 const galleryRoutes =require("./routes/gallery");
 const videoGalleryRoutes =require("./routes/videoGallery");
 
-if (
-  !fs.existsSync("uploads/gallery")
-) {
-  fs.mkdirSync(
-    "uploads/gallery",
-    { recursive: true }
-  );
+if (!fs.existsSync("uploads")) {
+  fs.mkdirSync("uploads", {
+    recursive: true,
+  });
+}
+
+if (!fs.existsSync("uploads/gallery")) {
+  fs.mkdirSync("uploads/gallery", {
+    recursive: true,
+  });
+}
+
+if (!fs.existsSync("uploads/videos")) {
+  fs.mkdirSync("uploads/videos", {
+    recursive: true,
+  });
 }
 // Routes
 const authRoutes = require("./routes/auth");
