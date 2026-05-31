@@ -1,28 +1,22 @@
 const mongoose = require("mongoose");
 
-const videoGallerySchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
+const VideoGallerySchema =
+  new mongoose.Schema({
+    title: String,
 
-  date: {
-    type: Date,
-    default: Date.now,
-  },
+    description: String,
 
-  cover: {
-    type: String,
-    required: true,
-  },
+    cover: String,
 
-  videos: {
-    type: [String],
-    default: [],
-  },
-});
+    date: {
+      type: Date,
+      default: Date.now,
+    },
+
+    videos: [String],
+  });
 
 module.exports = mongoose.model(
   "VideoGallery",
-  videoGallerySchema
+  VideoGallerySchema
 );
