@@ -52,47 +52,35 @@ router.get("/", async (req, res) => {
 
 // CREATE ALBUM
 
+const {
+  uploadImages,
+} = require("../middleware/cloudinaryUpload");
+
 router.post(
   "/",
-  upload.fields([
-    {
-      name: "cover",
-      maxCount: 1,
-    },
-    {
-      name: "images",
-      maxCount: 100,
-    },
+  uploadImages.fields([
+    { name: "cover", maxCount: 1 },
+    { name: "images" },
   ]),
   async (req, res) => {
-    try {
-      const { title, date } = req.body;
 
-      const cover =
-        req.files?.cover?.[0]?.path || "";
+    const cover =
+      req.files.cover[0].path;
 
-      const images =
-        req.files?.images?.map(
-          (file) => file.path
-        ) || [];
-      const album =
-        await Gallery.create({
-          title,
-          date,
-          cover,
-          images,
-        });
-      console.log(
-        `📸 Album Created: ${title} | Photos: ${images.length}`
+    const images =
+      req.files.images.map(
+        (img) => img.path
       );
 
-      res.json(album);
-    } catch (err) {
-      console.log(err);
-      res.status(500).json({
-        message: "Server Error",
+    const album =
+      await Gallery.create({
+        title: req.body.title,
+        date: req.body.date,
+        cover,
+        images,
       });
-    }
+
+    res.json(album);
   }
 );
 

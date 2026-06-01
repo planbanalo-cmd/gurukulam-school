@@ -1,52 +1,21 @@
 const express = require("express");
 const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
-
+const cloudinary = require("../config/cloudinary");
 const VideoGallery = require("../models/VideoGallery");
-
+const streamifier = require("streamifier");
 const router = express.Router();
+const extractPublicId = (url) => {
+  const filename =
+    url.split("/").pop();
 
-// Create upload folder if it doesn't exist
-const uploadDir = path.join(
-  __dirname,
-  "../uploads/videos"
-);
+  return filename.substring(
+    0,
+    filename.lastIndexOf(".")
+  );
+};
 
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, {
-    recursive: true,
-  });
-}
-
-// Multer Storage
-const storage = multer.diskStorage({
-  destination: function (
-    req,
-    file,
-    cb
-  ) {
-    cb(null, uploadDir);
-  },
-
-  filename: function (
-    req,
-    file,
-    cb
-  ) {
-    cb(
-      null,
-      Date.now() +
-        "-" +
-        Math.round(
-          Math.random() * 1e9
-        ) +
-        path.extname(
-          file.originalname
-        )
-    );
-  },
-});
+const storage =
+  multer.memoryStorage();
 
 const upload = multer({
   storage,
@@ -55,6 +24,40 @@ const upload = multer({
       500 * 1024 * 1024, // 500MB
   },
 });
+
+
+
+const uploadToCloudinary = (
+  buffer,
+  folder,
+  resourceType = "auto"
+) => {
+  return new Promise(
+    (resolve, reject) => {
+
+      const stream =
+        cloudinary.uploader.upload_stream(
+          {
+            folder,
+            resource_type:
+              resourceType,
+          },
+          (error, result) => {
+
+            if (error)
+              reject(error);
+
+            else
+              resolve(result);
+          }
+        );
+
+      streamifier.createReadStream(
+        buffer
+      ).pipe(stream);
+    }
+  );
+};
 
 // ========================
 // GET ALL ALBUMS
@@ -93,78 +96,72 @@ router.post(
     },
     {
       name: "videos",
-      maxCount: 100,
     },
   ]),
   async (req, res) => {
     try {
 
-      console.log(
-        "BODY:",
-        req.body
-      );
+      const coverUpload =
+        await uploadToCloudinary(
+          req.files.cover[0]
+            .buffer,
+          "gurukulam-video-covers",
+          "image"
+        );
 
-      console.log(
-        "FILES:",
-        req.files
-      );
+      const videoUrls =
+        await Promise.all(
+          req.files.videos.map(
+            async (video) => {
 
-      const {
-        title,
-        description,
-        date,
-      } = req.body;
+              const uploaded =
+                await uploadToCloudinary(
+                  video.buffer,
+                  "gurukulam-videos",
+                  "video"
+                );
 
-      const cover =
-        req.files?.cover?.[0]
-          ?.filename || "";
-
-      const videos =
-        req.files?.videos?.map(
-          (file) =>
-            file.filename
-        ) || [];
+              return uploaded.secure_url;
+            }
+          )
+        );
 
       const album =
         await VideoGallery.create({
-          title,
-          description,
-          date,
-          cover,
-          videos,
+          title:
+            req.body.title,
+          description:
+            req.body.description,
+          date:
+            req.body.date,
+          cover:
+            coverUpload.secure_url,
+          videos:
+            videoUrls,
         });
-
-      console.log(
-        `🎥 Video Album Created: ${title}`
-      );
 
       res.json(album);
 
     } catch (err) {
 
-      console.error(
-        "VIDEO UPLOAD ERROR:"
-      );
-
       console.error(err);
 
       res.status(500).json({
-        message: err.message,
+        message:
+          err.message,
       });
+
     }
   }
 );
-
 // ========================
 // ADD VIDEOS TO ALBUM
 // ========================
 router.put(
   "/:id/videos",
-  upload.array(
-    "videos",
-    100
-  ),
+  upload.array("videos", 100),
   async (req, res) => {
+
     try {
 
       const album =
@@ -181,21 +178,28 @@ router.put(
           });
       }
 
-      const newVideos =
-        req.files.map(
-          (file) =>
-            file.filename
+      const uploadedVideos =
+        await Promise.all(
+          req.files.map(
+            async (video) => {
+
+              const result =
+                await uploadToCloudinary(
+                  video.buffer,
+                  "gurukulam-videos",
+                  "video"
+                );
+
+              return result.secure_url;
+            }
+          )
         );
 
       album.videos.push(
-        ...newVideos
+        ...uploadedVideos
       );
 
       await album.save();
-
-      console.log(
-        `➕ ${newVideos.length} videos added`
-      );
 
       res.json(album);
 
@@ -204,8 +208,10 @@ router.put(
       console.error(err);
 
       res.status(500).json({
-        message: err.message,
+        message:
+          err.message,
       });
+
     }
   }
 );
@@ -214,7 +220,7 @@ router.put(
 // DELETE SINGLE VIDEO
 // ========================
 router.delete(
-  "/:albumId/video/:videoName",
+  "/:albumId/video/:videoUrl",
   async (req, res) => {
     try {
 
@@ -224,43 +230,57 @@ router.delete(
         );
 
       if (!album) {
-        return res
-          .status(404)
-          .json({
-            message:
-              "Album not found",
-          });
+        return res.status(404).json({
+          message: "Album not found",
+        });
       }
 
-      album.videos =
-        album.videos.filter(
-          (video) =>
-            video !==
-            req.params.videoName
-        );
+      const index =
+        Number(req.params.index);
+
+      const videoUrl =
+        album.videos[index];
+
+      if (!videoUrl) {
+        return res.status(404).json({
+          message: "Video not found",
+        });
+      }
+
+      const videoId =
+        extractPublicId(videoUrl);
+
+      await cloudinary.uploader.destroy(
+        `gurukulam-videos/${videoId}`,
+        {
+          resource_type: "video",
+        }
+      );
+
+      const videoUrl =
+  decodeURIComponent(
+    req.params.videoUrl
+  );
+
+const videoId =
+  extractPublicId(videoUrl);
+
+await cloudinary.uploader.destroy(
+  `gurukulam-videos/${videoId}`,
+  {
+    resource_type: "video",
+  }
+);
+
+album.videos =
+  album.videos.filter(
+    (v) => v !== videoUrl
+  );
 
       await album.save();
 
-      // Delete physical file
-      const videoPath =
-        path.join(
-          uploadDir,
-          req.params.videoName
-        );
-
-      if (
-        fs.existsSync(
-          videoPath
-        )
-      ) {
-        fs.unlinkSync(
-          videoPath
-        );
-      }
-
       res.json({
-        message:
-          "Video deleted",
+        message: "Video deleted",
       });
 
     } catch (err) {
@@ -270,6 +290,7 @@ router.delete(
       res.status(500).json({
         message: err.message,
       });
+
     }
   }
 );
@@ -277,88 +298,61 @@ router.delete(
 // ========================
 // DELETE ENTIRE ALBUM
 // ========================
-router.delete(
-  "/:id",
-  async (req, res) => {
-    try {
+router.delete("/:id", async (req, res) => {
+  try {
 
-      const album =
-        await VideoGallery.findById(
-          req.params.id
-        );
+    const album = await VideoGallery.findById(
+      req.params.id
+    );
 
-      if (!album) {
-        return res
-          .status(404)
-          .json({
-            message:
-              "Album not found",
-          });
-      }
-
-      // Delete cover
-      if (
-        album.cover
-      ) {
-        const coverPath =
-          path.join(
-            uploadDir,
-            album.cover
-          );
-
-        if (
-          fs.existsSync(
-            coverPath
-          )
-        ) {
-          fs.unlinkSync(
-            coverPath
-          );
-        }
-      }
-
-      // Delete videos
-      for (const video of album.videos) {
-
-        const videoPath =
-          path.join(
-            uploadDir,
-            video
-          );
-
-        if (
-          fs.existsSync(
-            videoPath
-          )
-        ) {
-          fs.unlinkSync(
-            videoPath
-          );
-        }
-      }
-
-      await VideoGallery.findByIdAndDelete(
-        req.params.id
-      );
-
-      console.log(
-        "🗑️ Video Album Deleted"
-      );
-
-      res.json({
-        message:
-          "Album deleted",
-      });
-
-    } catch (err) {
-
-      console.error(err);
-
-      res.status(500).json({
-        message: err.message,
+    if (!album) {
+      return res.status(404).json({
+        message: "Album not found",
       });
     }
+
+    // Delete cover image
+    if (album.cover) {
+
+      const coverId =
+        extractPublicId(album.cover);
+
+      await cloudinary.uploader.destroy(
+        `gurukulam-video-covers/${coverId}`
+      );
+    }
+
+    // Delete videos
+    for (const video of album.videos) {
+
+      const videoId =
+        extractPublicId(video);
+
+      await cloudinary.uploader.destroy(
+        `gurukulam-videos/${videoId}`,
+        {
+          resource_type: "video",
+        }
+      );
+    }
+
+    await VideoGallery.findByIdAndDelete(
+      req.params.id
+    );
+
+    res.json({
+      message: "Album deleted",
+    });
+
+  } catch (err) {
+
+    console.error(err);
+
+    res.status(500).json({
+      message: err.message,
+    });
+
   }
-);
+});
 
 module.exports = router;
