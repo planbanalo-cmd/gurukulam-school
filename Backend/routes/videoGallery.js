@@ -219,6 +219,9 @@ router.put(
 // ========================
 // DELETE SINGLE VIDEO
 // ========================
+// ========================
+// DELETE SINGLE VIDEO
+// ========================
 router.delete(
   "/:albumId/video/:videoUrl",
   async (req, res) => {
@@ -235,17 +238,10 @@ router.delete(
         });
       }
 
-      const index =
-        Number(req.params.index);
-
       const videoUrl =
-        album.videos[index];
-
-      if (!videoUrl) {
-        return res.status(404).json({
-          message: "Video not found",
-        });
-      }
+        decodeURIComponent(
+          req.params.videoUrl
+        );
 
       const videoId =
         extractPublicId(videoUrl);
@@ -257,25 +253,10 @@ router.delete(
         }
       );
 
-      const videoUrl =
-  decodeURIComponent(
-    req.params.videoUrl
-  );
-
-const videoId =
-  extractPublicId(videoUrl);
-
-await cloudinary.uploader.destroy(
-  `gurukulam-videos/${videoId}`,
-  {
-    resource_type: "video",
-  }
-);
-
-album.videos =
-  album.videos.filter(
-    (v) => v !== videoUrl
-  );
+      album.videos =
+        album.videos.filter(
+          (v) => v !== videoUrl
+        );
 
       await album.save();
 
@@ -294,7 +275,6 @@ album.videos =
     }
   }
 );
-
 // ========================
 // DELETE ENTIRE ALBUM
 // ========================
