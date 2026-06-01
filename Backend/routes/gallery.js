@@ -52,13 +52,10 @@ router.get("/", async (req, res) => {
 
 // CREATE ALBUM
 
-const {
-  uploadImages,
-} = require("../middleware/cloudinaryUpload");
 
 router.post(
   "/",
-  uploadImages.fields([
+  upload.fields([
     { name: "cover", maxCount: 1 },
     { name: "images" },
   ]),
