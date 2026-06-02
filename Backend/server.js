@@ -9,7 +9,9 @@ const circularRoutes = require("./routes/circular");
 const app = express();
 const galleryRoutes =require("./routes/gallery");
 const videoGalleryRoutes =require("./routes/videoGallery");
-import homeGalleryRoutes from "./routes/homeGalleryRoutes.js";
+const homeGalleryRoutes = require(
+  "./routes/homeGalleryRoutes"
+);
 
 if (!fs.existsSync("uploads")) {
   fs.mkdirSync("uploads", {

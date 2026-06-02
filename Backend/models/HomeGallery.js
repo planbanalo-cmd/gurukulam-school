@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const homeGallerySchema =
   new mongoose.Schema(
@@ -7,12 +7,10 @@ const homeGallerySchema =
         type: String,
         required: true,
       },
-
       image: {
         type: String,
         required: true,
       },
-
       cloudinaryId: {
         type: String,
       },
@@ -22,7 +20,7 @@ const homeGallerySchema =
     }
   );
 
-export default mongoose.models.HomeGallery ||
+module.exports =
   mongoose.model(
     "HomeGallery",
     homeGallerySchema
