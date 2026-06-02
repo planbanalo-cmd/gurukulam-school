@@ -9,6 +9,7 @@ const circularRoutes = require("./routes/circular");
 const app = express();
 const galleryRoutes =require("./routes/gallery");
 const videoGalleryRoutes =require("./routes/videoGallery");
+import homeGalleryRoutes from "./routes/homeGalleryRoutes.js";
 
 if (!fs.existsSync("uploads")) {
   fs.mkdirSync("uploads", {
@@ -48,13 +49,15 @@ app.use("/api/circulars",circularRoutes);
 app.use(express.json({
   limit: "50mb",
 }));
-app.use(
-  "/api/video-gallery",
+app.use("/api/video-gallery",
   require(
     "./routes/videoGallery"
   )
 );
-
+app.use(
+  "/api/home-gallery",
+  homeGalleryRoutes
+);
 app.use(express.urlencoded({
   extended: true,
   limit: "50mb",
