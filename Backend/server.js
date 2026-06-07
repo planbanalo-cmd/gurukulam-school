@@ -9,9 +9,8 @@ const circularRoutes = require("./routes/circular");
 const app = express();
 const galleryRoutes =require("./routes/gallery");
 const videoGalleryRoutes =require("./routes/videoGallery");
-const homeGalleryRoutes = require(
-  "./routes/homeGalleryRoutes"
-);
+const homeGalleryRoutes = require("./routes/homeGalleryRoutes");
+const studentAchievementRoutes =require("./routes/studentAchievement");
 
 if (!fs.existsSync("uploads")) {
   fs.mkdirSync("uploads", {
@@ -48,26 +47,12 @@ app.use("/api/auth", authRoutes);
 app.use("/api/notices", noticeRoutes);
 app.use("/api/newsletters", newsletterRoutes);
 app.use("/api/circulars",circularRoutes);
-app.use(express.json({
-  limit: "50mb",
-}));
-app.use("/api/video-gallery",
-  require(
-    "./routes/videoGallery"
-  )
-);
-app.use(
-  "/api/home-gallery",
-  homeGalleryRoutes
-);
-app.use(express.urlencoded({
-  extended: true,
-  limit: "50mb",
-}));
-app.use(
-  "/api/gallery",
-  galleryRoutes
-);
+app.use(express.json({limit: "50mb",}));
+app.use("/api/video-gallery",require("./routes/videoGallery"));
+app.use("/api/home-gallery",homeGalleryRoutes);
+app.use(express.urlencoded({extended: true,limit: "50mb",}));
+app.use("/api/gallery",galleryRoutes)
+app.use("/api/student-achievements",studentAchievementRoutes);;
 
 if (!fs.existsSync("uploads")) {
   fs.mkdirSync("uploads");
