@@ -31,7 +31,7 @@ if (!fs.existsSync("uploads/videos")) {
 }
 // Routes
 const authRoutes = require("./routes/auth");
-const noticeRoutes = require("./routes/notice");
+
 
 // Middleware
 app.use(cors({
@@ -44,7 +44,7 @@ app.use(express.json());
 
 // Route middleware
 app.use("/api/auth", authRoutes);
-app.use("/api/notices", noticeRoutes);
+
 app.use("/api/newsletters", newsletterRoutes);
 app.use("/api/circulars",circularRoutes);
 app.use(express.json({limit: "50mb",}));
