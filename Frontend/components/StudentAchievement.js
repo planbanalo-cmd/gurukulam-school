@@ -1,98 +1,68 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useRef } from 'react';
+import React, {
+  useState,
+  useRef,
+  useEffect
+} from 'react';
 import Image from 'next/image';
-
+import { API } from "@/lib/api";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 import "yet-another-react-lightbox/styles.css";
 
-const items = [
-    {
-        type: "image",
-        src: "/images/studentachivement/1.jpg",
-        name: "YOGENDRA S/O MR. BHUVNESWAR",
-        achievement: "Qualified CA",
-        badge: "Qualified CA",
-    },
-    {
-        type: "image",
-        src: "/images/studentachivement/2.jpg",
-        name: "VAIBHAV S/O MR. VEER SINGH",
-        achievement: "IIT GUWAHATI ",
-        badge: "IIT GUWAHATI",
-    },
 
-    {
-        type: "image",
-        src: "/images/studentachivement/3.jpg",
-        name: "ROHIT S/O MR. AJIT SINGH ",
-        achievement: "NIT KURUSHETRA",
-        badge: "NIT KURUSHETRA",
-    },
-    {
-        type: "image",
-        src: "/images/studentachivement/4.jpg",
-        name: "SAHIL S/O MR. SURENDER",
-        achievement: " Qualified CA",
-        badge: "Qualified CA",
-    },
-    {
-        type: "image",
-        src: "/images/studentachivement/5.jpg",
-        name: "HARSH S/O MR. TUFAN SINGH",
-        achievement: " NIT KURUSHETRA QUALIFIED FOR JEE-ADV & NDA",
-        badge: "NIT KURUSHETRA",
-    }, {
-        type: "image",
-        src: "/images/studentachivement/6.jpg",
-        name: "JINAL D/O DR. LATESH ARORA",
-        achievement: "98.6% QUALIFIED FOR JEE-ADV",
-        badge: "JEE-ADV",
-    }, {
-        type: "image",
-        src: "/images/studentachivement/7.jpg",
-        name: "ANNU D/O MR. RAJENDER",
-        achievement: "QUALIFIED FOR JEE-ADV",
-        badge: "JEE-ADV",
-    }, {
-        type: "image",
-        src: "/images/studentachivement/8.jpg",
-        name: "TANYA D/O MR. RAJENDER",
-        achievement: " FOUNDATION-2025 QUALIFIED FOR JEE-ADV",
-        badge: "JEE-ADV",
-    }, {
-        type: "image",
-        src: "/images/studentachivement/9.jpg",
-        name: "Tarun",
-        achievement: "Scored 97.80% in JEE-Mains",
-        badge: "JEE-Mains",
-    }, {
-        type: "image",
-        src: "/images/studentachivement/10.jpg",
-        name: "MAHAK D/O MR. AMIT",
-        achievement: "93% NON-MEDICAL",
-        badge: "Non-Medical Topper",
-    }, {
-        type: "image",
-        src: "/images/studentachivement/11.jpg",
-        name: "DIKSHANT S/O MR. VIJAY",
-        achievement: "99% ECONOMICS ",
-        badge: "Economics Topper",
-    }, {
-        type: "image",
-        src: "/images/studentachivement/12.jpg",
-        name: "AVANTIKA S/O MR. BHUVNESWAR",
-        achievement: "QUALIFIED CA FOUNDATION-2025",
-        badge: "Qualified CA",
-    },
-
-
-];
 
 export default function StudentAchievement() {
+const [items, setItems] = useState([]);
+
+
+
+useEffect(() => {
+
+  const fetchStudents =
+    async () => {
+
+      try {
+
+        const res =
+          await fetch(
+            `${API}/api/student-achievements`
+          );
+
+        const data =
+          await res.json();
+
+        const formatted =
+          data.map(
+            (student) => ({
+              type: "image",
+              src: student.image,
+              name: student.name,
+              achievement:
+                student.achievement,
+              badge:
+                student.badge,
+              _id:
+                student._id,
+            })
+          );
+
+        setItems(formatted);
+
+      } catch (err) {
+
+        console.log(err);
+
+      }
+
+    };
+
+  fetchStudents();
+
+}, []);
 
     const [videoOpen, setVideoOpen] = useState(false);
     const [currentVideo, setCurrentVideo] = useState("");

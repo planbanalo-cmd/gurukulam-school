@@ -1,110 +1,339 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Images, Camera, CalendarDays } from 'lucide-react';
 import Image from 'next/image';
+import { API } from '@/lib/api';
 
 export default function Photos() {
+  type Album = {
+    _id: string;
+    title: string;
+    date: string;
+    cover: string;
+    images: string[];
+  };
+const [loading, setLoading] = useState(false);
+  const [albums, setAlbums] =
+    useState<Album[]>([]);
+  const [message, setMessage] =
+    useState("");
 
-  const [selectedAlbum, setSelectedAlbum] = useState<any>(null);
+  const [messageType, setMessageType] =
+    useState<"success" | "error" | "">("");
+  const [selectedAlbum, setSelectedAlbum] =
+    useState<Album | null>(null);
+  const [selectedFilesCount, setSelectedFilesCount] =
+    useState(0);
+  const [confirmOpen, setConfirmOpen] =
+    useState(false);
 
-  // ✅ ALBUM DATA
-  const albums = [
-    {
-      title: 'Annual Function 2026',
-      date: '15 January 2026',
-      cover: '/images/gallery/annual/cover.jpeg',
+  const [confirmMessage, setConfirmMessage] =
+    useState("");
 
-      images: [
-        '/images/gallery/annual/1.jpeg',
-        '/images/gallery/annual/2.jpeg',
-        '/images/gallery/annual/3.jpeg',
-        '/images/gallery/annual/4.jpeg',
-        '/images/gallery/annual/5.jpeg',
-        '/images/gallery/annual/6.jpeg',
-      ],
-    },
+  const [confirmAction, setConfirmAction] =
+    useState<(() => void) | null>(null);
+  const [isAdmin, setIsAdmin] =
+    useState(false);
+  useEffect(() => {
 
-    {
-      title: 'Sports Day',
-      date: '10 December 2025',
-      cover: '/images/gallery/sports/cover.jpeg',
+    const token =
+      localStorage.getItem("token");
 
-      images: [
-        '/images/gallery/sports/1.jpeg',
-        '/images/gallery/sports/2.jpeg',
-        '/images/gallery/sports/3.jpeg',
-        '/images/gallery/sports/4.jpeg',
-        '/images/gallery/sports/5.jpeg',
-        '/images/gallery/sports/6.jpeg',
-        '/images/gallery/sports/7.jpeg',
-        '/images/gallery/sports/8.jpeg',
-      ],
-    },
+    setIsAdmin(!!token);
 
-    {
-      title: 'Books Exhibition',
-      date: '18 November 2025',
-      cover: '/images/gallery/exhibition/cover.jpeg',
+  }, []);
 
-      images: [
-        '/images/gallery/exhibition/1.jpeg',
-        '/images/gallery/exhibition/7.jpeg',
-        '/images/gallery/exhibition/3.jpeg',
-        '/images/gallery/exhibition/4.jpeg',
-        '/images/gallery/exhibition/5.jpeg',
-        '/images/gallery/exhibition/6.jpeg',
-        '/images/gallery/exhibition/8.jpeg',
-        '/images/gallery/exhibition/9.jpeg',
 
-      ],
-    },
+  useEffect(() => {
+    fetchAlbums();
+  }, []);
 
-    {
-      title: 'Art & Craft',
-      date: '1 August 2025',
-      cover: '/images/gallery/art&craft/cover.jpeg',
+  const fetchAlbums = async () => {
+    const res = await fetch(
+      `${API}/api/gallery`
+    );
 
-      images: [
-        '/images/gallery/art&craft/1.jpeg',
-        '/images/gallery/art&craft/2.jpeg',
-        '/images/gallery/art&craft/3.jpeg',
-        '/images/gallery/art&craft/4.jpeg',
-        '/images/gallery/art&craft/5.jpeg',
-        '/images/gallery/art&craft/6.jpeg',
-        '/images/gallery/art&craft/7.jpeg',
-      ],
-    },
+    const data = await res.json();
 
-    {
-      title: 'Plantation Drive',
-      date: '22 July 2025',
-      cover: '/images/gallery/plantation/cover.jpg',
+    setAlbums(data);
+  };
+  const deleteAlbum = async (
+    albumId: string
+  ) => {
 
-      images: [
-        '/images/gallery/plantation/1.jpg',
-        '/images/gallery/plantation/2.jpg',
-        '/images/gallery/plantation/3.jpg',
-      ],
-    },
 
-    {
-      title: 'Classroom Activities',
-      date: 'Ongoing',
-      cover: '/images/gallery/classroom/cover.jpg',
+     try {
+    setLoading(true);
 
-      images: [
-        '/images/gallery/classroom/1.jpg',
-        '/images/gallery/classroom/2.jpg',
-        '/images/gallery/classroom/3.jpg',
-        '/images/gallery/classroom/4.jpg',
-      ],
-    },
-  ];
+      await fetch(
+        `${API}/api/gallery/${albumId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      const res = await fetch(
+        `${API}/api/gallery`
+      );
+
+      const updatedAlbums =
+        await res.json();
+
+      setAlbums(updatedAlbums);
+
+      // Close modal if deleted album was open
+      if (
+        selectedAlbum &&
+        selectedAlbum._id === albumId
+      ) {
+        setSelectedAlbum(null);
+      }
+
+      setMessage(
+        "Album deleted successfully 🗑️"
+      );
+
+      setMessageType("success");
+
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+
+    } catch (error) {
+
+      setMessage(
+        "Failed to delete album ❌"
+      );
+
+      setMessageType("error");
+
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+
+      
+    }
+    finally {
+  setLoading(false);
+}
+  };
+ const addPhotos = async (
+  albumId: string,
+  files: FileList
+) => {
+  try {
+    setLoading(true);
+
+    const formData = new FormData();
+
+    Array.from(files).forEach((file) => {
+      formData.append("images", file);
+    });
+
+    await fetch(
+      `${API}/api/gallery/${albumId}/photos`,
+      {
+        method: "PUT",
+        body: formData,
+      }
+    );
+
+    setMessage("Photos uploaded successfully ✅");
+    setMessageType("success");
+
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
+
+    await fetchAlbums();
+
+    const refreshed = await fetch(
+      `${API}/api/gallery`
+    );
+
+    const albumsData = await refreshed.json();
+
+    const updatedAlbum = albumsData.find(
+      (a: Album) => a._id === albumId
+    );
+
+    if (updatedAlbum) {
+      setSelectedAlbum(updatedAlbum);
+    }
+  } catch (error) {
+    console.error(error);
+
+    setMessage("Failed to upload photos ❌");
+    setMessageType("error");
+
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
+  } finally {
+    setLoading(false);
+  }
+};
+  const deletePhoto = async (
+  albumId: string,
+  photoName: string
+) => {
+  try {
+    setLoading(true);
+
+    await fetch(
+      `${API}/api/gallery/${albumId}/photo/${encodeURIComponent(photoName)}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    const res = await fetch(
+      `${API}/api/gallery`
+    );
+
+    const updatedAlbums = await res.json();
+
+    setAlbums(updatedAlbums);
+
+    const updatedAlbum = updatedAlbums.find(
+      (a: Album) => a._id === albumId
+    );
+
+    if (updatedAlbum) {
+      setSelectedAlbum(updatedAlbum);
+    }
+
+    setMessage("Photo deleted successfully 🗑️");
+    setMessageType("success");
+
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
+
+  } catch (error) {
+    console.error(error);
+
+    setMessage("Failed to delete photo ❌");
+    setMessageType("error");
+
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
+
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-[linear-gradient(120deg,#f5f1e8_0%,#eef5f1_40%,#f9f7f2_70%,#f5f1e8_100%)] py-16 px-4 overflow-hidden">
+      {confirmOpen && (
+        <div className="fixed inset-0 z-[9999] bg-black/50 flex items-center justify-center p-4">
+          <div
+            className="
+  bg-white
+  rounded-3xl
+  shadow-2xl
+  p-8
+  max-w-md
+  w-full
+  border
+  border-[#156445]/20
+"
+          >
+
+            <h3
+              className="
+  text-3xl
+  font-bold
+  bg-gradient-to-r
+  from-[#156445]
+  to-[#0D6453]
+  bg-clip-text
+  text-transparent
+  mb-4
+"
+            >
+              Confirmation
+            </h3>
+
+            <p className="text-gray-600 mb-8">
+              {confirmMessage}
+            </p>
+
+            <div className="flex gap-4 justify-end">
+
+              <button
+                onClick={() => {
+                  setConfirmOpen(false);
+                }}
+                className="
+px-5
+py-3
+rounded-xl
+border
+border-[#156445]/20
+text-[#156445]
+font-semibold
+hover:bg-[#156445]/5
+"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={() => {
+                  confirmAction?.();
+                  setConfirmOpen(false);
+                }}
+                className="
+px-5
+py-3
+rounded-xl
+bg-gradient-to-r
+from-[#156445]
+to-[#0D6453]
+text-white
+font-semibold
+hover:opacity-90
+transition
+"
+              >
+                Yes
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      )}
+      {message && (
+        <div
+          className={`
+fixed
+top-6
+right-6
+z-[9999]
+px-6
+py-4
+rounded-2xl
+shadow-2xl
+text-white
+font-semibold
+backdrop-blur-md
+animate-in
+slide-in-from-right
+${messageType === "success"
+              ? "bg-[#156445]"
+              : "bg-red-600"
+            }
+`}
+        >
+          {message}
+        </div>
+      )}
 
       {/* WATERMARK */}
       <div className="absolute inset-0 flex items-center justify-center opacity-[0.04] pointer-events-none">
@@ -148,7 +377,16 @@ export default function Photos() {
         </motion.div>
 
         {/* ALBUM GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          className="
+  grid
+  grid-cols-1
+  sm:grid-cols-2
+  xl:grid-cols-3
+  2xl:grid-cols-4
+  gap-8
+  "
+        >
 
           {albums.map((album, index) => (
             <motion.div
@@ -166,68 +404,140 @@ export default function Photos() {
               <div className="absolute -inset-[2px] rounded-3xl bg-gradient-to-r from-[#156445] via-[#0D6453] to-[#296236] opacity-20 blur-xl group-hover:opacity-40 transition"></div>
 
               {/* CARD */}
-              <div className="relative overflow-hidden rounded-3xl bg-white/90 backdrop-blur-xl border border-[#156445]/15 shadow-2xl">
-
-                {/* IMAGE */}
-                <div className="relative h-72 overflow-hidden">
-
-
-                  <Image
-                    src={album.cover}
-                    alt={album.title}
-                    fill
-                    loading="lazy"
-                    placeholder="blur"
-                    blurDataURL={album.cover}
-                    sizes="(max-width: 768px) 100vw,
-           (max-width: 1200px) 50vw,
-           33vw"
-                    className="
+        <div
+  className="
+  relative
+  overflow-hidden
+  rounded-[28px]
+  bg-white
+  border border-[#156445]/10
+  shadow-[0_15px_45px_rgba(0,0,0,0.08)]
+  hover:shadow-[0_25px_60px_rgba(21,100,69,0.18)]
+  transition-all
+  duration-500
+"
+>
+  {/* IMAGE */}
+  <div
+    className="
+    relative
+    h-[280px]
+    overflow-hidden
+  "
+  >
+    <Image
+      src={album.cover}
+      alt={album.title}
+      fill
+      sizes="(max-width:768px)100vw,(max-width:1200px)50vw,33vw"
+      className="
       object-cover
       group-hover:scale-110
-      transition
+      transition-all
       duration-700
     "
-                  />
+    />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
-                  {/* IMAGE COUNT */}
-                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-sm font-medium border border-white/20">
-                    {album.images.length} Photos
-                  </div>
+    {/* Photo Count */}
+    <div
+      className="
+      absolute
+      top-4
+      right-4
+      px-4
+      py-2
+      rounded-full
+      bg-white
+      text-[#156445]
+      text-sm
+      font-bold
+      shadow-lg
+    "
+    >
+      {album.images.length} Photos
+    </div>
 
-                  {/* TEXT */}
-                  <div className="absolute bottom-5 left-5 right-5">
+    {/* Album Title */}
+    <div className="absolute bottom-5 left-5 right-5">
+      <h2 className="text-white text-2xl font-bold">
+        {album.title}
+      </h2>
 
-                    <h2 className="text-white text-2xl font-bold">
-                      {album.title}
-                    </h2>
+      <div className="flex items-center gap-2 mt-2 text-white/90 text-sm">
+        <CalendarDays size={15} />
+        <span>
+          {new Date(album.date).toLocaleDateString("en-GB")}
+        </span>
+      </div>
+    </div>
+  </div>
 
-                    <div className="flex items-center gap-2 mt-2 text-white/80 text-sm">
-                      <CalendarDays size={15} />
-                      <span>{album.date}</span>
-                    </div>
+  {/* Footer */}
+  <div className="p-5">
+    <div className="flex items-center justify-between">
+      <div className="flex items-center gap-2 text-[#156445] font-semibold">
+        <Images size={18} />
+        <span>Open Album</span>
+      </div>
 
-                  </div>
+      <button
+        className="
+        px-5
+        py-2.5
+        rounded-xl
+        bg-gradient-to-r
+        from-[#156445]
+        to-[#0D6453]
+        text-white
+        text-sm
+        font-semibold
+        shadow-md
+        hover:scale-105
+        transition-all
+      "
+      >
+        View
+      </button>
+    </div>
 
-                </div>
+    {isAdmin && (
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
 
-                {/* FOOTER */}
-                <div className="p-5 flex items-center justify-between">
+          setConfirmMessage(
+            'Do you want to delete this album?'
+          );
 
-                  <div className="flex items-center gap-2 text-[#156445] font-semibold">
-                    <Images size={18} />
-                    <span>Open Album</span>
-                  </div>
+          setConfirmAction(() => () => {
+            deleteAlbum(album._id);
+          });
 
-                  <button className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#156445] to-[#0D6453] text-white text-sm font-semibold hover:opacity-90 transition">
-                    View
-                  </button>
-
-                </div>
-
-              </div>
+          setConfirmOpen(true);
+        }}
+        className="
+        mt-4
+        w-full
+        py-2.5
+        rounded-xl
+        bg-red-50
+        border
+        border-red-200
+        text-red-600
+        font-semibold
+        hover:bg-red-600
+        hover:text-white
+        transition-all
+        "
+      >
+        Delete Album
+      </button>
+    )}
+  </div>
+</div>
 
             </motion.div>
           ))}
@@ -271,10 +581,6 @@ export default function Photos() {
                     src={selectedAlbum.cover}
                     alt={selectedAlbum.title}
                     fill
-                    loading="lazy"
-                    placeholder="blur"
-                    blurDataURL={selectedAlbum.cover}
-                    sizes="100vw"
                     className="object-cover"
                   />
                 </div>
@@ -297,15 +603,80 @@ export default function Photos() {
 
               {/* GALLERY */}
               {/* GALLERY */}
-<div className="p-8">
+              <div className="p-8">
 
-  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {isAdmin && (
 
-    {selectedAlbum.images.map((img: string, i: number) => (
-      <motion.div
-        key={i}
-        whileHover={{ scale: 1.03 }}
-        className="
+                  <div className="mb-8">
+
+                    <label
+                      className="
+        inline-flex
+        items-center
+        gap-3
+        px-6
+        py-3
+        bg-[#156445]
+        text-white
+        rounded-xl
+        cursor-pointer
+        hover:bg-[#0D6453]
+        transition-all
+        font-semibold
+      "
+                    >
+                      📷 Choose Files
+
+                      <input
+                        type="file"
+                        multiple
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => {
+
+                          if (!e.target.files) return;
+
+                          const files = e.target.files;
+
+                          setConfirmMessage(
+                            `Do you want to upload ${files.length} photos?`
+                          );
+
+                          setConfirmAction(() => () => {
+
+                            setSelectedFilesCount(
+                              files.length
+                            );
+
+                            addPhotos(
+                              selectedAlbum!._id,
+                              files
+                            );
+
+                          });
+
+                          setConfirmOpen(true);
+
+                        }}
+                      />
+                    </label>
+
+                    {/* ADD HERE 👇 */}
+
+
+                    <p className="text-sm text-gray-500 mt-2">
+                      Upload up to 100 photos
+                    </p>
+
+                  </div>
+
+                )}            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                  {selectedAlbum.images.map((img: string, i: number) => (
+                    <motion.div
+                      key={i}
+                      whileHover={{ scale: 1.03 }}
+                      className="
           group
           relative
           overflow-hidden
@@ -316,45 +687,79 @@ export default function Photos() {
           h-64 sm:h-72 md:h-80
           bg-gray-100
         "
-      >
+                    >
+                      {isAdmin && (
 
-        {/* IMAGE */}
-        <Image
-          src={img}
-          alt={`gallery-${i}`}
-          fill
-          loading="lazy"
-          placeholder="blur"
-          blurDataURL={img}
-          sizes="
-            (max-width: 768px) 100vw,
-            (max-width: 1200px) 50vw,
-            33vw
-          "
-          className="
-            object-cover
-            transition
-            duration-700
-            group-hover:scale-110
-          "
-        />
+                        <button
+                          onClick={() => {
 
-        {/* OVERLAY */}
-        <div
-          className="
+                            setConfirmMessage(
+                              "Do you want to delete this photo?"
+                            );
+
+                            setConfirmAction(() => () => {
+
+                              deletePhoto(
+                                selectedAlbum._id,
+                                img
+                              );
+
+                            });
+
+                            setConfirmOpen(true);
+
+                          }}
+                          className="
+absolute
+top-3
+right-3
+z-20
+px-3
+py-2
+rounded-xl
+bg-gradient-to-r
+from-[#156445]
+to-[#0D6453]
+text-white
+text-sm
+font-semibold
+shadow-lg
+"
+                        >
+                          Delete
+                        </button>
+
+                      )}
+
+                      {/* IMAGE */}
+                      <Image
+                        src={img}
+                        alt={`gallery-${i}`}
+                        fill
+                        className="
+    object-cover
+    transition
+    duration-700
+    group-hover:scale-110
+  "
+                      />
+
+                      {/* OVERLAY */}
+                      <div
+                        className="
             absolute inset-0
             bg-black/0
             group-hover:bg-black/20
             transition duration-500
           "
-        />
+                      />
 
-      </motion.div>
-    ))}
+                    </motion.div>
+                  ))}
 
-  </div>
+                </div>
 
-</div>
+              </div>
 
             </motion.div>
 
@@ -362,6 +767,54 @@ export default function Photos() {
         )}
 
       </AnimatePresence>
+      <AnimatePresence>
+  {loading && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="
+      fixed inset-0
+      z-[9999]
+      flex items-center justify-center
+      bg-black/50
+      backdrop-blur-md
+      "
+    >
+      <div
+        className="
+        bg-white
+        rounded-3xl
+        p-8
+        shadow-2xl
+        flex flex-col
+        items-center
+        gap-4
+        "
+      >
+        <div
+          className="
+          w-12 h-12
+          border-4
+          border-[#156445]
+          border-t-transparent
+          rounded-full
+          animate-spin
+          "
+        />
+
+        <p
+          className="
+          font-semibold
+          text-[#156445]
+          "
+        >
+          Uploading / Deleting Photos...
+        </p>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
 
     </div>
   );

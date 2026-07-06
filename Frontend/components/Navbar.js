@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState, useEffect } from 'react';
 import { ChevronDown, ChevronRight, Mail, Phone, Menu, X } from 'lucide-react';
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -32,6 +32,17 @@ export default function Navbar() {
         });
     };
 
+
+const router = useRouter();
+
+const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("admin");
+
+    setIsAdminLoggedIn(false);
+
+    window.location.href = "/";
+};
 
     return (
 

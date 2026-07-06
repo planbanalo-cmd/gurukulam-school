@@ -2,20 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-
-const images = [
-  { src: "/images/gallery/annual/1.jpeg", title: "Annual Function" },
-  { src: "/images/gallery/annual/2.jpeg", title: "Annual Function" },
-  { src: "/images/gallery/sports/2.jpeg", title: "Sports Day" },
-  { src: "/images/gallery/sports/4.jpeg", title: "Sports Day" },
-  { src: "/images/gallery/sports/7.jpeg", title: "Sports Day" },
-  { src: "/images/gallery/sports/6.jpeg", title: "Sports Day" },
-  { src: "/images/gallery/exhibition/3.jpeg", title: "Books Exhibition" },
-  { src: "/images/gallery/exhibition/4.jpeg", title: "Books Exhibition" },
-  { src: "/images/gallery/exhibition/5.jpeg", title: "Books Exhibition" },
-];
+import { API } from "@/lib/api";
+import Image from "next/image";
 
 export default function SchoolGallery() {
+
+  const [images, setImages] = useState([]);
 
   const sliderRef = useRef(null);
   const animationRef = useRef(null);
@@ -40,47 +32,71 @@ export default function SchoolGallery() {
 
   }, []);
 
+useEffect(() => {
+
+  const speed = isMobile ? 0.45 : 0.7;
+
+  const animate = () => {
+
+    if (!isPaused && sliderRef.current) {
+
+      positionRef.current -= speed;
+
+      const sliderWidth =
+        sliderRef.current.scrollWidth / 2;
+
+      if (
+        Math.abs(positionRef.current) >= sliderWidth
+      ) {
+        positionRef.current = 0;
+      }
+
+      sliderRef.current.style.transform =
+        `translateX(${positionRef.current}px)`;
+    }
+
+    animationRef.current =
+      requestAnimationFrame(animate);
+  };
+
+  animate();
+
+  return () => {
+
+    if (animationRef.current) {
+      cancelAnimationFrame(
+        animationRef.current
+      );
+    }
+
+  };
+
+}, [isPaused, isMobile]);
   useEffect(() => {
 
-    const speed = isMobile ? 0.45 : 0.7;
+    const fetchImages = async () => {
 
-    const animate = () => {
+      try {
 
-      if (!isPaused && sliderRef.current) {
-
-        positionRef.current -= speed;
-
-        const sliderWidth =
-          sliderRef.current.scrollWidth / 2;
-
-        if (
-          Math.abs(positionRef.current) >= sliderWidth
-        ) {
-          positionRef.current = 0;
-        }
-
-        sliderRef.current.style.transform =
-          `translateX(${positionRef.current}px)`;
-      }
-
-      animationRef.current =
-        requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-
-      if (animationRef.current) {
-        cancelAnimationFrame(
-          animationRef.current
+        const res = await fetch(
+          `${API}/api/home-gallery`
         );
+
+        const data = await res.json();
+
+        setImages(data);
+
+      } catch (err) {
+
+        console.log(err);
+
       }
 
     };
 
-  }, [isPaused, isMobile]);
+    fetchImages();
 
+  }, []);
   return (
 
     <section
@@ -176,20 +192,20 @@ export default function SchoolGallery() {
                 >
 
                   {/* IMAGE */}
-                  <img
-                    src={item.src}
-                    alt={item.title}
-                    loading="lazy"
-                    decoding="async"
-                    className="
-                      w-full h-full
-                      object-cover
-                      transition-transform
-                      duration-700
-                      group-hover:scale-110
-                    "
-                  />
-
+    <img
+  src={item.image}
+  alt={item.title}
+  className="
+    absolute
+    inset-0
+    w-full
+    h-full
+    object-cover
+    transition-transform
+    duration-700
+    group-hover:scale-110
+  "
+/>
                   {/* OVERLAY */}
                   <div
                     className="
