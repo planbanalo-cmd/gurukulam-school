@@ -37,7 +37,7 @@ const authRoutes = require("./routes/auth");
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://gurukulam.planbanalo.in"
+    "https://gurukulamtheschool.com"
   ]
 }));
 app.use(express.json());
