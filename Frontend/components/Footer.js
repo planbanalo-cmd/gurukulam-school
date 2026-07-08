@@ -248,7 +248,7 @@ export default function Footer() {
       <div className="border-t border-[#7B9B68]/30">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[#DDE5D8] text-xs md:text-sm">
-            © 2024 Gurukulam School. All rights reserved.
+            © 2026 Powered by Kantag Solutions. All rights reserved.
           </p>
 
         <div className="flex gap-6 text-xs md:text-sm">
