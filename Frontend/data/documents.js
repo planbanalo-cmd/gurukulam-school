@@ -141,7 +141,7 @@ export const documents = [
     size: "28 KB",
     updated: "March 2026",
     featured: false,
-    link: "/documents/Gurukulam-Academic-Planner2026–2027.pdf.pdf",
+    link: "/documents/Gurukulam-Academic-Planner2026–2027.pdf",
   },
 
   // ===========================
@@ -184,7 +184,7 @@ export const documents = [
     size: "25 KB",
     updated: "July 2026",
     featured: false,
-    link: "/documents/Gurukulam-Boarding-Examination-Results.pdf",
+    link: "/documents/Gurukulam-Board-Examination-Results.pdf",
   },
 
   
