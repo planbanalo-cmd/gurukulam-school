@@ -818,16 +818,18 @@ addActivity(
 
       <aside
   className={`
-    fixed lg:sticky
-    top-0 left-0
+      hidden lg:block
+    sticky
+    top-0
+    self-start
     h-screen
-    w-[280px] sm:w-72
+    w-[280px]
     bg-white
     border-r
     border-gray-200
     shadow-xl
     p-6
-    z-50
+    overflow-y-auto
 
     transform
     transition-transform

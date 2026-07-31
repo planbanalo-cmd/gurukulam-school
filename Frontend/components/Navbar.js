@@ -203,6 +203,7 @@ const handleLogout = () => {
                                 <Link href="/About/Infrastructure"><li className="px-3 xl:px-4 py-2 border-b cursor-pointer hover-dropdown-item">Infrastructure</li></Link>
                                 <Link href="/About/Leadership&Management"><li className="px-3 xl:px-4 py-2 border-b text-xs xl:text-sm cursor-pointer hover-dropdown-item">Leadership & Management</li></Link>
                                 <Link href="/About/Privacy&Policy"><li className="px-3 xl:px-4 py-2 border-b text-xs xl:text-sm cursor-pointer hover-dropdown-item">Privacy Policy</li></Link>
+                                <Link href="/About/Documents"><li className="px-3 xl:px-4 py-2 border-b text-xs xl:text-sm cursor-pointer hover-dropdown-item">Documents</li></Link>
                             </ul>
                         </li>
 
@@ -375,6 +376,7 @@ const handleLogout = () => {
                                             <Link href="/About/Infrastructure" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">Infrastructure</li></Link>
                                             <Link href="/About/Leadership&Management" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">Leadership & Management</li></Link>
                                             <Link href="/About/Privacy&Policy" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">Privacy Policy</li></Link>
+                                            <Link href="/About/Documents" onClick={handleMobileNav}><li className="py-1 text-black hover:mobile-item">Documents</li></Link>
 
                                         </ul>
                                     )}
