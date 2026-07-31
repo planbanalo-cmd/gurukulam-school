@@ -36,9 +36,12 @@ const authRoutes = require("./routes/auth");
 // Middleware
 app.use(cors({
   origin: [
+     "http://localhost:3000",
      "https://www.gurukulamtheschool.com",
     "https://gurukulamtheschool.com"
-  ]
+  ],
+   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
 }));
 app.use(express.json());
 

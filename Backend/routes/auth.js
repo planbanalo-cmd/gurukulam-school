@@ -72,7 +72,7 @@ router.post("/login", async (req, res) => {
     if (!admin) {
 
       return res.status(400).json({
-        message: "Invalid credentials ❌",
+        message: "Invalid Email Or Password ❌",
       });
     }
 
@@ -85,7 +85,7 @@ router.post("/login", async (req, res) => {
     if (!isMatch) {
 
       return res.status(400).json({
-        message: "Invalid credentials ❌",
+        message: "Invalid Email Or Password ❌",
       });
     }
 
