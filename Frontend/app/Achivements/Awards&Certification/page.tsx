@@ -38,19 +38,12 @@ const features = [
   },
 ];
 
-const topperStudents = [
-  '/images/awards/topper1.jpeg',
-  '/images/awards/topper2.jpeg',
-  '/images/awards/topper3.jpeg',
-  '/images/awards/topper4.jpeg',
-  '/images/awards/topper5.jpeg',
-];
 
 const achievements = [
-  '/images/awards/award1.jpeg',
-  '/images/awards/award2.jpeg',
-  '/images/awards/award3.jpeg',
-  '/images/awards/award4.jpeg',
+  '/images/studentachivement/award1.jpeg',
+  '/images/studentachivement/award2.jpeg',
+  '/images/studentachivement/award3.jpeg',
+  '/images/studentachivement/award4.jpeg',
 ];
 
 export default function AwardsCertificationPage() {
@@ -107,35 +100,7 @@ export default function AwardsCertificationPage() {
           </div>
 
           {/* TOPPERS SECTION */}
-          <motion.div
-            initial={{ opacity: 0, y: 70 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mt-20 bg-white rounded-[30px] shadow-2xl border border-[#D8C98D]/40 p-6 md:p-10"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-center text-[#146B4D] mb-10">
-              Top Achievers
-            </h2>
-
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
-              {topperStudents.map((img, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.04 }}
-                  className="relative h-[250px] rounded-[20px] overflow-hidden shadow-xl border border-[#D8C98D]/30"
-                >
-                  <Image
-                    src={img}
-                    alt={`Topper ${index + 1}`}
-                    fill
-                    sizes="(max-width:768px) 50vw, 20vw"
-                    className="object-cover"
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
+         
           {/* AWARDS */}
           <motion.div
             initial={{ opacity: 0, y: 80 }}
@@ -145,7 +110,7 @@ export default function AwardsCertificationPage() {
           >
             <div className="bg-[#146B4D] rounded-[32px] shadow-2xl p-6 md:p-10">
               <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-10">
-                Awards & Achievements
+                Awards & Certifications
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

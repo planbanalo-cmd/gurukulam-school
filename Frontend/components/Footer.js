@@ -255,7 +255,7 @@ export default function Footer() {
         
         {/* Privacy Policy Page */}
         <Link
-          href="/Privacy&Policy"
+          href="/About/Privacy&Policy"
           className="text-[#DDE5D8] hover:text-[#E4CC6F] transition"
         >
           Privacy Policy
