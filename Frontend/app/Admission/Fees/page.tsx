@@ -20,27 +20,41 @@ export default function FeeStructurePage() {
       />
 
       {/* Floating Particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-[#6EE7B7] rounded-full opacity-30"
-            initial={{
-              x: Math.random() * 1200,
-              y: Math.random() * 800,
-            }}
-            animate={{
-              x: [null, Math.random() * 1200],
-              y: [null, Math.random() * 800],
-            }}
-            transition={{
-              duration: 10 + Math.random() * 10,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          />
-        ))}
-      </div>
+     <div className="absolute inset-0 pointer-events-none">
+  {[
+    { x: 1064, y: 744, toX: 708, toY: 662, duration: 14 },
+    { x: 688, y: 54, toX: 817, toY: 777, duration: 17 },
+    { x: 658, y: 546, toX: 448, toY: 341, duration: 12 },
+    { x: 118, y: 599, toX: 221, toY: 337, duration: 19 },
+    { x: 496, y: 175, toX: 215, toY: 672, duration: 15 },
+    { x: 712, y: 529, toX: 443, toY: 763, duration: 18 },
+    { x: 5, y: 425, toX: 743, toY: 613, duration: 13 },
+    { x: 689, y: 682, toX: 1076, toY: 566, duration: 16 },
+    { x: 514, y: 267, toX: 669, toY: 354, duration: 20 },
+    { x: 835, y: 35, toX: 1138, toY: 558, duration: 14 },
+    { x: 70, y: 48, toX: 932, toY: 544, duration: 17 },
+    { x: 251, y: 376, toX: 473, toY: 232, duration: 15 },
+  ].map((particle, i) => (
+    <motion.div
+      key={i}
+      className="absolute w-2 h-2 bg-[#6EE7B7] rounded-full opacity-30"
+      initial={{
+        x: particle.x,
+        y: particle.y,
+      }}
+      animate={{
+        x: [particle.x, particle.toX],
+        y: [particle.y, particle.toY],
+      }}
+      transition={{
+        duration: particle.duration,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut",
+      }}
+    />
+  ))}
+</div>
 
       {/* Logo Watermark */}
       <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">

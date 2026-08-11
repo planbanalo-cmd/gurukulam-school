@@ -12,6 +12,8 @@ import {
   Camera,
   Play,
 } from 'lucide-react';
+import { FaFacebook, FaYoutube, FaInstagram } from "react-icons/fa";
+
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -187,40 +189,49 @@ ${formData.message}
             </div>
 
             {/* SOCIAL LINKS */}
-            <div className="mt-12">
-              <h3 className="text-xl font-semibold text-[#146B4D] mb-5">
-                Follow Us
-              </h3>
+            ```jsx
+<div className="mt-12">
+  <h3 className="text-xl font-semibold text-[#146B4D] mb-5">
+    Follow Us
+  </h3>
 
-              <div className="flex gap-4">
-                {[
-                  {
-                    icon: Globe,
-                    link: '#',
-                  },
-                  {
-                    icon: Play,
-                    link: '#',
-                  },
-                  {
-                    icon: Camera,
-                    link: '#',
-                  },
-                ].map((item, index) => {
-                  const Icon = item.icon;
+  <div className="flex gap-4">
+    {/* Facebook */}
+    <a
+      href="https://www.facebook.com/GURUKULAMTHESchool/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Facebook"
+      className="w-12 h-12 rounded-full bg-[#CFAF5C] hover:bg-[#E4CC6F] transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-lg"
+    >
+      <FaFacebook className="w-5 h-5 text-[#0D6453]" />
+    </a>
 
-                  return (
-                    <a
-                      key={index}
-                      href={item.link}
-                      className="w-14 h-14 rounded-full bg-[#146B4D] hover:bg-[#0F5B41] transition-all duration-300 flex items-center justify-center text-white shadow-lg"
-                    >
-                      <Icon size={24} />
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
+    {/* YouTube */}
+    <a
+      href="https://youtube.com/@gurukulamtheschool-c8v"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="YouTube"
+      className="w-12 h-12 rounded-full bg-[#CFAF5C] hover:bg-[#E4CC6F] transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-lg"
+    >
+      <FaYoutube className="w-5 h-5 text-[#0D6453]" />
+    </a>
+
+    {/* Instagram */}
+    <a
+      href="https://instagram.com/gurukulam.the.school"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagram"
+      className="w-12 h-12 rounded-full bg-[#CFAF5C] hover:bg-[#E4CC6F] transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-lg"
+    >
+      <FaInstagram className="w-5 h-5 text-[#0D6453]" />
+    </a>
+  </div>
+</div>
+```
+
           </motion.div>
 
           {/* RIGHT SIDE FORM */}

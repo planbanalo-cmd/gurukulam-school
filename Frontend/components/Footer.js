@@ -109,7 +109,7 @@ export default function Footer() {
   {[
     { name: "Vision & Mission", link: "/About/Vision&Mission" },
     { name: "Boarding", link: "/Boarding/Welcome" },
-    { name: "Awards", link: "/Achivements/Awards&Certificates" },
+    { name: "Awards", link: "/Achivements/Awards&Certification" },
     { name: "Faculty", link: "/Academic/Faculty" },
     { name: "Curriculum", link: "/Academic/Curriculum" }
   ].map((item, i) => (
@@ -135,7 +135,7 @@ export default function Footer() {
     { name: "Fees", link: "/Admission/Fees" },
     { name: "Eligibility & Criteria", link: "/Admission/Eligibility&Criteria" },
     { name: "Leadership & Management", link: "/About/Leadership&Management" },
-    { name: "Daily Schedule", link: "/Boarding/DailySchedule" }
+    { name: "Daily Schedule", link: "/Boarding/Daily-Schedule" }
   ].map((item, i) => (
     <li key={i}>
       <a
