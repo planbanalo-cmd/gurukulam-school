@@ -1,121 +1,128 @@
 const express = require("express");
 const multer = require("multer");
-const path = require("path");
 
 const Gallery = require("../models/Gallery");
 
 const router = express.Router();
 
-
-
-const cloudinary =
-  require("../config/cloudinary");
+const cloudinary = require("../config/cloudinary");
 
 const {
   CloudinaryStorage,
 } = require("multer-storage-cloudinary");
-const storage =
-  new CloudinaryStorage({
-    cloudinary,
 
-    params: {
-      folder: "gurukulam-gallery",
 
-      allowed_formats: [
-        "jpg",
-        "jpeg",
-        "png",
-        "webp",
-      ],
-    },
-  });
+// ======================================================
+// CLOUDINARY STORAGE
+// ======================================================
 
-const upload =
-  multer({ storage });
+const storage = new CloudinaryStorage({
+  cloudinary,
 
+  params: {
+    folder: "gurukulam-gallery",
+
+    allowed_formats: [
+      "jpg",
+      "jpeg",
+      "png",
+      "webp",
+    ],
+  },
+});
+
+const upload = multer({
+  storage,
+});
+
+
+// ======================================================
 // GET ALL ALBUMS
+// ======================================================
 
 router.get("/", async (req, res) => {
   try {
+
     const albums = await Gallery.find().sort({
       date: -1,
     });
 
-    res.json(albums);
+    return res.status(200).json(albums);
+
   } catch (err) {
-    res.status(500).json({
+
+    console.error("GET GALLERY ERROR:", err);
+
+    return res.status(500).json({
       message: "Server Error",
     });
   }
 });
 
 
-// CREATE ALBUM
-
+// ======================================================
+// CREATE NEW ALBUM
+// ======================================================
 
 router.post(
   "/",
   upload.fields([
-    { name: "cover", maxCount: 1 },
-    { name: "images" },
+    {
+      name: "cover",
+      maxCount: 1,
+    },
+    {
+      name: "images",
+      maxCount: 100,
+    },
   ]),
+
   async (req, res) => {
 
-    const cover =
-      req.files.cover[0].path;
-
-    const images =
-      req.files.images.map(
-        (img) => img.path
-      );
-
-    const album =
-      await Gallery.create({
-        title: req.body.title,
-        date: req.body.date,
-        cover,
-        images,
-      });
-
-    res.json(album);
-  }
-);
-
-
-// ADD MORE PHOTOS TO ALBUM
-
-router.put(
-  "/:id/photos",
-  upload.array("images", 100),
-  async (req, res) => {
     try {
-      const album =
-        await Gallery.findById(
-          req.params.id
-        );
 
-      if (!album) {
-        return res.status(404).json({
-          message: "Album not found",
+      if (!req.files?.cover?.length) {
+        return res.status(400).json({
+          message: "Cover image is required",
         });
       }
 
-    const newImages =
-  req.files.map(
-    (file) => file.path
-  );
+      const cover =
+        req.files.cover[0].path;
 
-      album.images.push(...newImages);
 
-      await album.save();
+      const images =
+        req.files.images
+          ? req.files.images.map(
+              (img) => img.path
+            )
+          : [];
+
+
+      const album =
+        await Gallery.create({
+          title: req.body.title,
+          date: req.body.date,
+          cover,
+          images,
+        });
+
 
       console.log(
-        `➕ ${newImages.length} photos added to album: ${album.title}`
+        `✅ Album Created: ${album.title}`
       );
 
-      res.json(album);
+
+      return res.status(201).json(album);
+
     } catch (err) {
-      res.status(500).json({
+
+      console.error(
+        "CREATE ALBUM ERROR:",
+        err
+      );
+
+      return res.status(500).json({
         message: "Server Error",
       });
     }
@@ -123,50 +130,150 @@ router.put(
 );
 
 
-// DELETE ENTIRE ALBUM
+// ======================================================
+// ADD MORE PHOTOS
+// ======================================================
 
-router.delete("/:id", async (req, res) => {
-  try {
-    const album =
-      await Gallery.findById(req.params.id);
+router.put(
+  "/:id/photos",
+  upload.array("images", 100),
 
-    if (!album) {
-      return res.status(404).json({
-        message: "Album not found",
+  async (req, res) => {
+
+    try {
+
+      const album =
+        await Gallery.findById(
+          req.params.id
+        );
+
+
+      if (!album) {
+        return res.status(404).json({
+          message: "Album not found",
+        });
+      }
+
+
+      if (!req.files?.length) {
+        return res.status(400).json({
+          message: "No images uploaded",
+        });
+      }
+
+
+      const newImages =
+        req.files.map(
+          (file) => file.path
+        );
+
+
+      album.images.push(
+        ...newImages
+      );
+
+
+      await album.save();
+
+
+      console.log(
+        `➕ ${newImages.length} photos added to: ${album.title}`
+      );
+
+
+      return res.status(200).json(album);
+
+    } catch (err) {
+
+      console.error(
+        "ADD PHOTOS ERROR:",
+        err
+      );
+
+      return res.status(500).json({
+        message: "Server Error",
       });
     }
-
-    console.log(
-      `🗑️ Album Deleted: ${album.title}`
-    );
-
-    await Gallery.findByIdAndDelete(
-      req.params.id
-    );
-
-    res.json({
-      message: "Album deleted successfully",
-    });
-  } catch (err) {
-    console.log(err);
-
-    res.status(500).json({
-      message: "Server Error",
-    });
   }
-});
+);
 
+
+// ======================================================
+// CHANGE COVER IMAGE
+// ======================================================
+
+router.put(
+  "/:id/cover",
+  upload.single("cover"),
+
+  async (req, res) => {
+
+    try {
+
+      const album =
+        await Gallery.findById(
+          req.params.id
+        );
+
+
+      if (!album) {
+        return res.status(404).json({
+          message: "Album not found",
+        });
+      }
+
+
+      if (!req.file) {
+        return res.status(400).json({
+          message: "Cover image is required",
+        });
+      }
+
+
+      // Cloudinary automatically uploads
+      // the image and gives us the URL.
+
+      album.cover =
+        req.file.path;
+
+
+      await album.save();
+
+
+      console.log(
+        `🖼️ Cover updated: ${album.title}`
+      );
+
+
+      return res.status(200).json({
+        message:
+          "Cover image updated successfully",
+        album,
+      });
+
+    } catch (err) {
+
+      console.error(
+        "CHANGE COVER ERROR:",
+        err
+      );
+
+      return res.status(500).json({
+        message: "Server Error",
+      });
+    }
+  }
+);
+
+
+// ======================================================
 // DELETE SINGLE PHOTO
+// ======================================================
 
 router.delete(
   "/:albumId/photo/:photoName",
-  async (req, res) => {
 
-    console.log(
-      "DELETE PHOTO:",
-      req.params.albumId,
-      req.params.photoName
-    );
+  async (req, res) => {
 
     try {
 
@@ -175,38 +282,122 @@ router.delete(
           req.params.albumId
         );
 
+
       if (!album) {
         return res.status(404).json({
           message: "Album not found",
         });
       }
-      console.log(
-        `🖼️ Photo Deleted: ${req.params.photoName} from ${album.title}`
-      );
+
+
+      const photoName =
+        decodeURIComponent(
+          req.params.photoName
+        );
+
+
+      const oldLength =
+        album.images.length;
+
 
       album.images =
         album.images.filter(
-          (img) =>
-            img !== req.params.photoName
+          (img) => img !== photoName
         );
+
+
+      if (
+        album.images.length ===
+        oldLength
+      ) {
+
+        return res.status(404).json({
+          message: "Photo not found",
+        });
+      }
+
 
       await album.save();
 
-      res.json({
+
+      console.log(
+        `🗑️ Photo deleted from: ${album.title}`
+      );
+
+
+      return res.status(200).json({
         message:
           "Photo deleted successfully",
+        album,
       });
 
     } catch (err) {
 
-      console.log(err);
+      console.error(
+        "DELETE PHOTO ERROR:",
+        err
+      );
 
-      res.status(500).json({
+      return res.status(500).json({
         message: "Server Error",
       });
-
     }
   }
 );
+
+
+// ======================================================
+// DELETE ENTIRE ALBUM
+// ======================================================
+
+router.delete(
+  "/:id",
+
+  async (req, res) => {
+
+    try {
+
+      const album =
+        await Gallery.findById(
+          req.params.id
+        );
+
+
+      if (!album) {
+        return res.status(404).json({
+          message: "Album not found",
+        });
+      }
+
+
+      console.log(
+        `🗑️ Album Deleted: ${album.title}`
+      );
+
+
+      await Gallery.findByIdAndDelete(
+        req.params.id
+      );
+
+
+      return res.status(200).json({
+        message:
+          "Album deleted successfully",
+      });
+
+    } catch (err) {
+
+      console.error(
+        "DELETE ALBUM ERROR:",
+        err
+      );
+
+      return res.status(500).json({
+        message: "Server Error",
+      });
+    }
+  }
+);
+
 
 module.exports = router;
